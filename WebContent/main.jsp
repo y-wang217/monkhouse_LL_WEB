@@ -16,6 +16,10 @@
 <form action="generate_letter.jsp">
     <input type="submit" value="Click to create new Lawyer's Letter" />
 </form>
+<form action="generate_LTD.jsp">
+    <input type="submit" value="Click to create new LTD doc" />
+</form>
+
 <form action="letter_history.jsp">
     <input type="submit" value="Click to view previous letters" />
 </form>

@@ -93,7 +93,7 @@ public class LLDocument extends XWPFDocument {
         init();
     }
 
-    private enum gender {m, f}
+    public enum gender {m, f}
 
     //PRIVATE INITIALIZER TO SEPARATE TEST EXECUTION
     private void init() {
@@ -106,16 +106,19 @@ public class LLDocument extends XWPFDocument {
         //testing init flags for different subsections
         initCheckBoxFields();
 
-        boolean testForFieldsFromInput = false;//TODO flag for if fields are prompted
+        boolean testForFieldsFromInput = false;
+        boolean initDefaultFields = false;
+        //prompt for fields from input
         promptForGender(testForFieldsFromInput);
         promptForFields(testForFieldsFromInput);
-        initFields(testForFieldsFromInput);
+        //otherwise put in default values
+        initFields(initDefaultFields);
     }
 
     //initialize fields from default/testing fieldsMap here:
-    private void initFields(boolean testForFieldsFromInput) {
+    private void initFields(boolean initDefaultFields) {
 
-        if (!testForFieldsFromInput) {
+        if (initDefaultFields) {
             LinkedHashMap<String, String> defaultFieldsMap = this.getFieldsMap();
             defaultFieldsMap.put("monkhouse_lawyer_name", "Andrew Monkhouse, J.D.");
             defaultFieldsMap.put("monkhouse_lawyer_email", "andrew@monkhouselaw.com");
@@ -307,7 +310,7 @@ public class LLDocument extends XWPFDocument {
         return clientGender;
     }
 
-    private void setClientGender(gender clientGender) {
+    public void setClientGender(gender clientGender) {
 
         this.clientGender = clientGender;
     }
