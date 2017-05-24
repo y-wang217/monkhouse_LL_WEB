@@ -159,8 +159,8 @@ public class LLDocument extends XWPFDocument {
         defaultFieldsMap.put("employer_honorific_male", "Mr.");
         defaultFieldsMap.put("employer_honorific_female", "Mrs.");
 
-        defaultFieldsMap.put("subject_pronoun", (g==gender.m)?"he":"she");
-        defaultFieldsMap.put("subject_pronoun_caps", (g==gender.m)?"He":"She");
+        defaultFieldsMap.put("subjective_pronoun", (g==gender.m)?"he":"she");
+        defaultFieldsMap.put("subjective_pronoun_caps", (g==gender.m)?"He":"She");
 
         defaultFieldsMap.put("object_pronoun", (g==gender.m)?"him":"her.");
         defaultFieldsMap.put("object_pronoun_caps", (g==gender.m)?"Him":"Her.");
