@@ -50,10 +50,23 @@ $(document).ready(function(){
     	<option value="unspecific">unspecific</option>
 	</select>
 	<p> Client's relevant work factors: </p>
-		Seniority: <input type="text" name="seniority_in_years"> years, <input type="text" name="seniority_in_months"> months
+		Seniority: <input type="text" name="seniority_in_years"> years, <input type="text" name="seniority_in_months"> months <br>
 		Wage in dollars: $<input type="text" name="wage_in_dollars">
 		Age: <input type="text" name="age">
-		Position: <input type="text" name="position">
+		Position: <input type="text" name="position"> <br>
+	<p> Client Occupation Classification: <select name="occupation_classification">
+    	<option selected="selected"></option>
+		<option value="2">Upper Management (>150k)</option>
+		<option value="1.5">Middle Management (b/w 75k and 150k)</option>
+    	<option value="1.3">Lower Management (<75k)</option>
+    	<option value="1.3">Salesperson</option>
+    	<option value="1.3">Professional</option>
+    	<option value="0.8">Labourer</option>
+    	<option value="0.8">Clerical</option>
+    	<option value="1.2">Technical</option>
+    	<option value="1.2">Supervisor</option>
+    	<option value="1">Social Services</option>
+	</select>
 		
 	<p> Addressing the recipient, OC/HR department: </p>
 	<p> Recipient's first name: <input type="text" name="OC_HR_first_name"> Recipient's last name: <input type="text" name="OC_HR_last_name">

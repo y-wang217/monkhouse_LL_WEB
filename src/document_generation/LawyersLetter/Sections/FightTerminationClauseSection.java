@@ -115,7 +115,7 @@ public class FightTerminationClauseSection extends LLSection {
             insertText(llpf,doc,content, ParaCode.HEAD,"Employer Cannot Rely on Breached Termination Clause");
             //body:
             insertText(llpf,doc,content,ParaCode.REG, "Furthermore, CDW has breached its contract by failing " +
-                    "to include Alex’s commissions during his reasonable notice period, which he is entitled to.  " +
+                    "to include <client_first_name>’s commissions during <possessive_pronoun> reasonable notice period, which he is entitled to.  " +
                     "Therefore, CDW cannot now rely on the terms of the contract to limit Alex's notice entitlements. " +
                     "This position is supported in the recent decision of Holmes v. Hatch Ltd., 2017 ONSC 379 (CanLII) " +
                     "(at para. 24):");

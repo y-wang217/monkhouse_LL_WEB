@@ -29,9 +29,9 @@ public class ReCaseSection extends LLSection{
         LLParagraph body = llpf.getParagraph(doc,ParaCode.REG);
         body.setText("I wish to confirm that I have been retained as legal counsel on behalf of " +
                 "<client_first_name> <client_last_name> (“<client_first_name>”). I have reviewed the circumstances " +
-                "surrounding <client_first_name>’s termination, and it is my position that he has been wrongfully " +
-                "dismissed in that he was terminated without sufficient cause, and as such is entitled to reasonable " +
-                "pay in lieu of notice of the termination of his employment. ");
+                "surrounding <client_first_name>’s termination, and it is my position that <subjective_pronoun> has been wrongfully " +
+                "dismissed in that <subjective_pronoun> was terminated without sufficient cause, and as such is entitled to reasonable " +
+                "pay in lieu of notice of the termination of <possessive_pronoun> employment. ");
         content.add(body);
 
         //the salient factors...
@@ -46,7 +46,7 @@ public class ReCaseSection extends LLSection{
         factorsList.setText("Seniority: <seniority_in_years> years%%" +
                 "Wage: $<wage_in_dollars>%%" +
                 "Age: <age>%%" +
-                "Position: <client_position>");
+                "Position: <position>");
         content.add(factorsList);
 
         this.setContents(content);
