@@ -58,8 +58,8 @@ public class AppropriateNoticePeriodSection extends LLSection {
                     "finding work than others. They do not have the flexibility of the young, a disadvantage " +
                     "often accentuated by the fact that the latter are frequently more recently trained in the " +
                     "more modern skills.");
-            insertText(llpf,doc,content,ParaCode.REG, "At the time in his life when most Canadians would be " +
-                    "contemplating retirement, <client_first_name> has found <possessive_pronoun>self dismissed without an adequate " +
+            insertText(llpf,doc,content,ParaCode.REG, "At the time in <possessive_pronoun> life when most Canadians would be " +
+                    "contemplating retirement, <client_first_name> has found <object_pronoun>self dismissed without an adequate " +
                     "severance package after XX years of productive service with <employer_first_name>, and having to seek " +
                     "alternative employment at an older age.");
         }

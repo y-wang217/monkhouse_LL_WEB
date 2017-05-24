@@ -24,7 +24,7 @@ public class EmploymentDescriptionSection extends LLSection {
         //body:
         insertText(llpf,doc,content,ParaCode.REG, "<client_first_name> began <possessive_pronoun> employment with " +
                 "<employer_first_name> (“<employer_first_name> ”) by way of written offer of employment/employment " +
-                "contract/verbal agreement approximately TIME <seniority_in_years> years ago where <subject_pronoun> started out as … . " +
+                "contract/verbal agreement approximately TIME <seniority_in_years> years ago where <subjective_pronoun> started out as … . " +
                 "<employer_first_name> was promoted to <client_position> and continued in this capacity until <possessive_pronoun> termination on " +
                 "<termination_date>.%%" +
                 "At the time of <possessive_pronoun> termination, <client_first_name> was earning approximately $<wage> per year and was " +

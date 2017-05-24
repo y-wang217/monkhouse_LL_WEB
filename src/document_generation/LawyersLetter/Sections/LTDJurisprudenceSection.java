@@ -29,7 +29,7 @@ public class LTDJurisprudenceSection extends LLSection{
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Breach Of Contract");
             //body: TODO change "Chris" to "<client_first_name>"
-            insertText(llpf, doc, content, ParaCode.REG, "Chris’s claim for LTD benefits was denied by " +
+            insertText(llpf, doc, content, ParaCode.REG, "<client_first_name> claim for LTD benefits was denied by " +
                     "Fenchurch with inadequate reasons for the denial. Due to the improper denial of Chris’s claim, " +
                     "Fenchurch has failed to secure the peace of mind it offered in its contract with Chris’s " +
                     "employer.  The resulting significant mental distress on Chris has caused him continued " +
@@ -37,7 +37,7 @@ public class LTDJurisprudenceSection extends LLSection{
                     "%%" +
                     "Pursuant to the plan and policy, which Chris’s employer held with Fenchurch, Chris was to be " +
                     "paid disability benefits following the substantiation of a claim for same. Despite the fact that " +
-                    "Chris substantiated his claim, Fenchurch refused the claim with an insufficient explanation. " +
+                    "<client_first_name> substantiated <possessive_pronoun> claim, Fenchurch refused the claim with an insufficient explanation. " +
                     "This constitutes a breach of the contract between Chris and Fenchurch, for which damages are owed.");
         }
 

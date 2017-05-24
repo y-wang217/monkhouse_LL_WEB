@@ -33,7 +33,7 @@ public class FightingCauseSection extends LLSection{
                     "2000, only a finding of “wilful misconduct” will be sufficient to support a termination with " +
                     "just cause. The punishment must fit the offence and other alternatives, such as progressive " +
                     "discipline, must have been contemplated. For instance in Bravo v. Etobicoke Ironworks Ltd. " +
-                    "[2005] O.J. No. 2070, an employee stole company property and was found to have sworn at his " +
+                    "[2005] O.J. No. 2070, an employee stole company property and was found to have sworn at <possessive_pronoun> " +
                     "boss for no reason. These two incidents combined were not just cause. The termination was not " +
                     "proportionate to the offence and so the argument failed. %%" +
                     "%%" +
@@ -43,7 +43,7 @@ public class FightingCauseSection extends LLSection{
                     "notice, referenced the case of Kane v. University of British Columbia, [1980] 1 S.C.R. 1105, " +
                     "in which Dickson J. noted that a “high standard of justice is required when the right to continue " +
                     "in one’s profession or employment is at stake.” The court further went on to note that despite " +
-                    "the Plaintiff’s inappropriate conduct, even in his position of seniority, that a clear warning " +
+                    "the Plaintiff’s inappropriate conduct, even in <possessive_pronoun> position of seniority, that a clear warning " +
                     "that the behavior was unacceptable had not been provided.%%" +
                     "%%" +
                     "As I’m sure you are aware, the standard for just cause is very high. The court in Boulet v. " +
@@ -62,9 +62,9 @@ public class FightingCauseSection extends LLSection{
                     "termination. Particularly, at paragraph 21 Gillespie states:%%");
             insertText(llpf,doc,content,ParaCode.QUOTE, "[W]here cumulative cause for dismissal for " +
                     "incompetence is alleged, the employer must prove:%%" +
-                    "1. The employee was given express and clear warnings about his performance;%%" +
-                    "2. The employee was given a reasonable opportunity to improve his performance after the warning was issued;%%" +
-                    "3. Notwithstanding the foregoing, the employee failed to improve his performance;%%" +
+                    "1. The employee was given express and clear warnings about <possessive_pronoun> performance;%%" +
+                    "2. The employee was given a reasonable opportunity to improve <possessive_pronoun> performance after the warning was issued;%%" +
+                    "3. Notwithstanding the foregoing, the employee failed to improve <possessive_pronoun> performance;%%" +
                     "4. The cumulative failings “would prejudice the proper conduct of the employer’s business.");
 
             insertText(llpf,doc,content,ParaCode.REG, "As held in the case of Plester v. Polyone Canada " +

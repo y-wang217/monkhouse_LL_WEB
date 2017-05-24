@@ -42,10 +42,10 @@ public class ContractorVsEmployeeSection extends LLSection{
                     "sold, but also as to when, where and how it is sold;%%" +
 
                     "3. Whether or not the agent has an investment or interest in what are characterized as the “tools” " +
-                    "relating to his service;%%" +
+                    "relating to <possessive_pronoun> service;%%" +
 
                     "4. Whether or not the agent has undertaken any risk in the business sense or, alternatively, has " +
-                    "any expectation of profit associated with the delivery of his service as distinct from a fixed commission;%%" +
+                    "any expectation of profit associated with the delivery of <possessive_pronoun> service as distinct from a fixed commission;%%" +
 
                     "5. Whether or not the activity of the agent is part of the business organization of the principal " +
                     "for which he works. In other words, whose business is it?");
