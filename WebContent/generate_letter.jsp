@@ -33,9 +33,6 @@ $(document).ready(function(){
     $("#isOvertime").click(function(){
     	$("#ot_div").toggle(this.checked);
     });
-    $("#isLtd").click(function(){
-    	$("#ltd_div").toggle(this.checked);
-    });
 });
 </script>
 
@@ -46,14 +43,14 @@ $(document).ready(function(){
 	<!-- start with filling in the case information -->
 	<p style="font-size:20px"> Client info </p>
 	Client first name: <input type="text" name="client_first_name"> Client last name: <input type="text" name="client_last_name">
-	Client gender: <select>
+	Client gender: <select name="client_gender">
     	<option selected="selected"></option>
 		<option value="male">male</option>
 		<option value="female">female</option>
     	<option value="unspecific">unspecific</option>
 	</select>
 	<p> Client's relevant work factors: </p>
-		Seniority in years: <input type="text" name="seniority_in_years">
+		Seniority: <input type="text" name="seniority_in_years"> years, <input type="text" name="seniority_in_months"> months
 		Wage in dollars: $<input type="text" name="wage_in_dollars">
 		Age: <input type="text" name="age">
 		Position: <input type="text" name="position">
@@ -65,17 +62,16 @@ $(document).ready(function(){
 		Recipient's company address: <input type="text" name="OC_HR_company_address">
 		Recipient's company postal code: <input type="text" name="OC_HR_company_postcode"> </p>
 		
-	Employer first name: <input type="text" name="employer_first_name"> Employer last name: <input type="text" name="employer_last_name">
+	Employer name: <input type="text" name="employer_first_name">
 	
 	<p> Other information:
 	<p> Termination Date: <input type="text" name="termination_date"> </p>
 	<!-- all of the above should be in a header before the document creation -->
 	
 	<!-- choices for different sections to add to the doc -->
-	<p>	Employment Description: <input type="checkbox" name="emp_desc">
-	<p>	Description of Termination: <input type="checkbox" name="termination">
-	<p>	Contractor vs Employee: <input type="checkbox" name="contractor_vs_emp" id="isContractor_vs_emp">
-	<br>
+	<!-- <p>	Employment Description: <input type="checkbox" name="emp_desc"> -->
+	<!-- <p>	Description of Termination: <input type="checkbox" name="termination"> -->
+	Contractor vs Employee: <input type="checkbox" name="contractor_vs_emp" id="isContractor_vs_emp">
 		<div id="c_v_emp_div" style="display:none">
 			<p id="c_v_emp">Independent Contractor vs Employee: 	<input type="checkbox" name="isUseIndependentContractorVsEmployee"></p>
 			<p id="c_v_emp">Dependent Contractor: 					<input type="checkbox" name="isUseDependentContractor"></p>
@@ -130,14 +126,14 @@ $(document).ready(function(){
 			<p id="hment">Punitive Damages - harassment: 	<input type="checkbox" name="isUsePunitiveDamagesHarassmsnt"></p>
 		</div><br>
 		
-	Human Rights Discrimination: <input type="checkbox" name="human_rights_dis" id="isHuman_rights_dis">
+	Human Rights Discrimination: <input type="checkbox" name="human_rights_dis" id="isHuman_rights_dis" checked>
 		<div id="h_r_dis_div" style="display:none">
 			<p id="h_r_dis">Termination: 		<input type="checkbox" name="isUseHumanRightsDiscriminationTermination"></p>
 			<p id="h_r_dis">AgeDamages: 		<input type="checkbox" name="isUseHumanRightsDiscriminationAgeDamages"></p>
 			<p id="h_r_dis">Damages Chart: 		<input type="checkbox" name="isUseHumanRightsDamagesChart"></p>
 		</div><br>
 		
-	Punitive Damages: <input type="checkbox" name="punitive_dmgs" id="isPunitive_dmgs">
+	Punitive Damages: <input type="checkbox" name="punitive_dmgs" id="isPunitive_dmgs" checked>
 		<div id="p_dmgs_div" style="display:none">
 			<p id="p_dmgs">Bad Faith: 									<input type="checkbox" name="isUsePunitiveDamagesBadFaith"></p>
 			<p id="p_dmgs">Open and Honest Manner: 						<input type="checkbox" name="isUsePunitiveDamagesOpenHonestManner"></p>
@@ -153,16 +149,7 @@ $(document).ready(function(){
 			<p id="ot">CLC: 					<input type="checkbox" name="isUseClc"></p>
 			<p id="ot">Performance Ontario: 	<input type="checkbox" name="isUsePerformanceOntario"></p>
 		</div><br>
-		
-	Moving Forward: <input type="checkbox" name="moving_fwd"> <br>
 	
-	Long Term Disability: <input type="checkbox" name="ltd_jurisprudence" id="isLtd">
-		<div id="ltd_div" style="display:none">
-			<p id="ltd">Breach of Contract: 						<input type="checkbox" name="isUseBreachOfContract"></p>
-			<p id="ltd">LTD Jurisprudence: 							<input type="checkbox" name="isUseLtdJurisprudence"></p>
-			<p id="ltd">Punitive Damages in the context of LTD: 	<input type="checkbox" name="isUsePunitiveDamagesLtd"></p>
-			<p id="ltd">Moving Forward in the context of LTD: 		<input type="checkbox" name="isUseMovingForwardLtd"></p>
-		</div><br>
 	<input type="submit">
 </form>
 </body>
