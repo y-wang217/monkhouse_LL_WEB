@@ -38,7 +38,7 @@ public class HarassmentSection extends LLSection {
                     "policy effectively. \n");
         }
 
-        if (Objects.equals(doc.getFieldsMap().get("isUsePunitiveDamages"), "on")) {
+        if (Objects.equals(doc.getFieldsMap().get("isUsePunitiveDamagesHarassmsnt"), "on")) {
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Punitive Damages - Harassment");
             //body:

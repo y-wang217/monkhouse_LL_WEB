@@ -58,7 +58,7 @@ public class OvertimeSection extends LLSection {
                     "to $525,470.40 owing to <client_first_name>.");
         }
 
-        if (Objects.equals(doc.getFieldsMap().get("isUsePerformanceOntari"), "on")) {
+        if (Objects.equals(doc.getFieldsMap().get("isUsePerformanceOntario"), "on")) {
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Overtime - Performance Ontario");
             //body:
