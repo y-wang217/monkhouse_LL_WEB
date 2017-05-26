@@ -10,6 +10,9 @@
 <script>
 $(document).ready(function(){
     $("#isConstructive_dismissal").click(function(){
+    	$("#c_v_emp_div").toggle(this.checked);
+    });
+    $("#isConstructive_dismissal").click(function(){
     	$("#c_dis_div").toggle(this.checked);
     });
     $("#isFighting_cause").click(function(){
@@ -92,12 +95,12 @@ $(document).ready(function(){
 		
 	Constructive Dismissal: <input type="checkbox" name="constructive_dismissal" id="isConstructive_dismissal">
 		<div id="c_dis_div" style="display:none">
-			<p id="c_dis">Wage Deductions 						<input type="checkbox" name="isUseWageDeductions"></p>
+			<p id="c_dis">Wage Deductions 						<input type="checkbox" name="isUseWageDeduction"></p>
 			<p id="c_dis">Location 								<input type="checkbox" name="isUseLocation"></p>
-			<p id="c_dis">Breach of Fundamental Implied Terms 	<input type="checkbox" name="isUseBreackOfFundamentalImpliedTerms"></p>
+			<p id="c_dis">Breach of Fundamental Implied Terms 	<input type="checkbox" name="isUseBreachOfFundamentalImpliedTerm"></p>
 			<p id="c_dis">Intolerable 							<input type="checkbox" name="isUseIntolerable"></p>
 			<p id="c_dis">Workplace Harassment 					<input type="checkbox" name="isUseWorkplaceHarassment"></p>
-			<p id="c_dis">Poisoned Work Environment 			<input type="checkbox" name="isUsePoisonedEnvironment"></p>
+			<p id="c_dis">Poisoned Work Environment 			<input type="checkbox" name="isUsePoisonedWorkEnvironment"></p>
 			<p id="c_dis">Removal from Management Position 		<input type="checkbox" name="isUseRemovalFromManagementPosition"></p>
 		</div><br>
 		
@@ -135,7 +138,7 @@ $(document).ready(function(){
 	Inducement: <input type="checkbox" name="inducement"> <br>
 	Harassment: <input type="checkbox" name="harassment" id="isHarassment">
 		<div id="hment_div" style="display:none">
-			<p id="hment">Harassment - OHSA/Bill 168: 		<input type="checkbox" name="isUseOhsa"></p>
+			<p id="hment">Harassment - OHSA/Bill 168: 		<input type="checkbox" name="isUseOhsaBill168"></p>
 			<p id="hment">Punitive Damages - harassment: 	<input type="checkbox" name="isUsePunitiveDamagesHarassmsnt"></p>
 		</div><br>
 		

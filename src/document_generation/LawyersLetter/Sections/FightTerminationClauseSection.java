@@ -21,7 +21,7 @@ public class FightTerminationClauseSection extends LLSection {
 
         ArrayList<LLParagraph> content = new ArrayList<>();
         //heading:
-        insertText(llpf,doc,content, ParaCode.HEAD,"Constructive Dismissal");
+        insertText(llpf,doc,content, ParaCode.HEAD,"Fighting Termination Clause");
 
         //TODO keep flag in doc to track which paragraph is needed
         if(Objects.equals(doc.getFieldsMap().get("isUseBasicStart"), "on")){
