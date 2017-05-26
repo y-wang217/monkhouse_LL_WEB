@@ -151,6 +151,7 @@ public class FightingCauseSection extends LLSection{
                     "job abandonment holds no merit. As such, it is my position that [CLIENT] has been wrongfully " +
                     "terminated, and is owed significant notice. ");
         }
+        this.setContents(content);
     }
 
 }

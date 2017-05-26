@@ -24,7 +24,7 @@ public class HumanRightsDiscriminationSection extends LLSection{
         insertText(llpf, doc, content, ParaCode.HEAD, "Human Rights Discrimination");
 
         //TODO keep flag in doc to track which paragraph is needed
-        if (Objects.equals(doc.getFieldsMap().get("isUseTerminationOnProtectedGRound"), "on")) {
+        if (Objects.equals(doc.getFieldsMap().get("isUseTerminationOnProtectedGround"), "on")) {
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Human Rights Discrimination - Termination on Protected Ground");
             //body:

@@ -91,20 +91,6 @@ public class PunitiveDamagesSection extends LLSection {
                     "Record of Employment and to provide the Plaintiff with other statutory requirements. \n");
         }
 
-        if (Objects.equals(doc.getFieldsMap().get("isUseFailureToProvide"), "on")) {
-            //heading:
-            insertText(llpf,doc,content, ParaCode.HEAD,"Punitive Damages - Reprisal Harassment Report");
-            //body:
-            insertText(llpf,doc,content,ParaCode.REG, "The courts have found that significant damages " +
-                    "are warranted wherein an act of reprisal has occurred. In Morgan v. Herman Miller Canada Inc. " +
-                    "[2013] O.H.R.T.D. No 650, an employee who had brought the issue of racial discrimination " +
-                    "against him to his employer’s attention and was subsequently terminated, was awarded " +
-                    "$70,799.70. Based on <client_first_name> situation, it is clear that after reporting the harassment, " +
-                    "<employer_first_name> made no attempts to protect <client_first_name> from the continued harassment, in an effort " +
-                    "to facilitate her departure from the company. Such actions warrant the award of punitive, " +
-                    "aggravated and/or moral damages in order to deter this sort of conduct from <employer_first_name> in the future.");
-        }
-
         if (Objects.equals(doc.getFieldsMap().get("isUseReprisalOhsa"), "on")) {
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Punitive Damages - Reprisal OHSA");
@@ -131,7 +117,7 @@ public class PunitiveDamagesSection extends LLSection {
                     "for which punitive, aggravated, and/or moral damages are justified. ");
         }
 
-        if (Objects.equals(doc.getFieldsMap().get("isUseAllecationsOfCause"), "on")) {
+        if (Objects.equals(doc.getFieldsMap().get("isUseAllegationsOfCause"), "on")) {
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Punitive Damages - Allegations of Cause");
             //body:

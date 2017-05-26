@@ -115,7 +115,7 @@ $(document).ready(function(){
 	Fighting Termination Clause: <input type="checkbox" name="fight_termination_clause" id="isFight_termination_clause">
 		<div id="f_t_clause_div" style="display:none">
 			<p id="f_t_clause">Basic Start: 						<input type="checkbox" name="isUseBasicStart"></p>
-			<p id="f_t_clause">No contracting out of ESA: 			<input type="checkbox" name="isUseNoContractingOutOfEsa"></p>
+			<p id="f_t_clause">No contracting out of ESA: 			<input type="checkbox" name="isUseNoContractingOutOfESA"></p>
 			<p id="f_t_clause">Opting Out of Common Law Notice: 	<input type="checkbox" name="isUseOptingOutOfCommonLawNotice"></p>
 			<p id="f_t_clause">Non-Inclusion of Benefits: 			<input type="checkbox" name="isUseNonInclusionOfBenefits"></p>
 			<p id="f_t_clause">Potential Violations: 				<input type="checkbox" name="isUsePotentialViolations"></p>
@@ -144,20 +144,20 @@ $(document).ready(function(){
 		
 	Human Rights Discrimination: <input type="checkbox" name="human_rights_dis" id="isHuman_rights_dis" checked>
 		<div id="h_r_dis_div" style="display:none">
-			<p id="h_r_dis">Termination: 		<input type="checkbox" name="isUseHumanRightsDiscriminationTermination"></p>
-			<p id="h_r_dis">AgeDamages: 		<input type="checkbox" name="isUseHumanRightsDiscriminationAgeDamages"></p>
+			<p id="h_r_dis">Termination: 		<input type="checkbox" name="isUseTerminationOnProtectedGround"></p>
+			<p id="h_r_dis">Age Damages: 		<input type="checkbox" name="isUseAgeDamages"></p>
 			<p id="h_r_dis">Damages Chart: 		<input type="checkbox" name="isUseHumanRightsDamagesChart"></p>
 		</div><br>
 		
 	Punitive Damages: <input type="checkbox" name="punitive_dmgs" id="isPunitive_dmgs" checked>
 		<div id="p_dmgs_div" style="display:none">
-			<p id="p_dmgs">Bad Faith: 									<input type="checkbox" name="isUsePunitiveDamagesBadFaith"></p>
-			<p id="p_dmgs">Open and Honest Manner: 						<input type="checkbox" name="isUsePunitiveDamagesOpenHonestManner"></p>
-			<p id="p_dmgs">Unfavorable Reference: 						<input type="checkbox" name="isUsePunitiveDamagesUnfavourableReference"></p>
-			<p id="p_dmgs">Reprisal Harassment: 						<input type="checkbox" name="isUsePunitiveDamagesReprisalHarassment"></p>
-			<p id="p_dmgs">Failure to Provide Satutory Requirement: 	<input type="checkbox" name="isUsePunitiveDamagesFailureToProvideStatutoryRequirement"></p>
-			<p id="p_dmgs">Reprisal OHSA: 								<input type="checkbox" name="isUsePunitiveDamagesReprisalOhsa"></p>
-			<p id="p_dmgs">Allegations of Cause: 						<input type="checkbox" name="isUsePunitiveDamagesAllegationsOfCause"></p>
+			<p id="p_dmgs">Bad Faith: 									<input type="checkbox" name="isUseBadFaith"></p>
+			<p id="p_dmgs">Open and Honest Manner: 						<input type="checkbox" name="isUseOpenAndHonestManner"></p>
+			<p id="p_dmgs">Unfavorable Reference: 						<input type="checkbox" name="isUseUnfavourableReference"></p>
+			<p id="p_dmgs">Reprisal Harassment: 						<input type="checkbox" name="isUseReprisalHarassmentReport"></p>
+			<p id="p_dmgs">Failure to Provide Statutory Requirement: 	<input type="checkbox" name="isUseFailureToProvideStatutoryRequirement"></p>
+			<p id="p_dmgs">Reprisal OHSA: 								<input type="checkbox" name="isUseReprisalOhsa"></p>
+			<p id="p_dmgs">Allegations of Cause: 						<input type="checkbox" name="isUseAllegationsOfCause"></p>
 		</div><br>
 		
 	Overtime: <input type="checkbox" name="overtime" id="isOvertime">

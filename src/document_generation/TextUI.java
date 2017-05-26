@@ -61,6 +61,9 @@ public class TextUI {
             case "constructive_dismissal":
                 section = llsf.getSection(doc, SectionCode.CONSTRUCTIVE_DISMISSAL);
                 break;
+            case "fighting_cause":
+                section = llsf.getSection(doc, SectionCode.FIGHTING_CAUSE);
+                break;
             case "bonus":
                 section = llsf.getSection(doc, SectionCode.BONUS);
                 break;
