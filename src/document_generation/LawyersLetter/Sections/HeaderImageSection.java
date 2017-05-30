@@ -1,10 +1,17 @@
 package document_generation.LawyersLetter.Sections;
 
+import java.util.ArrayList;
+
+import document_generation.TextUI;
+import document_generation.LawyersLetter.Codes.ParaCode;
 import document_generation.LawyersLetter.Codes.SectionCode;
 import document_generation.LawyersLetter.LLDocument;
+import document_generation.LawyersLetter.LLParagraph;
 import document_generation.LawyersLetter.LLParagraphFactory;
 import document_generation.LawyersLetter.LLSection;
+import document_generation.util.CloseDocument;
 import document_generation.util.ManipDocument;
+
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 
 /**
@@ -17,6 +24,10 @@ public class HeaderImageSection extends LLSection{
 
         this.setSectionCode(SectionCode.IMG);
 
+        ArrayList<LLParagraph> content = new ArrayList<>();
+        insertText(llpf,doc,content, ParaCode.EMPTY,"");
+        this.setContents(content);
+        
         ManipDocument.addImage(doc, headerImgFilePath);
 
     }

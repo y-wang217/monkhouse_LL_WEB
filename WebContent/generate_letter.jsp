@@ -47,6 +47,12 @@ $(document).ready(function(){
 	padding-left:5em
 }
 
+div.overseeing_lawyer{
+	position: absolute;
+	left: 600px;
+	top: 0px;
+}
+
 p.spaced{
     line-height: 140%;
 }
@@ -68,6 +74,16 @@ p{
 		<option value="female">female</option>
     	<option value="unspecific">unspecific</option>
 	</select>
+	
+	<div class="overseeing_lawyer">
+		<p>Monkhouse Lawyer: <select name="monkhouse_lawyer">
+    	<option selected="selected"></option>
+		<option value="ahm">Andrew Monkhouse</option>
+		<option value="baf">Samantha Lucifora</option>
+    	<option value="sjl">Busayo Ayodele</option>
+    	<option value="mdm">Stephen LeMesurier</option>
+    	</select>
+	</div>
 	
 	<p style="font-size:20px">Client's relevant work factors: </p>
 	<p class="spaced">Seniority: <input type="text" maxlength="3" size="3"name="seniority_in_years"> years, <input type="text" maxlength="2" size="2" name="seniority_in_months"> months <br>
@@ -123,10 +139,10 @@ p{
 		
 	Fighting Cause: <input type="checkbox" name="fighting_cause" id="isFighting_cause">
 		<div id="f_cause_div" style="display:none">
-			<!-- <p id="f_cause">High Standard: 			<input type="checkbox" name="isUseHighStandard"></p> -->
-			<p id="f_cause">Gross Incompetence: 	<input type="checkbox" name="isUseGrossIncompetence"></p>
-			<p id="f_cause">Job Abandonment: 		<input type="checkbox" name="isUseJobAbandonment"></p>
-			<p id="f_cause">Damage Awarded: 		<input type="checkbox" name="isUseDamageAward"></p>
+			<!-- <p id="f_cause">High Standard: 						<input type="checkbox" name="isUseHighStandard"></p> -->
+			<p id="f_cause">Gross Incompetence: 						<input type="checkbox" name="isUseGrossIncompetence"></p>
+			<p id="f_cause">Standard for Job Abandonment Not Met: 		<input type="checkbox" name="isUseJobAbandonmentDamageAwarded"></p>
+			<!-- <p id="f_cause">Damage Awarded: 						<input type="checkbox" name="isUseDamageAward"></p> -->
 		</div><br>
 	
 	Fighting Termination Clause: <input type="checkbox" name="fight_termination_clause" id="isFight_termination_clause">

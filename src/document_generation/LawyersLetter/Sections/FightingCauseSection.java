@@ -95,7 +95,7 @@ public class FightingCauseSection extends LLSection{
 
         if(Objects.equals(doc.getFieldsMap().get("isUseGrossIncompetence"), "on")){
             //heading:
-            insertText(llpf,doc,content, ParaCode.HEAD,"Fighting Cause - Gross incompetence");
+            insertText(llpf,doc,content, ParaCode.HEAD,"Performance Issues - Gross Incompetence");
             //body:
             insertText(llpf,doc,content,ParaCode.REG, "The standard of gross incompetence is higher still. " +
                     "For example, as cited in Brien v. Niagara Motors Ltd. [2008] O.J. No. 3246 at para. 226:");
@@ -110,14 +110,14 @@ public class FightingCauseSection extends LLSection{
                     "(4) That reasonable time was afforded to correct the situation.");
         }
 
-        if(Objects.equals(doc.getFieldsMap().get("isUseJobAbandonment"), "on")){
+        if(Objects.equals(doc.getFieldsMap().get("isUseJobAbandonmentDamageAwarded"), "on")){
             //heading:
-            insertText(llpf,doc,content, ParaCode.HEAD,"Fighting Cause - Job Abandonment");
+            insertText(llpf,doc,content, ParaCode.HEAD,"Fighting Cause - Standard for Job Abandonment Not Met");
             //body:
-            insertText(llpf,doc,content,ParaCode.REG, "[EMPLOYER] alleges that [CLIENT] abandoned or quit " +
-                    "[HIS/HER] position, which is untrue. [CLIENT] was on leave when [HE/SHE] was alerted to " +
-                    "[HIS/HER] termination, and on multiple occasions [HE/SHE] attempted to contact [EMPLOYER] " +
-                    "regarding the status of [HIS/HER] employment. During this time, [CLIENT] tried to return to " +
+            insertText(llpf,doc,content,ParaCode.REG, "<employer_first_name> alleges that <client_first_name> abandoned or quit " +
+                    "<possessive_pronoun> position, which is untrue. <client_first_name> was on leave when <subjective_pronoun> was alerted to " +
+                    "<possessive_pronoun> termination, and on multiple occasions <subjective_pronoun> attempted to contact <employer_first_name> " +
+                    "regarding the status of <possessive_pronoun> employment. During this time, <client_first_name> tried to return to " +
                     "work to discuss the matter but was denied from doing so." +
                     "%%" +
                     "The case of Koos v. A&A Contract Customs Brokers Ltd. 2009 BCSC 563 supports the position " +
@@ -125,20 +125,18 @@ public class FightingCauseSection extends LLSection{
                     "conclude that such actions are job abandonment. The test for determining whether or not an " +
                     "employee has resigned or abandoned their position is objective. The examiner must determine " +
                     "from the facts at hand whether a reasonable person would find the actions of the employee to " +
-                    "be indicative of resignation. Considering [CLIENT]’s persistent efforts to enquire about the " +
-                    "status of [HIS/HER] job, and even attempt to return to work, it is clear that any argument of " +
-                    "job abandonment holds no merit. As such, it is my position that [CLIENT] has been wrongfully " +
+                    "be indicative of resignation. Considering <client_first_name>’s persistent efforts to enquire about the " +
+                    "status of <possessive_pronoun> job, and even attempt to return to work, it is clear that any argument of " +
+                    "job abandonment holds no merit. As such, it is my position that <client_first_name> has been wrongfully " +
                     "terminated, and is owed significant notice. ");
         }
 
-        if(Objects.equals(doc.getFieldsMap().get("isUseDamageAward"), "on")){
-            //heading:
-            insertText(llpf,doc,content, ParaCode.HEAD,"Fighting Cause - Damage Award");
+        if(Objects.equals(doc.getFieldsMap().get("isUseJobAbandonmentDamageAwarded"), "on")){
             //body:
-            insertText(llpf,doc,content,ParaCode.REG, "[EMPLOYER] alleges that [CLIENT] abandoned or quit " +
-                    "[HIS/HER] position, which is untrue. [CLIENT] was on leave when [HE/SHE] was alerted to " +
-                    "[HIS/HER] termination, and on multiple occasions [HE/SHE] attempted to contact [EMPLOYER] " +
-                    "regarding the status of [HIS/HER] employment. During this time, [CLIENT] tried to return to " +
+            insertText(llpf,doc,content,ParaCode.REG, "<employer_first_name> alleges that <client_first_name> abandoned or quit " +
+                    "<possessive_pronoun> position, which is untrue. <client_first_name> was on leave when <subjective_pronoun> was alerted to " +
+                    "<possessive_pronoun> termination, and on multiple occasions <subjective_pronoun> attempted to contact [EMPLOYER] " +
+                    "regarding the status of <possessive_pronoun> employment. During this time, <client_first_name> tried to return to " +
                     "work to discuss the matter but was denied from doing so." +
                     "%%" +
                     "The case of Koos v. A&A Contract Customs Brokers Ltd. 2009 BCSC 563 supports the position " +
@@ -146,9 +144,9 @@ public class FightingCauseSection extends LLSection{
                     "conclude that such actions are job abandonment. The test for determining whether or not an " +
                     "employee has resigned or abandoned their position is objective. The examiner must determine " +
                     "from the facts at hand whether a reasonable person would find the actions of the employee to " +
-                    "be indicative of resignation. Considering [CLIENT]’s persistent efforts to enquire about the " +
-                    "status of [HIS/HER] job, and even attempt to return to work, it is clear that any argument of " +
-                    "job abandonment holds no merit. As such, it is my position that [CLIENT] has been wrongfully " +
+                    "be indicative of resignation. Considering <client_first_name>’s persistent efforts to enquire about the " +
+                    "status of <possessive_pronoun> job, and even attempt to return to work, it is clear that any argument of " +
+                    "job abandonment holds no merit. As such, it is my position that <client_first_name> has been wrongfully " +
                     "terminated, and is owed significant notice. ");
         }
         this.setContents(content);

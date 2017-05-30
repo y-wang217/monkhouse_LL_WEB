@@ -6,9 +6,11 @@ import document_generation.LawyersLetter.LLParagraphFactory;
 import document_generation.LawyersLetter.LLSection;
 import document_generation.LawyersLetter.LLSectionFactory;
 import document_generation.LawyersLetter.Sections.AddresseeSection;
+import document_generation.LawyersLetter.Sections.HeaderImageSection;
 import document_generation.LawyersLetter.Sections.OpeningSection;
 import document_generation.LawyersLetter.Sections.ReCaseSection;
 import document_generation.util.CloseDocument;
+
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 
 import java.io.BufferedReader;
@@ -52,6 +54,9 @@ public class TextUI {
         //default section is custom - an empty section
         section = llsf.getSection(doc, SectionCode.CUSTOM);
         switch(input.toLowerCase()){
+	        case "header_img":
+	            section = llsf.getSection(doc, SectionCode.IMG);
+	            break;
             case "emp_desc":
                 section = llsf.getSection(doc, SectionCode.EMP_DESC);
                 break;
@@ -168,6 +173,7 @@ public class TextUI {
     }
 
     public static void init(LLDocument doc){
+    	doc.writeToDoc(new HeaderImageSection(doc, new LLParagraphFactory()));
         doc.writeToDoc(new OpeningSection(doc, new LLParagraphFactory()));
         doc.writeToDoc(new AddresseeSection(doc, new LLParagraphFactory()));
         doc.writeToDoc(new ReCaseSection(doc, new LLParagraphFactory()));

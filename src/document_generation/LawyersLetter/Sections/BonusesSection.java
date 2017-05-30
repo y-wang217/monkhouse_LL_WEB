@@ -24,7 +24,7 @@ public class BonusesSection extends LLSection {
 
         //body:
         insertText(llpf,doc,content,ParaCode.REG, "It is my position that compensation for <client_first_name>'s " +
-                "bonus ought to be included in <possessive_pronoun> reasonable notice period from Trailcon, regardless of whether " +
+                "bonus ought to be included in <possessive_pronoun> reasonable notice period from <employer_first_name>, regardless of whether " +
                 "he is considered to be actively employed at the time it is paid out. This position is supported " +
                 "in the case of Schumacher v. Toronto Dominion Bank, [1997] O.J. No. 2004, wherein the Court " +
                 "determined that the Plaintiff’s involuntariness to comply with the requirement to be actively " +

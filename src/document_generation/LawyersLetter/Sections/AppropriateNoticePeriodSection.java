@@ -60,7 +60,7 @@ public class AppropriateNoticePeriodSection extends LLSection {
                     "more modern skills.");
             insertText(llpf,doc,content,ParaCode.REG, "At the time in <possessive_pronoun> life when most Canadians would be " +
                     "contemplating retirement, <client_first_name> has found <object_pronoun>self dismissed without an adequate " +
-                    "severance package after XX years of productive service with <employer_first_name>, and having to seek " +
+                    "severance package after <seniority_in_years> years of productive service with <employer_first_name>, and having to seek " +
                     "alternative employment at an older age.");
         }
 
@@ -160,8 +160,8 @@ public class AppropriateNoticePeriodSection extends LLSection {
             //body:
             insertText(llpf,doc,content,ParaCode.REG, "In light of <client_first_name>’s age, position of seniority, " +
                     "length of service, the lack of comparable positions, and the current state of the economy, it " +
-                    "is my position that [HE/SHE] would be entitled to at least XX months’ notice.");
-        }
+                    "is my position that <subjective_pronoun> would be entitled to at least XX months’ notice.");
+        }//TODO: change xx to an equation
 
         if(Objects.equals(doc.getFieldsMap().get("isUseAppropriateNoticeAlternative"), "on")){
 

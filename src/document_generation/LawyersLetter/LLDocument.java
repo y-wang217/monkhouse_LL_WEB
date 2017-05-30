@@ -186,6 +186,38 @@ public class LLDocument extends XWPFDocument {
 		defaultFieldsMap.put("possessive_pronoun_caps", (g == gender.m) ? "His"
 				: "Her");
 
+		if (this.getFieldsMap().containsKey("monkhouse_lawyer")) {
+			if (this.getFieldsMap().get("monkhouse_lawyer").equals("ahm")) {
+				defaultFieldsMap.put("monkhouse_lawyer_name",
+						"Andrew Monkhouse");
+				defaultFieldsMap.put("monkhouse_lawyer_email",
+						"andrew@monkhouselaw.com");
+			}
+			if (this.getFieldsMap().get("monkhouse_lawyer").equals("sdl")) {
+				defaultFieldsMap.put("monkhouse_lawyer_name",
+						"Samantha Lucifora");
+				defaultFieldsMap.put("monkhouse_lawyer_email",
+						"email@monkhouselaw.com");
+			}
+			if (this.getFieldsMap().get("monkhouse_lawyer").equals("baf")) {
+				defaultFieldsMap.put("monkhouse_lawyer_name", "Busayo Ayodele");
+				defaultFieldsMap.put("monkhouse_lawyer_email",
+						"email@monkhouselaw.com");
+			}
+			if (this.getFieldsMap().get("monkhouse_lawyer").equals("sjl")) {
+				defaultFieldsMap.put("monkhouse_lawyer_name",
+						"Stephen LeMesurier");
+				defaultFieldsMap.put("monkhouse_lawyer_email",
+						"email@monkhouselaw.com");
+			}
+			if (this.getFieldsMap().get("monkhouse_lawyer").equals("mdm")) {
+				defaultFieldsMap.put("monkhouse_lawyer_name",
+						"Miguel Mangalindan");
+				defaultFieldsMap.put("monkhouse_lawyer_email",
+						"email@monkhouselaw.com");
+			}
+		}
+
 		this.setFieldsMap(defaultFieldsMap);
 	}
 
@@ -251,7 +283,8 @@ public class LLDocument extends XWPFDocument {
 			}
 			if (p.getParaType().equals(LIST)) {
 				Thread listInsertThread = new Thread(() -> {
-					Numbering.insertNumberedList(this, processFields(p.getText()));
+					Numbering.insertNumberedList(this,
+							processFields(p.getText()));
 				});
 				listInsertThread.start();
 				try {
@@ -340,8 +373,10 @@ public class LLDocument extends XWPFDocument {
 
 		this.clientGender = clientGender;
 		initFields();
-		System.out.println("---> SUBJECTIVE PRONOUN: " + this.getFieldsMap().get("subjective_pronoun"));
-		System.out.println("---> POSSESSIVE PRONOUN: " + this.getFieldsMap().get("possessive_pronoun"));
+		System.out.println("---> SUBJECTIVE PRONOUN: "
+				+ this.getFieldsMap().get("subjective_pronoun"));
+		System.out.println("---> POSSESSIVE PRONOUN: "
+				+ this.getFieldsMap().get("possessive_pronoun"));
 	}
 
 	public void writeDocFromFields() {

@@ -29,10 +29,12 @@ public class LoginServlet extends HttpServlet{
         if(username.equals("")){
             req.getSession().setAttribute("login_fail_msg", "username empty, please enter username.");
             resp.sendRedirect("/Monkhouse_Letter_Web/");
+            return;
 
         } else if(password.equals("")){
             req.getSession().setAttribute("login_fail_msg", "password empty, please enter password.");
             resp.sendRedirect("/Monkhouse_Letter_Web/");
+            return;
 
         }
         

@@ -40,7 +40,7 @@ public class ConstructiveDismissalSection extends LLSection{
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Constructive Dismissal - Location");
             //body
-            insertText(llpf,doc,content,ParaCode.REG, "The majority held in Reynolds v. Innopac Inc., 1998 CanLII 3558 (ON CA) that a change in location of work that required a substantially greater travel time would have substantially changed the way in which the employee carried out [HIS/HER] job and duties. In Weselan v. Totten Sims Hubicki Associates Ltd. (1997) Ltd. (2001), 16 CCEL (3d) 184 (Ont CA) it was found that a required travel time of an hour and a half and the annual cost associated with such travel would constitute a significant change in the travel time and therefore constituted constructive dismissal. \n");
+            insertText(llpf,doc,content,ParaCode.REG, "The majority held in Reynolds v. Innopac Inc., 1998 CanLII 3558 (ON CA) that a change in location of work that required a substantially greater travel time would have substantially changed the way in which the employee carried out <possessive_pronoun> job and duties. In Weselan v. Totten Sims Hubicki Associates Ltd. (1997) Ltd. (2001), 16 CCEL (3d) 184 (Ont CA) it was found that a required travel time of an hour and a half and the annual cost associated with such travel would constitute a significant change in the travel time and therefore constituted constructive dismissal. \n");
 
         }
         if(Objects.equals(doc.getFieldsMap().get("isUseBreachOfFundamentalImpliedTerm"), "on")){
@@ -87,10 +87,10 @@ public class ConstructiveDismissalSection extends LLSection{
                     "treatment of the employee is of sufficient severity and effect, it will be characterized as an " +
                     "unjustified repudiation of the employment contract… The employee is entitled to treat the " +
                     "employment contract as at an end, and to recover at least damages in lieu of reasonable notice.”");
-            insertText(llpf,doc,content,ParaCode.REG, "Since [CLIENT] was constructively dismissed by " +
-                    "way of harassment resulting in an unsafe work environment, [HE/SHE] is owed reasonable common " +
-                    "law notice of the termination of [HIS/HER] employment. In addition, [CLIENT] is entitled to " +
-                    "damages for the mental anguish suffered as a result of the assault that [HE/SHE] experienced " +
+            insertText(llpf,doc,content,ParaCode.REG, "Since <client_first_name> was constructively dismissed by " +
+                    "way of harassment resulting in an unsafe work environment, <subjective_pronoun> is owed reasonable common " +
+                    "law notice of the termination of <possessive_pronoun> employment. In addition, <client_first_name> is entitled to " +
+                    "damages for the mental anguish suffered as a result of the assault that <subjective_pronoun> experienced " +
                     "at work.");
         }
         if(Objects.equals(doc.getFieldsMap().get("isUseWorkplaceHarassmentPoisonedWorkEnvironment"), "on")){
@@ -125,9 +125,9 @@ public class ConstructiveDismissalSection extends LLSection{
             //body:
             insertText(llpf,doc,content,ParaCode.REG, "In the case of Murdock v 497123 Ontario Ltd., 2005 " +
                     "CanLII 8693 (ONSC), an employee was found to be constructively dismissed when she was removed " +
-                    "from a management position into a position without authority. It is my position that this case " +
-                    "is similar; by unilaterally changing [CLIENT’s position from _____ to _______, <employer_first_name> has " +
-                    "effectively constructively dismissed her. \n");
+                    "from a management position into a position without authority. It is my position that this case "
+                    + "is similar, by unilaterally changing my client's position, <employer_first_name> has effectively "
+                    + "constructively dismissed them. \n");
 
         }
 
