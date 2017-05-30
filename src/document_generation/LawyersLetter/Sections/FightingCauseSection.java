@@ -24,7 +24,7 @@ public class FightingCauseSection extends LLSection{
         insertText(llpf,doc,content,ParaCode.HEAD,"Fighting Cause");
 
 
-        if(Objects.equals(doc.getFieldsMap().get("isUseHighStandard"), "on")){
+        if(Objects.equals(doc.getFieldsMap().get("fighting_cause"), "on")){
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Fighting Cause - High Standard");
             //body:

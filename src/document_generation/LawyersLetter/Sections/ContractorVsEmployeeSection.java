@@ -24,7 +24,7 @@ public class ContractorVsEmployeeSection extends LLSection{
         insertText(llpf,doc,content, ParaCode.HEAD,"Contractor vs Employee");
 
         //TODO keep flag in doc to track which paragraph is needed
-        if(Objects.equals(doc.getFieldsMap().get("isUseIndependentContractorVsEmployee"), "on")){
+        if(Objects.equals(doc.getFieldsMap().get("contractor_vs_emp"), "on")){
 //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Independent Contractor vs Employee");
             //body:
@@ -51,7 +51,7 @@ public class ContractorVsEmployeeSection extends LLSection{
                     "for which he works. In other words, whose business is it?");
 
         }
-        if(Objects.equals(doc.getFieldsMap().get("isUseDependentContractor"), "on")){
+        if(Objects.equals(doc.getFieldsMap().get("contractor_vs_emp"), "on")){
 
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Dependent Contractor");

@@ -70,7 +70,7 @@ public class ConstructiveDismissalSection extends LLSection{
                     "business, it is incumbent upon the employer to foster congeniality amongst the employees by " +
                     "providing a good working environment which will result in good employee productivity.”");
         }
-        if(Objects.equals(doc.getFieldsMap().get("isUseWorkplaceHarassment"), "on")){
+        if(Objects.equals(doc.getFieldsMap().get("isUseWorkplaceHarassmentPoisonedWorkEnvironment"), "on")){
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Constructive Dismissal - Workplace Harassment");
             //body:
@@ -93,7 +93,7 @@ public class ConstructiveDismissalSection extends LLSection{
                     "damages for the mental anguish suffered as a result of the assault that [HE/SHE] experienced " +
                     "at work.");
         }
-        if(Objects.equals(doc.getFieldsMap().get("isUsePoisonedWorkEnvironment"), "on")){
+        if(Objects.equals(doc.getFieldsMap().get("isUseWorkplaceHarassmentPoisonedWorkEnvironment"), "on")){
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Constructive Dismissal - Poisoned Work Environment");
             //body:

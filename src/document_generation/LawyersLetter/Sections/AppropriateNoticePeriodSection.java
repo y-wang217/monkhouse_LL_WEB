@@ -39,7 +39,7 @@ public class AppropriateNoticePeriodSection extends LLSection {
                 "employment, having regard to the experience, training and qualifications of the servant.");
 
 
-        if(Objects.equals(doc.getFieldsMap().get("isUseAge"), "on")){
+        if(Integer.parseInt(doc.getFieldsMap().get("age"))>45){
 
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Age");
@@ -107,7 +107,7 @@ public class AppropriateNoticePeriodSection extends LLSection {
                     "ONSC 5485.");
         }
 
-        if(Objects.equals(doc.getFieldsMap().get("isUseAllegationsOfCause"), "on")){
+        if(Objects.equals(doc.getFieldsMap().get("isFighting_cause"), "on")){
 
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Allegations of Cause");
@@ -118,7 +118,13 @@ public class AppropriateNoticePeriodSection extends LLSection {
                     "in Johar v. Best Buy Canada, 2016 ONSC 5287, justifies an elongation of the termination notice.\n");
         }
 
-        if(Objects.equals(doc.getFieldsMap().get("isUseShortTermEmployees"), "on")){
+        boolean isExec = false;
+        if (Objects.equals(doc.getFieldsMap().get("occupation_classification"), "Upper Management (>150k)")
+        		|| Objects.equals(doc.getFieldsMap().get("occupation_classification"), "Middle Management (b/w 75k and 150k)")
+				|| Objects.equals(doc.getFieldsMap().get("occupation_classification"), "Lower Management (<75k)")){
+        	isExec = true;
+        }
+        if(Integer.parseInt(doc.getFieldsMap().get("seniority_in_years"))<5 && !isExec){
 
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Short Term Employees");
@@ -131,7 +137,7 @@ public class AppropriateNoticePeriodSection extends LLSection {
                     "was awarded 12 months' notice.\n");
         }
 //Use Short term Employees - Executives
-        if(Objects.equals(doc.getFieldsMap().get("isUseShortTermExecutives"), "on")){
+        if(Integer.parseInt(doc.getFieldsMap().get("seniority_in_years"))<5 && isExec){
 
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Short Term Employees - Executives");
