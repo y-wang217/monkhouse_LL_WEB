@@ -7,8 +7,76 @@
 <title>Insert title here</title>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
+<script type="text/javascript">
+
+$(document).ready(function() {
+	alert("works");
+	var y_o_s_mult_var = 1;
+	var occupation_multiplier = 1;
+	var y_o_s_var = 0;
+	$("input[name='seniority_in_years']").keyup(function() {
+		var a = $(this).val();
+		y_o_s_mult_var = y_o_s_mult(a);
+		y_o_s_var = a;
+
+		$('#round').text(normalize(a));
+		//$('#raw').text("(" + months(a) + ")");
+	});
+	$("select[name='occupation_classification']").change(function() {
+		var a = this.value;
+		occupation_multiplier = a;
+
+		$('#round').text(normalize(a));
+		//$('#raw').text("(" + months(a) + ")");
+	});
+
+	var normalize = function(a){
+		a = even(Math.round(months(a)));
+		if(a<12){
+			return 12;
+		}
+		if(a>36){
+			return 36;
+		}
+		return a;
+	}
+	
+	var even = function(a){
+		if(a%2==1){
+			return a+1;
+		}else{
+			return a;
+		}
+	}
+	
+	var months = function(a) {
+		return y_o_s_var * y_o_s_mult_var * occupation_multiplier * 1.5;
+	}
+	var y_o_s_mult = function(a) {
+		if (a > 0 && a <= 2.5) {
+			return 2.6;
+		}
+		if (a >= 2.6 && a <= 5) {
+			return 1.4;
+		}
+		if (a >= 5.1 && a <= 10) {
+			return 1.1;
+		}
+		if (a >= 10.1 && a <= 15.5) {
+			return 0.9;
+		}
+		if (a >= 15.6 && a <= 20.5) {
+			return 0.8;
+		}
+		if (a >= 20.6 && a <= 25) {
+			return 0.7;
+		}
+		if (a >= 25.1) {
+			return 0.6;
+		} else
+			return 1;
+	}
+
     $("#isConstructive_dismissal").click(function(){
     	$("#c_v_emp_div").toggle(this.checked);
     });
@@ -37,10 +105,8 @@ $(document).ready(function(){
     $("#isOvertime").click(function(){
     	$("#ot_div").toggle(this.checked);
     });
-    
 });
 </script>
-
 
 <style>
 #c_v_emp, #c_dis, #f_cause, #f_t_clause, #a_n_period, #hment, #h_r_dis, #p_dmgs, #ot{
@@ -91,7 +157,7 @@ p{
 		Age: <input type="text" maxlength="3" size="3" name="age"> <br>
 		Position: <input type="text" name="position"> <br>
 		Client Occupation Classification: <select name="occupation_classification">
-    	<option selected="selected"></option>
+    	<option selected="selected" value="1">[Select the category for the position]</option>
 		<option value="2">Upper Management (>150k)</option>
 		<option value="1.5">Middle Management (b/w 75k and 150k)</option>
     	<option value="1.3">Lower Management (<75k)</option>
@@ -102,7 +168,9 @@ p{
     	<option value="1.2">Technical</option>
     	<option value="1.2">Supervisor</option>
     	<option value="1">Social Services</option>
-	</select>
+	</select><br>
+		Settlement:<div id="round"></div> months
+		
 		
 	<p style="font-size:20px"> Addressing the recipient, OC/HR department: </p>
 	<p class="spaced"> Recipient's first name: <input type="text" name="OC_HR_first_name"> Recipient's last name: <input type="text" name="OC_HR_last_name"> <br>
