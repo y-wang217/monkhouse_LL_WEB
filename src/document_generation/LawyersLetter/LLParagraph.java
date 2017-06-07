@@ -1,9 +1,12 @@
 package document_generation.LawyersLetter;
 
 import document_generation.LawyersLetter.Codes.ParaCode;
+
+import org.apache.poi.xwpf.usermodel.IBody;
 import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTP;
 
 import java.util.LinkedHashMap;
 
@@ -24,7 +27,6 @@ public class LLParagraph {
     }
 
     public LLParagraph() {
-
         this.setText("");
         this.setParaType(ParaCode.REG);
         this.setItalics(false);
@@ -56,7 +58,7 @@ public class LLParagraph {
         this.underline = underline;
     }
 
-    public boolean isItalics() {
+    public boolean hasItalics() {
 
         return italics;
     }

@@ -32,8 +32,8 @@ public class ContractorVsEmployeeSection extends LLSection{
                     "independent contractor, based upon the relationship carried on between the parties, <client_first_name> was " +
                     "actually an employee.%%" +
                     "Jurisprudence is clear that it is the substance of the relationship that determines the employment " +
-                    "status of the worker. In Mckee v. Reid’s Heritage Homes Ltd., 2009 ONCA 916, the court outlined the " +
-                    "following five principles for determining whether a worker is an employee or a contractor:");
+                    "status of the worker. In _Mckee v. Reid’s Heritage Homes Ltd._, 2009 ONCA 916, the court outlined the " +
+                    "following five principles for determining whether a worker is an employee or a contractor:",true);
 
             insertText(llpf,doc,content,ParaCode.QUOTE, "1. Whether or not the agent was limited exclusively " +
                     "to the service of the principal;%%" +

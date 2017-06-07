@@ -7,12 +7,14 @@ TODO refactor the doc carried through a method as static, to create once and pas
 package document_generation.util;
 
 import document_generation.LawyersLetter.LLDocument;
+
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.util.Units;
 import org.apache.poi.wp.usermodel.HeaderFooterType;
 import org.apache.poi.xwpf.usermodel.*;
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class ManipDocument {
 

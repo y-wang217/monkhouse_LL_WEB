@@ -13,6 +13,7 @@ import java.util.regex.Pattern;
 import org.apache.poi.xwpf.usermodel.UnderlinePatterns;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFNumbering;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 
 import document_generation.TextUI;
@@ -271,7 +272,7 @@ public class LLDocument extends XWPFDocument {
 	}
 
 	// PRIVATE FIELDS
-	private LinkedHashMap<String, String> fieldsMap;
+	private static LinkedHashMap<String, String> fieldsMap;
 	private LLSectionFactory llsf;
 
 	// WRITE SECTIONS TO DOCUMENT
@@ -279,7 +280,7 @@ public class LLDocument extends XWPFDocument {
 
 		for (LLParagraph p : section.getContents()) {
 			if (p.getParaType().equals(ParaCode.EMPTY)) {
-				return;
+				break;
 			}
 			if (p.getParaType().equals(LIST)) {
 				Thread listInsertThread = new Thread(() -> {
@@ -298,6 +299,12 @@ public class LLDocument extends XWPFDocument {
 				s = processFields(s);
 				System.out.println(p.getParaType() + " : " + s);
 				XWPFRun r = ManipDocument.createRun(p.getXwpfParagraph());
+				//handle italics
+				if(s.indexOf('_')>=0) {
+					XWPFParagraph xwpfParagraph = this.createParagraph();
+					handleItalics(xwpfParagraph,s,findItalics(s));
+					break;
+				}
 				if (p.getParaType().equals(TAB))
 					ManipDocument.tab(r);
 				alterRun(r, p);
@@ -310,19 +317,68 @@ public class LLDocument extends XWPFDocument {
 		}
 	}
 
+	private ArrayList<Integer> findItalics(String s){
+		String italicsSymbol = "_";
+		int lastIndex = 0;
+		int count = 0;
+		ArrayList<Integer> underscoreIndex = new ArrayList<Integer>();
+
+		while(lastIndex != -1){
+
+		    lastIndex = s.indexOf(italicsSymbol,lastIndex);
+
+		    if(lastIndex != -1){
+		        count ++;
+		        underscoreIndex.add(lastIndex);
+		        lastIndex += italicsSymbol.length();
+		    }
+		}
+		return underscoreIndex;
+	}
+	
+	private void handleItalics(XWPFParagraph p, String s, ArrayList<Integer> underscoreIndex){
+		XWPFRun r;int beginNonItalic = 0;
+		boolean beginsWithItalics=false;
+		if(underscoreIndex.get(0)==0){
+			//handle first line being in italics
+			r = ManipDocument.createRun(p);
+			r.setItalic(true);
+			r.setText(s.substring(1,underscoreIndex.get(1)));
+			beginNonItalic = underscoreIndex.get(1)+1;
+			beginsWithItalics = true;
+		}
+		//count is the number of underlines; count/2 is the number of phrases with italics
+		for(int i=beginsWithItalics?2:0; i<underscoreIndex.size()/2; i+=2){
+			System.out.print(s.substring(underscoreIndex.get(i),underscoreIndex.get(i)+1));
+			//add run of normal up to first underscore,
+			r = ManipDocument.createRun(p);
+			r.setText(s.substring(beginNonItalic,underscoreIndex.get(i)));
+			//then add run of italics to second underscore,
+			r = ManipDocument.createRun(p);
+			r.setItalic(true);
+			r.setText(s.substring(underscoreIndex.get(i)+1,underscoreIndex.get(i+1)));
+			//repeat
+		}
+		if(underscoreIndex.get(underscoreIndex.size()-1)!=s.length()-1){
+			r = ManipDocument.createRun(p);
+			r.setText(s.substring(underscoreIndex.get(underscoreIndex.size()-1)+1));
+		}
+	}
+	
 	// METHOD FOR ADDING FORMATTING TO RUNS
 	private void alterRun(XWPFRun r, LLParagraph llParagraph) {
 
 		r.setBold(llParagraph.isBold());
-		r.setItalic(llParagraph.isItalics());
+		//r.setItalic(llParagraph.hasItalics());
+		//handle italics through searching for underscores
 		if (llParagraph.isUnderline())
 			r.setUnderline(UnderlinePatterns.SINGLE);
 	}
 
 	// SEARCH REGEX FOR FIELDS IN "<" AND ">", REPLACE WITH FIELDS FROM MAP
-	private Pattern PATTERN_FOR_FIELDS = Pattern.compile("<(.*?)>");
+	private static Pattern PATTERN_FOR_FIELDS = Pattern.compile("<(.*?)>");
 
-	private String processFields(String s) {
+	public static String processFields(String s) {
 
 		String fieldReplaced = s;
 		Matcher m = PATTERN_FOR_FIELDS.matcher(s);

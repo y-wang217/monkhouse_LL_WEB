@@ -10,17 +10,19 @@
 <script type="text/javascript">
 
 $(document).ready(function() {
-	alert("works");
+	//alert("works");
 	var y_o_s_mult_var = 1;
 	var occupation_multiplier = 1;
 	var y_o_s_var = 0;
 	$("input[name='seniority_in_years']").keyup(function() {
 		var a = $(this).val();
+		if(!a){a=0;}
 		y_o_s_mult_var = y_o_s_mult(a);
 		y_o_s_var = a;
 
 		$('#round').text(normalize(a));
 		//$('#raw').text("(" + months(a) + ")");
+		$("#settlement_input").val($('#round').text());
 	});
 	$("select[name='occupation_classification']").change(function() {
 		var a = this.value;
@@ -28,10 +30,14 @@ $(document).ready(function() {
 
 		$('#round').text(normalize(a));
 		//$('#raw').text("(" + months(a) + ")");
+		$("#settlement_input").val($('#round').text());
 	});
 
 	var normalize = function(a){
 		a = even(Math.round(months(a)));
+		if(a==0){
+			return 0;
+		}
 		if(a<12){
 			return 12;
 		}
@@ -125,6 +131,11 @@ p.spaced{
 p{
 	FONT-FAMILY:Arial,Helvetica,sans-serif;
 }
+
+.settlement{
+	display:inline-block;
+}
+
 </style>
 
 </head>
@@ -169,7 +180,8 @@ p{
     	<option value="1.2">Supervisor</option>
     	<option value="1">Social Services</option>
 	</select><br>
-		Settlement:<div id="round"></div> months
+		<input type="hidden" name="settlement" id="settlement_input">
+		<div class="settlement">Settlement:</div><div class="settlement" id="round">  </div> <div class="settlement">months</div>
 		
 		
 	<p style="font-size:20px"> Addressing the recipient, OC/HR department: </p>

@@ -19,7 +19,7 @@ public class ClosingSection extends LLSection{
 
         ArrayList<LLParagraph> content = new ArrayList<>();
         //Date:
-        insertText(llpf,doc,content, ParaCode.IMAGE,"/Users/monkhousemacbook6/Pictures/miguel_signature.png");
+        //insertText(llpf,doc,content, ParaCode.IMAGE,"/Users/monkhousemacbook6/Pictures/miguel_signature.png");
 
         //Closing sign-off
         insertText(llpf,doc,content,ParaCode.REG,"Sincerely,");

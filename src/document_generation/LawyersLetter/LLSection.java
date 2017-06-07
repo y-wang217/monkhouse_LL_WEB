@@ -13,39 +13,54 @@ import java.util.ArrayList;
  */
 public class LLSection {
 
-    public void insertText(LLParagraphFactory llpf, LLDocument doc, ArrayList<LLParagraph> content,
-                                  ParaCode type, String textInPara){
-        if(type == ParaCode.IMAGE){
-            content.add(new ImageParagraph(doc,textInPara));
-            return;
-        }
-        LLParagraph llParagraph = llpf.getParagraph(doc, type);
-        llParagraph.setText(textInPara);
-        content.add(llParagraph);
-        return;
-//        return llParagraph;
-    }
+	public void insertText(LLParagraphFactory llpf, LLDocument doc,
+			ArrayList<LLParagraph> content, ParaCode type, String textInPara) {
+		if (type == ParaCode.IMAGE) {
+			content.add(new ImageParagraph(doc, textInPara));
+			return;
+		}
+		LLParagraph llParagraph = llpf.getParagraph(doc, type);
+		llParagraph.setText(textInPara);
+		content.add(llParagraph);
+		return;
+		// return llParagraph;
+	}
 
-    private ArrayList<LLParagraph>contents;
-    private SectionCode sectionCode;
+	public void insertText(LLParagraphFactory llpf, LLDocument doc,
+			ArrayList<LLParagraph> content, ParaCode type, String textInPara, boolean italics) {
 
-    public SectionCode getSectionCode() {
+		if (type == ParaCode.IMAGE) {
+			content.add(new ImageParagraph(doc, textInPara));
+			return;
+		}
+		LLParagraph llParagraph = llpf.getParagraph(doc, type);
+		llParagraph.setItalics(italics);
+		llParagraph.setText(textInPara);
+		content.add(llParagraph);
+		return;
+		// return llParagraph;
+	}
 
-        return sectionCode;
-    }
+	private ArrayList<LLParagraph> contents;
+	private SectionCode sectionCode;
 
-    public void setSectionCode(SectionCode sectionCode) {
+	public SectionCode getSectionCode() {
 
-        this.sectionCode = sectionCode;
-    }
+		return sectionCode;
+	}
 
-    public void setContents(ArrayList contents) {
+	public void setSectionCode(SectionCode sectionCode) {
 
-        this.contents = contents;
-    }
+		this.sectionCode = sectionCode;
+	}
 
-    public ArrayList<LLParagraph> getContents() {
+	public void setContents(ArrayList contents) {
 
-        return contents;
-    }
+		this.contents = contents;
+	}
+
+	public ArrayList<LLParagraph> getContents() {
+
+		return contents;
+	}
 }

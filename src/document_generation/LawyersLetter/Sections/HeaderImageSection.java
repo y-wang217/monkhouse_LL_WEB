@@ -25,10 +25,10 @@ public class HeaderImageSection extends LLSection{
         this.setSectionCode(SectionCode.IMG);
 
         ArrayList<LLParagraph> content = new ArrayList<>();
-        insertText(llpf,doc,content, ParaCode.EMPTY,"");
+        insertText(llpf,doc,content, ParaCode.IMAGE,"/Users/monkhousemacbook6/Pictures/monkhouse_header.png");
         this.setContents(content);
-        
-        ManipDocument.addImage(doc, headerImgFilePath);
+
+        //ManipDocument.addImage(doc, headerImgFilePath);
 
     }
 }
