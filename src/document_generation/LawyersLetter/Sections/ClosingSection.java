@@ -22,13 +22,18 @@ public class ClosingSection extends LLSection{
         //insertText(llpf,doc,content, ParaCode.IMAGE,"/Users/monkhousemacbook6/Pictures/miguel_signature.png");
 
         //Closing sign-off
+        insertText(llpf,doc,content,ParaCode.REG,"");
+        
         insertText(llpf,doc,content,ParaCode.REG,"Sincerely,");
 
         insertText(llpf,doc,content,ParaCode.HEAD,"Monkhouse Law");
+        insertText(llpf,doc,content,ParaCode.REG,"");
+        insertText(llpf,doc,content,ParaCode.REG,"");
 
-        insertText(llpf,doc,content,ParaCode.REG,"<monkhouse_lawyer_name>");
+        insertText(llpf,doc,content,ParaCode.REG,"<monkhouse_lawyer_name>%%"
+        		+ "<monkhouse_lawyer_position>");
 
-        insertText(llpf,doc,content,ParaCode.REG,"[III]/[iii]");
+        insertText(llpf,doc,content,ParaCode.REG,"<monkhouse_lawyer>/<monkhouse_paralegal>");
 
 
         this.setContents(content);

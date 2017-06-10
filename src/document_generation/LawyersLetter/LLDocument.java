@@ -4,8 +4,11 @@ import static document_generation.LawyersLetter.Codes.ParaCode.LIST;
 import static document_generation.LawyersLetter.Codes.ParaCode.QUOTE;
 import static document_generation.LawyersLetter.Codes.ParaCode.TAB;
 
+import java.math.BigInteger;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,6 +18,8 @@ import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFNumbering;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTPageMar;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTSectPr;
 
 import document_generation.TextUI;
 import document_generation.LawyersLetter.Codes.ParaCode;
@@ -28,73 +33,16 @@ import document_generation.util.Numbering;
  */
 public class LLDocument extends XWPFDocument {
 
-	// fields import from check boxes - from a map containing each flag and
-	// "true" or "false" (or nothing)
-	// private HashMap<String, String> checkboxFields = new HashMap<>();
-
-	public void initCheckBoxFields(boolean initDefaultFields) {
-		if (initDefaultFields) {
-			LinkedHashMap<String, String> m = this.getFieldsMap();
-			m.put("isUseAge", "true");
-			m.put("isUseNonSkilledPositions", "true");
-			m.put("isUseEconomicDownturn", "true");
-			m.put("isUseAllegationsOfCause", "true");
-			m.put("isUseShortTermEmployees", "true");
-			m.put("isUseShortTermExecutives", "true");
-			m.put("isUseAppropriateNoticeConclusion", "true");
-			m.put("isUseAppropriateNoticeAlternative", "true");
-			m.put("isUseWageDeduction", "true");
-			m.put("isUseLocation", "true");
-			m.put("isUseBreachOfFundamentalImpliedTerm", "true");
-			m.put("isUseIntolerable", "true");
-			m.put("isUseWorkplaceHarassment", "true");
-			m.put("isUsePoisonedWorkEnvironment", "true");
-			m.put("isUseRemovalFromManagementPosition", "true");
-
-			m.put("isUseIndependentContractorVsEmployee", "true");
-			m.put("isUseDependentContractor", "true");
-
-			m.put("isUseHighStandard", "true");
-			m.put("isUseGrossIncompetence", "true");
-			m.put("isUseJobAbandonment", "true");
-			m.put("isUseDamageAward", "true");
-
-			m.put("isUseBasicStart", "true");
-			m.put("isUseNoContractingOutOfESA", "true");
-			m.put("isUseNonInclusionOfBenefits", "true");
-			m.put("isUsePotentialViolations", "true");
-			m.put("isUseEmployerCannotRelyOnBreachedTerminationClause", "true");
-
-			m.put("isUseOhsaBill168", "true");
-			m.put("isUsePunitiveDamages", "true");
-
-			m.put("isUseTerminationOnProtectedGRound", "true");
-			m.put("isUseAgeDamages", "true");
-			m.put("isUseHumanRightsDamagesChart", "true");
-
-			m.put("isUseBreachOfContract", "true");
-			m.put("isUseLtdJurisprudence", "true");
-			m.put("isUseMovingForwardLtd", "true");
-
-			m.put("isUseClc", "true");
-			m.put("isUsePerformanceOntari", "true");
-
-			m.put("isUseBadFaith", "true");
-			m.put("isUseOpenAndHonestManner", "true");
-			m.put("isUseUnfavourableReference", "true");
-			m.put("isUseReprisalHarassmentReport", "true");
-			m.put("isUseFailureToProvideStatutoryRequirement", "true");
-			m.put("isUseFailureToProvide", "true");
-			m.put("isUseReprisalOhsa", "true");
-			m.put("isUsisUseAllecationsOfCauseeAge", "true");
-			this.setFieldsMap(m);
-		}
-	}
-
 	// CONSTRUCTOR
 	public LLDocument() {
-
 		super();
+		// TODO: trying out the margins
+		CTSectPr sectPr = this.getDocument().getBody().addNewSectPr();
+		CTPageMar pageMar = sectPr.addNewPgMar();
+		pageMar.setLeft(BigInteger.valueOf(1022L));
+		pageMar.setTop(BigInteger.valueOf(994L));
+		pageMar.setRight(BigInteger.valueOf(1022L));
+		pageMar.setBottom(BigInteger.valueOf(705L));
 		init();
 	}
 
@@ -103,7 +51,7 @@ public class LLDocument extends XWPFDocument {
 	}
 
 	// PRIVATE INITIALIZER TO SEPARATE TEST EXECUTION
-	private void init() {
+	public void init() {
 
 		LinkedHashMap<String, String> fields = new LinkedHashMap<>();
 		this.setFieldsMap(fields);
@@ -116,52 +64,17 @@ public class LLDocument extends XWPFDocument {
 		promptForGender(testForFieldsFromInput);
 		promptForFields(testForFieldsFromInput);
 		// testing init flags for different subsections
-		initCheckBoxFields(initDefaultFields);
+		// initCheckBoxFields(initDefaultFields);
 
 		// otherwise put in default values
-		initFields(initDefaultFields);
-	}
-
-	// initialize fields from default/testing fieldsMap here:
-	private void initFields(boolean initDefaultFields) {
-
-		if (initDefaultFields) {
-			LinkedHashMap<String, String> defaultFieldsMap = this
-					.getFieldsMap();
-			defaultFieldsMap.put("monkhouse_lawyer_name",
-					"Andrew Monkhouse, J.D.");
-			defaultFieldsMap.put("monkhouse_lawyer_email",
-					"andrew@monkhouselaw.com");
-			defaultFieldsMap.put("OC_HR_first_name", "Opposing");
-			defaultFieldsMap.put("OC_HR_last_name", "Lawyer");
-			defaultFieldsMap.put("OC_HR_job_title", "Lawyer or Manager or HR");
-			defaultFieldsMap.put("OC_HR_company_name", "Some Law Office LLP");
-			defaultFieldsMap.put("OC_HR_company_address", "123 Bay Street");
-			defaultFieldsMap.put("OC_HR_company_postcode", "M5J 1A1");
-
-			defaultFieldsMap.put("employer_last_name", "Smith");
-			defaultFieldsMap.put("employer_first_name", "The-Employer");
-			defaultFieldsMap.put("client_last_name", "Doe");
-			defaultFieldsMap.put("client_first_name", "John");
-
-			defaultFieldsMap.put("seniority_in_years", "10");
-			defaultFieldsMap.put("wage_in_dollars",
-					"75,000.00 per year, plus etc.");
-			defaultFieldsMap.put("age", "45");
-			defaultFieldsMap.put("client_position", "Manager/Specialist");
-
-			defaultFieldsMap.put("termination_date", "May 1, 2017");
-			defaultFieldsMap.put("monkhouse_lawyer_title",
-					"Senior Lawyer & Founder");
-			this.setFieldsMap(defaultFieldsMap);
-
-			this.setClientGender(gender.m);
-		}
+		// initFields(initDefaultFields);
 		initFields();
 	}
 
 	// SET UP AND INITLIZE CERTAIN FIELDS
-	private void initFields() {
+	protected void initFields() {
+
+		initSettlementCalculations();
 
 		LinkedHashMap<String, String> defaultFieldsMap = this.getFieldsMap();
 
@@ -188,38 +101,71 @@ public class LLDocument extends XWPFDocument {
 				: "Her");
 
 		if (this.getFieldsMap().containsKey("monkhouse_lawyer")) {
-			if (this.getFieldsMap().get("monkhouse_lawyer").equals("ahm")) {
+			if (this.getFieldsMap().get("monkhouse_lawyer").equals("AHM")) {
 				defaultFieldsMap.put("monkhouse_lawyer_name",
 						"Andrew Monkhouse");
 				defaultFieldsMap.put("monkhouse_lawyer_email",
 						"andrew@monkhouselaw.com");
+				defaultFieldsMap.put("monkhouse_lawyer_position",
+						"Senior Lawyer & Founder");
 			}
-			if (this.getFieldsMap().get("monkhouse_lawyer").equals("sdl")) {
+			if (this.getFieldsMap().get("monkhouse_lawyer").equals("SDL")) {
 				defaultFieldsMap.put("monkhouse_lawyer_name",
 						"Samantha Lucifora");
 				defaultFieldsMap.put("monkhouse_lawyer_email",
 						"email@monkhouselaw.com");
+				defaultFieldsMap.put("monkhouse_lawyer_position",
+						"Associate Lawyer");
 			}
-			if (this.getFieldsMap().get("monkhouse_lawyer").equals("baf")) {
+			if (this.getFieldsMap().get("monkhouse_lawyer").equals("BAF")) {
 				defaultFieldsMap.put("monkhouse_lawyer_name", "Busayo Ayodele");
 				defaultFieldsMap.put("monkhouse_lawyer_email",
 						"email@monkhouselaw.com");
+				defaultFieldsMap.put("monkhouse_lawyer_position",
+						"Associate Lawyer");
 			}
-			if (this.getFieldsMap().get("monkhouse_lawyer").equals("sjl")) {
+			if (this.getFieldsMap().get("monkhouse_lawyer").equals("SJL")) {
 				defaultFieldsMap.put("monkhouse_lawyer_name",
 						"Stephen LeMesurier");
 				defaultFieldsMap.put("monkhouse_lawyer_email",
 						"email@monkhouselaw.com");
+				defaultFieldsMap.put("monkhouse_lawyer_position",
+						"Associate Lawyer");
 			}
-			if (this.getFieldsMap().get("monkhouse_lawyer").equals("mdm")) {
+			if (this.getFieldsMap().get("monkhouse_lawyer").equals("MDM")) {
 				defaultFieldsMap.put("monkhouse_lawyer_name",
 						"Miguel Mangalindan");
 				defaultFieldsMap.put("monkhouse_lawyer_email",
 						"email@monkhouselaw.com");
+				defaultFieldsMap.put("monkhouse_lawyer_position",
+						"Associate Lawyer");
 			}
 		}
 
 		this.setFieldsMap(defaultFieldsMap);
+	}
+
+	// settlement calculations
+	private void initSettlementCalculations() {
+
+		LinkedHashMap<String, String> defaultFieldsMap = this.getFieldsMap();
+		int wage, monthsNoticeOwed, dollarsNotceOwed;
+
+		if (defaultFieldsMap.containsKey("wage_in_dollars")
+				&& defaultFieldsMap.containsKey("settlement")) {
+
+			wage = Integer.parseInt(defaultFieldsMap.get("wage_in_dollars"));
+			monthsNoticeOwed = Integer.parseInt(defaultFieldsMap
+					.get("settlement"));
+			dollarsNotceOwed = wage / 12 * monthsNoticeOwed;
+
+			defaultFieldsMap.put("dollarsNoticeOwed",
+					Integer.toString(dollarsNotceOwed));
+			defaultFieldsMap.put("dollarsBenefitsOwed",
+					Integer.toString((int) (dollarsNotceOwed * 0.2)));
+			defaultFieldsMap.put("dollarsDamagesOwed",
+					Integer.toString((int) (dollarsNotceOwed * 0.25)));
+		}
 	}
 
 	// gender determines which pronouns are used
@@ -266,9 +212,9 @@ public class LLDocument extends XWPFDocument {
 				fieldsMap.put(field, input);
 			}
 		}
-		for (String key : fieldsMap.keySet()) {
-			System.out.println(" (" + key + ", " + fieldsMap.get(key) + ") ");
-		}
+		//for (String key : fieldsMap.keySet()) {
+			//System.out.println(" (" + key + ", " + fieldsMap.get(key) + ") ");
+		//}
 	}
 
 	// PRIVATE FIELDS
@@ -299,10 +245,10 @@ public class LLDocument extends XWPFDocument {
 				s = processFields(s);
 				System.out.println(p.getParaType() + " : " + s);
 				XWPFRun r = ManipDocument.createRun(p.getXwpfParagraph());
-				//handle italics
-				if(s.indexOf('_')>=0) {
+				// handle italics
+				if (s.indexOf('_') >= 0) {
 					XWPFParagraph xwpfParagraph = this.createParagraph();
-					handleItalics(xwpfParagraph,s,findItalics(s));
+					handleItalics(xwpfParagraph, s, findItalics(s));
 					break;
 				}
 				if (p.getParaType().equals(TAB))
@@ -317,60 +263,65 @@ public class LLDocument extends XWPFDocument {
 		}
 	}
 
-	private ArrayList<Integer> findItalics(String s){
+	private ArrayList<Integer> findItalics(String s) {
 		String italicsSymbol = "_";
 		int lastIndex = 0;
 		int count = 0;
 		ArrayList<Integer> underscoreIndex = new ArrayList<Integer>();
 
-		while(lastIndex != -1){
+		while (lastIndex != -1) {
 
-		    lastIndex = s.indexOf(italicsSymbol,lastIndex);
+			lastIndex = s.indexOf(italicsSymbol, lastIndex);
 
-		    if(lastIndex != -1){
-		        count ++;
-		        underscoreIndex.add(lastIndex);
-		        lastIndex += italicsSymbol.length();
-		    }
+			if (lastIndex != -1) {
+				count++;
+				underscoreIndex.add(lastIndex);
+				lastIndex += italicsSymbol.length();
+			}
 		}
 		return underscoreIndex;
 	}
-	
-	private void handleItalics(XWPFParagraph p, String s, ArrayList<Integer> underscoreIndex){
-		XWPFRun r;int beginNonItalic = 0;
-		boolean beginsWithItalics=false;
-		if(underscoreIndex.get(0)==0){
-			//handle first line being in italics
+
+	private void handleItalics(XWPFParagraph p, String s,
+			ArrayList<Integer> underscoreIndex) {
+		XWPFRun r;
+		int beginNonItalic = 0;
+		boolean beginsWithItalics = false;
+		if (underscoreIndex.get(0) == 0) {
+			// handle first line being in italics
 			r = ManipDocument.createRun(p);
 			r.setItalic(true);
-			r.setText(s.substring(1,underscoreIndex.get(1)));
-			beginNonItalic = underscoreIndex.get(1)+1;
+			r.setText(s.substring(1, underscoreIndex.get(1)));
+			beginNonItalic = underscoreIndex.get(1) + 1;
 			beginsWithItalics = true;
 		}
-		//count is the number of underlines; count/2 is the number of phrases with italics
-		for(int i=beginsWithItalics?2:0; i<underscoreIndex.size()/2; i+=2){
-			System.out.print(s.substring(underscoreIndex.get(i),underscoreIndex.get(i)+1));
-			//add run of normal up to first underscore,
+		// count is the number of underlines; count/2 is the number of phrases
+		// with italics
+		for (int i = beginsWithItalics ? 2 : 0; i < underscoreIndex.size() / 2; i += 2) {
+			System.out.print(s.substring(underscoreIndex.get(i),
+					underscoreIndex.get(i) + 1));
+			// add run of normal up to first underscore,
 			r = ManipDocument.createRun(p);
-			r.setText(s.substring(beginNonItalic,underscoreIndex.get(i)));
-			//then add run of italics to second underscore,
+			r.setText(s.substring(beginNonItalic, underscoreIndex.get(i)));
+			// then add run of italics to second underscore,
 			r = ManipDocument.createRun(p);
 			r.setItalic(true);
-			r.setText(s.substring(underscoreIndex.get(i)+1,underscoreIndex.get(i+1)));
-			//repeat
+			r.setText(s.substring(underscoreIndex.get(i) + 1,
+					underscoreIndex.get(i + 1)));
+			// repeat
 		}
-		if(underscoreIndex.get(underscoreIndex.size()-1)!=s.length()-1){
+		if (underscoreIndex.get(underscoreIndex.size() - 1) != s.length() - 1) {
 			r = ManipDocument.createRun(p);
-			r.setText(s.substring(underscoreIndex.get(underscoreIndex.size()-1)+1));
+			r.setText(s.substring(underscoreIndex.get(underscoreIndex.size() - 1) + 1));
 		}
 	}
-	
+
 	// METHOD FOR ADDING FORMATTING TO RUNS
 	private void alterRun(XWPFRun r, LLParagraph llParagraph) {
 
 		r.setBold(llParagraph.isBold());
-		//r.setItalic(llParagraph.hasItalics());
-		//handle italics through searching for underscores
+		// r.setItalic(llParagraph.hasItalics());
+		// handle italics through searching for underscores
 		if (llParagraph.isUnderline())
 			r.setUnderline(UnderlinePatterns.SINGLE);
 	}
@@ -380,16 +331,31 @@ public class LLDocument extends XWPFDocument {
 
 	public static String processFields(String s) {
 
+		boolean isDollar = false;;
 		String fieldReplaced = s;
 		Matcher m = PATTERN_FOR_FIELDS.matcher(s);
 		while (m.find()) {
 			String fieldName = m.group(1);
+			isDollar = fieldName.contains("dollars");
 			System.out.println("   " + fieldName);
-			fieldReplaced = fieldReplaced.replace("<" + fieldName + ">",
-					fieldsMap.getOrDefault(fieldName,
-							"###field not found error###"));
+			String fieldValue = fieldsMap.getOrDefault(fieldName,
+					"###field not found error###");
+			fieldReplaced = fieldReplaced.replace("<" + fieldName + ">",isDollar?addThousandCommas(isDollar, fieldValue):fieldValue);
+			
 		}
+		
 		return fieldReplaced;
+	}
+	
+	static String addThousandCommas(boolean isDollar, String s){
+
+		if(isDollar){
+			int dollars = Integer.parseInt(s);
+			NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.US);
+	        s = numberFormat.format(dollars);
+		}
+		System.out.println(s);
+		return s;
 	}
 
 	public XWPFNumbering resetNumbering() {
@@ -444,19 +410,20 @@ public class LLDocument extends XWPFDocument {
 
 	public static void main(String[] args) {
 
-		LLDocument test = new LLDocument();
-
-		LLSection s = test.getLlsf().getSection(test, SectionCode.CUSTOM);
-		ArrayList<LLParagraph> listOfParas = new ArrayList<>();
-		s.insertText(new LLParagraphFactory(), test, listOfParas, ParaCode.REG,
-				"<employer_last_name> is the employer's last night "
-						+ "<employer_first_name> is the employer's first name "
-						+ "<client_last_name> is the client's last name "
-						+ "<client_first_name> is the client's first name");
-		s.setContents(listOfParas);
-
-		test.writeToDoc(s);
-		CloseDocument.closeSimple(test);
+//		LLDocument test = new LLDocument();
+//
+//		LLSection s = test.getLlsf().getSection(test, SectionCode.CUSTOM);
+//		ArrayList<LLParagraph> listOfParas = new ArrayList<>();
+//		s.insertText(new LLParagraphFactory(), test, listOfParas, ParaCode.REG,
+//				"<employer_last_name> is the employer's last night "
+//						+ "<employer_first_name> is the employer's first name "
+//						+ "<client_last_name> is the client's last name "
+//						+ "<client_first_name> is the client's first name");
+//		s.setContents(listOfParas);
+//
+//		test.writeToDoc(s);
+//		CloseDocument.closeSimple(test);
+		addThousandCommas(true,"1234567");
 	}
 
 }

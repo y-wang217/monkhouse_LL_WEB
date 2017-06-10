@@ -41,15 +41,14 @@ public class MovingForwardSection extends LLSection {
 				doc,
 				content,
 				ParaCode.LIST,
-				"A lump sum payment of $XX,XXX.XX, representing XX months’ pay in lieu of notice;%%"
-						+ "Continuation of all benefits throughout the XX month notice period;%%"
-						+ "Additional heads of Damage;%%"
-						+ "The sum of $XX,XXX.XX representing compensation for 50% of overtime owed;%%"
-						+ "The sum of $15,000.00 in general damages in lieu of Human Rights Damages;%%"
-						+ "The sum of $15,000.00 in general damages in lieu of Punitive, Aggravated, and/or Moral Damages;%%"
+				"A lump sum payment of $<dollarsNoticeOwed>.00, representing <settlement> months’ pay in lieu of notice;%%"
+						+ "$<dollarsBenefitsOwed>.00 representing 20% in lieu of her benefits over the <settlement>-month notice period;%%"
+						//+ "The sum of $XX,XXX.XX representing compensation for 50% of overtime owed;%%"
+						//damages = 25%
+						+ "The sum of $<dollarsDamagesOwed>.00 in general damages in lieu of Human Rights, Punitive, Aggravated, and/or Moral Damages;%%"
 						+ "A contribution of $500.00 towards career counselling; %%"
 						+ "A positive letter of recommendation in order to assist <client_first_name> in finding comparable employment; and,%%"
-						+ "Partial indemnity fees as agreed or assessed to the date of acceptance of offer (estimate currently $1000.00) towards <client_first_name>’s legal fees.\n");
+						+ "Partial indemnity fees as agreed or assessed to the date of acceptance of offer (estimate currently $3,000.00) towards legal fees.\n");
 
 		insertText(
 				llpf,

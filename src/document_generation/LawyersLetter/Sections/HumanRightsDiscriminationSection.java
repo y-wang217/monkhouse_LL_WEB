@@ -49,7 +49,7 @@ public class HumanRightsDiscriminationSection extends LLSection{
                     "sufficient that the discrimination be but one basis for the employer’s actions or decisions.");
         }
 
-        if (Objects.equals(doc.getFieldsMap().get("isUseAgeDamages"), "on")) {
+        if (Integer.parseInt(doc.getFieldsMap().get("age"))>45) {
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Human Rights Discrimination - Age Damages");
             //body:

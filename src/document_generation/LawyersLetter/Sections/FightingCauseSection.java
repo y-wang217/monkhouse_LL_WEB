@@ -97,8 +97,9 @@ public class FightingCauseSection extends LLSection{
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Performance Issues - Gross Incompetence");
             //body:
-            insertText(llpf,doc,content,ParaCode.REG, "The standard of gross incompetence is higher still. " +
-                    "For example, as cited in Brien v. Niagara Motors Ltd. [2008] O.J. No. 3246 at para. 226:");
+            insertText(llpf,doc,content,ParaCode.REG, "The standard for cause terminations based on performance is "
+            		+ "higher still, the standard is gross incompetence. For example, as cited in Brien v. Niagara "
+            		+ "Motors Ltd. [2008] O.J. No. 3246 at para. 226:");
             insertText(llpf,doc,content,ParaCode.QUOTE, "…The level of incompetence to justify summary " +
                     "dismissal is that of “gross incompetence”. If incompetence is not gross, then notice must be " +
                     "given. The employee should be given a fair opportunity to remedy the alleged incompetence and " +

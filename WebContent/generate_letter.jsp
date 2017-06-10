@@ -8,7 +8,9 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
-
+function sendDivInfo(){
+	document.getElementById("settlement_input").value = document.getElementById("round").innerHTML;
+}
 $(document).ready(function() {
 	//alert("works");
 	var y_o_s_mult_var = 1;
@@ -141,7 +143,7 @@ p{
 </head>
 <body>
 <p>Letter Generation Page</p>
-<form action="gen_lawyers_letter">
+<form action="gen_lawyers_letter" onsubmit="sendDivInfo()">
 	<!-- start with filling in the case information -->
 	<p style="font-size:20px"> Client info </p>
 	<p>	Client first name: <input type="text" name="client_first_name"> Client last name: <input type="text" name="client_last_name">
@@ -155,10 +157,24 @@ p{
 	<div class="overseeing_lawyer">
 		<p>Monkhouse Lawyer: <select name="monkhouse_lawyer">
     	<option selected="selected"></option>
-		<option value="ahm">Andrew Monkhouse</option>
-		<option value="baf">Samantha Lucifora</option>
-    	<option value="sjl">Busayo Ayodele</option>
-    	<option value="mdm">Stephen LeMesurier</option>
+		<option value="AHM">Andrew Monkhouse</option>
+		<option value="SDL">Samantha Lucifora</option>
+    	<option value="BAF">Busayo Ayodele</option>
+    	<option value="SJL">Stephen LeMesurier</option>
+    	<option value="MDM">Miguel Mangalindan</option>
+    	
+    	</select>
+    	
+    	<p>Drafted by: <select name="monkhouse_paralegal">
+    	<option selected="selected"></option>
+		<option value="msb">Miyoshi Bonyun</option>
+		<option value="alh">Andrea Hossack</option>
+    	<option value="cal">Cassandra Liu</option>
+    	<option value="rsf">Rachel Flommerfelt</option>
+    	<option value="amg">Anessa Garcia</option>
+    	<option value="mmr">Milcah Rodriguez</option>
+    	<option value="ckk">Catherine Kim</option>
+    	<option value="cyy">Clifton Yiu</option>
     	</select>
 	</div>
 	
@@ -201,6 +217,19 @@ p{
 	<!-- choices for different sections to add to the doc -->
 	<!-- <p>	Employment Description: <input type="checkbox" name="emp_desc"> -->
 	<!-- <p>	Description of Termination: <input type="checkbox" name="termination"> -->
+	
+	Appropriate Notice Period: <input type="checkbox" name="appropriate_notice_period" id="isAppropriate_notice_period" checked>
+		<div id="a_n_period_div">
+			<!--  <p id="a_n_period">Age 									<input type="checkbox" name="isUseAge"></p> -->
+			<p id="a_n_period">'Non-Skilled Positions' 				<input type="checkbox" name="isUseNonSkilledPositions"></p>
+			<p id="a_n_period">Economic Downturn 					<input type="checkbox" name="isUseEconomicDownturn" checked></p>
+			<!--  <p id="a_n_period">Allegations of Cause 				<input type="checkbox" name="isUseAllegationsOfCause"></p> -->
+			<p id="a_n_period">Short term Employees 				<input type="checkbox" name="isUseShortTermEmployees"></p>
+			<p id="a_n_period">Short term Employees - Executives 	<input type="checkbox" name="isUseShortTermExecutives"></p>
+			<p id="a_n_period">Appropriate Notice Conclusion: 		<input type="checkbox" name="isUseApporpriateNoticeConclusion"></p>
+			<p id="a_n_period">Appropriate Notice Alternative: 		<input type="checkbox" name="isUseAppropriateNoticeAlternative"></p>
+		</div><br>
+		
 	Contractor vs Employee: <input type="checkbox" name="contractor_vs_emp" id="isContractor_vs_emp">
 		<div style="display:none">
 			<p id="c_v_emp">Independent Contractor vs Employee: 	<input type="checkbox" name="isUseIndependentContractorVsEmployee"></p>
@@ -236,17 +265,6 @@ p{
 		
 	Bonuses: <input type="checkbox" name="bonus"> <br>
 	Pension: <input type="checkbox" name="pension"> <br>
-	Appropriate Notice Period: <input type="checkbox" name="appropriate_notice_period" id="isAppropriate_notice_period">
-		<div id="a_n_period_div" style="display:none">
-			<!--  <p id="a_n_period">Age 									<input type="checkbox" name="isUseAge"></p> -->
-			<p id="a_n_period">'Non-Skilled Positions' 				<input type="checkbox" name="isUseNonSkilledPositions"></p>
-			<p id="a_n_period">Economic Downturn 					<input type="checkbox" name="isUseEconomicDownturn"></p>
-			<!--  <p id="a_n_period">Allegations of Cause 				<input type="checkbox" name="isUseAllegationsOfCause"></p> -->
-			<p id="a_n_period">Short term Employees 				<input type="checkbox" name="isUseShortTermEmployees"></p>
-			<p id="a_n_period">Short term Employees - Executives 	<input type="checkbox" name="isUseShortTermExecutives"></p>
-			<p id="a_n_period">Appropriate Notice Conclusion: 		<input type="checkbox" name="isUseApporpriateNoticeConclusion"></p>
-			<p id="a_n_period">Appropriate Notice Alternative: 		<input type="checkbox" name="isUseAppropriateNoticeAlternative"></p>
-		</div><br>
 		
 	Inducement: <input type="checkbox" name="inducement"> <br>
 	Harassment: <input type="checkbox" name="harassment" id="isHarassment">
@@ -258,7 +276,7 @@ p{
 	Human Rights Discrimination: <input type="checkbox" name="human_rights_dis" id="isHuman_rights_dis" checked>
 		<div id="h_r_dis_div">
 			<p id="h_r_dis">Termination: 		<input type="checkbox" name="isUseTerminationOnProtectedGround"></p>
-			<p id="h_r_dis">Age Damages: 		<input type="checkbox" name="isUseAgeDamages"></p>
+			<p id="h_r_dis">Age Damages: [included if age > 45] 		<!-- <input type="checkbox" name="isUseAgeDamages"></p> -->
 			<p id="h_r_dis">Damages Chart: 		<input type="checkbox" name="isUseHumanRightsDamagesChart"></p>
 		</div><br>
 		
