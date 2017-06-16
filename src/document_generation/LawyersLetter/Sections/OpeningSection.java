@@ -30,7 +30,13 @@ public class OpeningSection extends LLSection {
         disclaimer.setUnderline(true);
         content.add(disclaimer);
 
-        insertText(llpf,doc,content,ParaCode.HEAD,"Via Personal Service");
+        if(doc.getFieldsMap().get("isDraft").equals("true")){
+            insertText(llpf,doc,content,ParaCode.HEAD,"Via Email");
+            
+        }else{
+            insertText(llpf,doc,content,ParaCode.HEAD,"Via Personal Service");
+            
+        }
 
 
         this.setContents(content);

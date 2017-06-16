@@ -13,9 +13,9 @@ function sendDivInfo(){
 }
 $(document).ready(function() {
 	//alert("works");
-	var y_o_s_mult_var = 1;
-	var occupation_multiplier = 1;
-	var y_o_s_var = 0;
+	var y_o_s_var = (typeof y_o_s_var === 'undefined')?0:$("input[name='seniority_in_years']").val;
+	var y_o_s_mult_var = (y_o_s_var == 0)?1:y_o_s_mult(y_o_s_var);
+	var occupation_multiplier = (typeof occupation_multiplier === 'undefined')?1:$("input[name='occupation_multiplier']").val;
 	$("input[name='seniority_in_years']").keyup(function() {
 		var a = $(this).val();
 		if(!a){a=0;}
@@ -123,7 +123,7 @@ $(document).ready(function() {
 
 div.overseeing_lawyer{
 	position: absolute;
-	left: 600px;
+	left: 800px;
 	top: 0px;
 }
 
@@ -145,7 +145,7 @@ p{
 <p>Letter Generation Page</p>
 <form action="gen_lawyers_letter" onsubmit="sendDivInfo()">
 	<!-- start with filling in the case information -->
-	<p style="font-size:20px"> Client info </p>
+	<p style="font-size:20px"> Client info: </p>
 	<p>	Client first name: <input type="text" name="client_first_name"> Client last name: <input type="text" name="client_last_name">
 		Client gender: <select name="client_gender">
     	<option selected="selected"></option>
@@ -176,12 +176,17 @@ p{
     	<option value="ckk">Catherine Kim</option>
     	<option value="cyy">Clifton Yiu</option>
     	</select>
+    	
+    	<p>This letter is a: <select name="isDraft">
+		<option value="true" selected="selected">Draft LP</option>
+		<option value="false">Final LP</option>
+    	</select>
 	</div>
 	
 	<p style="font-size:20px">Client's relevant work factors: </p>
-	<p class="spaced">Seniority: <input type="text" maxlength="3" size="3"name="seniority_in_years"> years, <input type="text" maxlength="2" size="2" name="seniority_in_months"> months <br>
-		Wage in dollars: $<input type="text" name="wage_in_dollars">.00 per year <br>
-		Age: <input type="text" maxlength="3" size="3" name="age"> <br>
+	<p class="spaced">Seniority*: <input type="text" maxlength="3" size="3"name="seniority_in_years"> years, <input type="text" maxlength="2" size="2" name="seniority_in_months"> months <br>
+		Wage in dollars*: $<input type="text" name="wage_in_dollars">.00 per year <br>
+		Age*: <input type="text" maxlength="3" size="3" name="age"> <br>
 		Position: <input type="text" name="position"> <br>
 		Client Occupation Classification: <select name="occupation_classification">
     	<option selected="selected" value="1">[Select the category for the position]</option>

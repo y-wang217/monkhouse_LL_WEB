@@ -38,7 +38,7 @@ public class AppropriateNoticePeriodSection extends LLSection {
                 "length of service of the servant, the age of the servant and the availability of similar " +
                 "employment, having regard to the experience, training and qualifications of the servant.");
 
-
+        
         if(Integer.parseInt(doc.getFieldsMap().get("age"))>45){
 
             //heading:

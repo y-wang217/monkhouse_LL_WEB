@@ -8,7 +8,9 @@
 </head>
 <body>
 
-${sessionScope.respPage}
+    	<div><p style="color:red;">${sessionScope.document_creation_fail_msg}</p></div> 
+    	<br>
+		<p>${sessionScope.respPage}</p>
 
 </body>
 </html>

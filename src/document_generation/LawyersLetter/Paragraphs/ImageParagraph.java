@@ -14,7 +14,8 @@ public class ImageParagraph extends LLParagraph{
         super(doc);
         this.setParaType(ParaCode.IMAGE);
         if(this.getImageFile()=="") this.setImageFile("/Users/monkhousemacbook6/Pictures/monkhouse_header.png");
-        ManipDocument.addImage(doc, this.getImageFile());
+        //ManipDocument.addImage(doc, this.getImageFile());
+        ManipDocument.addImage(this.getXwpfParagraph(), imageFile);
     }
     public ImageParagraph(XWPFDocument doc, String imgFilePath){
         super(doc);

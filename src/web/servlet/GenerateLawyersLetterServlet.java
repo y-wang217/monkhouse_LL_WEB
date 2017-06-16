@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import document_generation.util.message.ActionMessage;
+import document_generation.util.message.MessageType;
 import web.action.DocumentAction;
 
 public class GenerateLawyersLetterServlet extends HttpServlet{
@@ -43,7 +45,11 @@ public class GenerateLawyersLetterServlet extends HttpServlet{
         writer.print(sb.toString());
 
         String filePath = "/Users/monkhousemacbook6/Documents/EclipseCreatedFiles/WebCreatedFiles/WebTestDoc.docx";
-        DocumentAction.createDocument(paramMap,filePath);
+        ActionMessage docMsg = DocumentAction.createDocument(paramMap,filePath);
+        
+        if(docMsg.read().toLowerCase().contains("error")){
+            req.getSession().setAttribute("document_creation_fail_msg", docMsg.read());
+        }
 
         String uploadURL = "http://localhost:8080/Monkhouse_Letter_Web/UploadDownloadFileServlet";
         File uploadFile1 = new File(filePath);

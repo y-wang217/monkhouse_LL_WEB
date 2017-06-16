@@ -35,7 +35,9 @@ public class MovingForwardSection extends LLSection {
 						+ "Notwithstanding the attached Statement of Claim, and in an effort to resolve the matter in good "
 						+ "faith, <client_first_name> has advised me that <subjective_pronoun> would be willing to settle this matter on the following "
 						+ "conditions:");
-
+		
+		String overtimeString = "";
+		//String overtimeString = doc.getFieldsMap().get("overtime").equals("on")?"The sum of <dollarsOvertimeOwed> representing compensation for 50% of overtime owed;%%":"";
 		insertText(
 				llpf,
 				doc,
@@ -43,8 +45,7 @@ public class MovingForwardSection extends LLSection {
 				ParaCode.LIST,
 				"A lump sum payment of $<dollarsNoticeOwed>.00, representing <settlement> months’ pay in lieu of notice;%%"
 						+ "$<dollarsBenefitsOwed>.00 representing 20% in lieu of her benefits over the <settlement>-month notice period;%%"
-						//+ "The sum of $XX,XXX.XX representing compensation for 50% of overtime owed;%%"
-						//damages = 25%
+						+ overtimeString
 						+ "The sum of $<dollarsDamagesOwed>.00 in general damages in lieu of Human Rights, Punitive, Aggravated, and/or Moral Damages;%%"
 						+ "A contribution of $500.00 towards career counselling; %%"
 						+ "A positive letter of recommendation in order to assist <client_first_name> in finding comparable employment; and,%%"
@@ -55,7 +56,7 @@ public class MovingForwardSection extends LLSection {
 				doc,
 				content,
 				ParaCode.REG,
-				"For a total monetary offer of $XX,XXX.XX at this point in time.%%"
+				"For a total monetary offer of $<dollarsTotalOwed>.00 at this point in time.%%"
 						+ "%%"
 						+ "This offer will remain open until trial. We intend to rely upon this letter as an official Rule "
 						+ "49 offer should the matter go to trial in order to seek substantial indemnity costs.\n");

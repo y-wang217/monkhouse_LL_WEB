@@ -16,5 +16,6 @@
 	<classpathentry exported="true" kind="lib" path="/Users/monkhousemacbook6/Documents/Java/Jars/commons-fileupload-1.3.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="/Users/monkhousemacbook6/Documents/Java/Jars/ooxml-schemas-1.0.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="lib" path="/Users/monkhousemacbook6/Documents/Java/Jars/commons-lang3-3.6.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

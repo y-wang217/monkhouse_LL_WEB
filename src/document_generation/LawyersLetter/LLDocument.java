@@ -27,6 +27,8 @@ import document_generation.LawyersLetter.Codes.SectionCode;
 import document_generation.util.CloseDocument;
 import document_generation.util.ManipDocument;
 import document_generation.util.Numbering;
+import document_generation.util.message.ServletMessage;
+import document_generation.util.message.MessageType;
 
 /**
  * Created by Yale Wang
@@ -40,9 +42,9 @@ public class LLDocument extends XWPFDocument {
 		CTSectPr sectPr = this.getDocument().getBody().addNewSectPr();
 		CTPageMar pageMar = sectPr.addNewPgMar();
 		pageMar.setLeft(BigInteger.valueOf(1022L));
-		pageMar.setTop(BigInteger.valueOf(994L));
+		pageMar.setTop(BigInteger.valueOf(994));
 		pageMar.setRight(BigInteger.valueOf(1022L));
-		pageMar.setBottom(BigInteger.valueOf(705L));
+		pageMar.setBottom(BigInteger.valueOf(1022L));
 		init();
 	}
 
@@ -153,8 +155,26 @@ public class LLDocument extends XWPFDocument {
 
 		if (defaultFieldsMap.containsKey("wage_in_dollars")
 				&& defaultFieldsMap.containsKey("settlement")) {
-
-			wage = Integer.parseInt(defaultFieldsMap.get("wage_in_dollars"));
+			if(defaultFieldsMap.get("wage_in_dollars").equals("")){
+				defaultFieldsMap.put("wage_in_dollars", "0");
+			}
+			if(defaultFieldsMap.get("settlement").equals("  ")){
+				defaultFieldsMap.put("settlement", "0");
+			}
+			if(defaultFieldsMap.get("age").equals("")){
+				defaultFieldsMap.put("age", "0");
+			}
+			if(defaultFieldsMap.get("seniority_in_years").equals("")){
+				defaultFieldsMap.put("seniority_in_years", "0");
+			}
+			if(defaultFieldsMap.get("seniority_in_years").equals("")){
+				defaultFieldsMap.put("seniority_in_years", "0");
+			}
+			if(defaultFieldsMap.get("seniority_in_years").equals("")){
+				defaultFieldsMap.put("seniority_in_years", "0");
+			}
+			String yearlyWage = defaultFieldsMap.get("wage_in_dollars");
+			wage = Integer.parseInt(yearlyWage);
 			monthsNoticeOwed = Integer.parseInt(defaultFieldsMap
 					.get("settlement"));
 			dollarsNotceOwed = wage / 12 * monthsNoticeOwed;
@@ -165,6 +185,10 @@ public class LLDocument extends XWPFDocument {
 					Integer.toString((int) (dollarsNotceOwed * 0.2)));
 			defaultFieldsMap.put("dollarsDamagesOwed",
 					Integer.toString((int) (dollarsNotceOwed * 0.25)));
+			
+			//calculate overtime
+			int avgHoursOvertimePerWeek=0, yearsOvertimeWorked=0;
+			int overtimeOwed = (int) ((wage/52)/44 * 1.5 * ((avgHoursOvertimePerWeek-44)*52) * yearsOvertimeWorked);
 		}
 	}
 
@@ -220,6 +244,7 @@ public class LLDocument extends XWPFDocument {
 	// PRIVATE FIELDS
 	private static LinkedHashMap<String, String> fieldsMap;
 	private LLSectionFactory llsf;
+	private ServletMessage message;
 
 	// WRITE SECTIONS TO DOCUMENT
 	public void writeToDoc(LLSection section) {
@@ -424,6 +449,14 @@ public class LLDocument extends XWPFDocument {
 //		test.writeToDoc(s);
 //		CloseDocument.closeSimple(test);
 		addThousandCommas(true,"1234567");
+	}
+
+	public ServletMessage getMessage() {
+		return message;
+	}
+
+	public void setMessage(ServletMessage message) {
+		this.message = message;
 	}
 
 }

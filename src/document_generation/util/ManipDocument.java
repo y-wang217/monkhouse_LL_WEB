@@ -93,10 +93,14 @@ public class ManipDocument {
         foot.createParagraph().createRun().setText("footer");
         return doc;
     }
-
     public static void addImage(XWPFDocument doc, String imageFile) {
 
         XWPFParagraph p = doc.createParagraph();
+    
+        addImage(p, imageFile);
+    }
+
+    public static void addImage(XWPFParagraph p, String imageFile) {
 
         XWPFRun r = createRun(p);
 
