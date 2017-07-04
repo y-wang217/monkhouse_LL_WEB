@@ -61,6 +61,14 @@ public class MovingForwardSection extends LLSection {
 						+ "This offer will remain open until trial. We intend to rely upon this letter as an official Rule "
 						+ "49 offer should the matter go to trial in order to seek substantial indemnity costs.\n");
 
+		//insertText(llpf,doc,content,ParaCode.REG," For a total monetary offer of <total_offer>  at this time. ");
+		
+		insertText(
+				llpf,
+				doc,
+				content,
+				ParaCode.REG,
+				"This offer will remain open until 5 minutes after the start of trial. We intend to rely upon this letter as an official Rule 49 offer should the matter go to trial to seek substantial indemnity costs should we beat it at trial.");
 		this.setContents(content);
 	}
 }

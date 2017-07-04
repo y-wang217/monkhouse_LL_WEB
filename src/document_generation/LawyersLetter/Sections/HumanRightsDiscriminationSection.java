@@ -21,7 +21,47 @@ public class HumanRightsDiscriminationSection extends LLSection{
 
         ArrayList<LLParagraph> content = new ArrayList<>();
         //heading:
-        insertText(llpf, doc, content, ParaCode.HEAD, "Human Rights Discrimination");
+        insertText(llpf, doc, content, ParaCode.HEAD, "Human Rights Violations");
+        
+        insertText(llpf, doc, content, ParaCode.REG, "Employers in Ontario have an obligation to provide accommodation to the point of undue hardship for employees with disabilities. ");
+
+        insertText(llpf, doc, content, ParaCode.REG, "In the absence of an adequate reason for <client_first_name>'s termination, <client_first_name> is concerned that discrimination was a factor in the decision by <employer_first_name> to terminate <objective_pronoun>.%%");
+
+		insertText(llpf, doc, content, ParaCode.REG, "Terminating an employee for a reason contrary to the Human Rights Code constitutes discrimination and is a violation of the Ontario Human Rights Code, R.S.O. 1990 c.H. 19 for which general damages would be appropriate should this matter proceed to trial. Per section 5(1) of the Code, (emphasis added):");
+
+		insertText(llpf, doc, content, ParaCode.QUOTE, "“every person has a right to equal treatment with respect to employment without discrimination because of race, ancestry, place of origin, colour, ethnic origin, citizenship, creed, sex, sexual orientation, gender identity, gender expression, age, record of offences, marital status, family status or disability.”");
+
+		//TODO:chart functionality
+		//chart
+		/*
+		The courts in the recent past have awarded significant damages for violations of the Code, especially in instances where an employer has failed to accommodate:
+
+
+			Case
+			Discrimination
+			Damages Awarded
+			Strudwick v. Applied Consumer & Clinical Evaluations Inc.
+			Failure to accommodate
+			$40,000
+			Wilson v. Solis Mexican Foods Inc.
+			Prohibited ground was a factor in termination
+			$20,000
+			Silvera v. Olympia Jewellery Corporation
+			Harassment, Prohibited ground was a factor in termination
+			$30,000
+			Partridge v. Botony Dental Corporation
+
+			Failure to accommodate, Prohibited ground was a factor in termination
+			$20,000
+
+			In consideration of the jurisprudence and the facts of the case, Patsy would be entitled to a similar quantum of damages for Jobs discriminatory conduct. 
+		 */
+		
+		insertText(llpf, doc, content, ParaCode.REG, "In addition, as per Wilson v. Solis Mexican Foods Inc., 2013 ONSC 5799 (“Wilson”) at paragraph 57 substantial compensation is owed when a prohibited ground is a “significant factor in the decision to terminate.” In Wilson, $20,000.00 was awarded because of the role, which the prohibited ground, disability, played in the termination.%%");
+
+		insertText(llpf, doc, content, ParaCode.REG, "Furthermore, jurisprudence is clear that the protected ground be only one factor in the decision to terminate an employee and does not have to be the sole or primary reason for the termination. As stated in Douglas v. SLH Transport Inc. [2010] C.H.R.D. No 1:%%");
+
+		insertText(llpf, doc, content, ParaCode.QUOTE, "It is not necessary that discriminatory considerations be the sole reason for the actions in issue for a complaint to succeed. It is sufficient that the discrimination be but one basis for the employer’s actions or decisions.%%");
 
         //TODO keep flag in doc to track which paragraph is needed
         if (Objects.equals(doc.getFieldsMap().get("isUseTerminationOnProtectedGround"), "on")) {

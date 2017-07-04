@@ -26,21 +26,17 @@ public class FightTerminationClauseSection extends LLSection {
         //TODO keep flag in doc to track which paragraph is needed
         if(Objects.equals(doc.getFieldsMap().get("isUseBasicStart"), "on")){
             //heading:
-            insertText(llpf,doc,content, ParaCode.HEAD,"Basic Start");
+            insertText(llpf,doc,content, ParaCode.HEAD,"Clause does not Limit to the Minimums");
             //body:
-            insertText(llpf,doc,content,ParaCode.REG, "The termination clause in Alex’s employment contract " +
-                    "is invalid, as it fails to provide for all entitlements required by the Employment Standards Act, " +
-                    "2000, SO 1990 c 41 (“ESA”) and is therefore, unenforceable.");
-
-        }
-        if(Objects.equals(doc.getFieldsMap().get("isUseNoContractingOutOfESA"), "on")){
-
-            //heading:
-            insertText(llpf,doc,content, ParaCode.HEAD,"No Contracting Out of ESA");
-            //body
-            insertText(llpf,doc,content,ParaCode.REG, "In the recent decision of Roy Singh v. Qualified " +
+            insertText(llpf,doc,content,ParaCode.REG, "The termination clause in <client_first_name>'s contract states:");
+            
+            insertText(llpf,doc,content,ParaCode.REG, "<contract_termination_clause_insert>");
+            
+            insertText(llpf,doc,content,ParaCode.REG, "The termination clause in the employment of <client_first_name>'s contract does not sufficiently limit to the ESA minimums.");
+            
+            insertText(llpf,doc,content,ParaCode.REG, "In the decision of Roy Singh v. Qualified " +
                     "Metal Fabricators Ltd., a two-part test was set out to determine the enforceability of a " +
-                    "termination clause:%%");
+                    "termination clause by Justice Stinson:%%");
             insertText(llpf,doc,content,ParaCode.QUOTE, "1. Whether the termination clause rebuts the " +
                     "presumption that the common law notice period continues to apply (i.e., does it replace the ESA), and" +
                     "%%" +
@@ -54,6 +50,11 @@ public class FightTerminationClauseSection extends LLSection {
                     "terminated.  Failing to include the continuation of benefits within the termination clause is " +
                     "an attempt to contract out of the ESA’s requirements of employers and would likely render the " +
                     "clause invalid at law.");
+            
+            insertText(llpf,doc,content,ParaCode.REG, "As per _Wood v. Fred Deeley Imports Ltd._, 2017 ONCA 158 (CanLII), standard to ‘opt’-out of the common law is a high one requiring precise language. The onus is further on the Employer to show that the common law is displaced.");
+            
+            insertText(llpf,doc,content,ParaCode.REG, "The decision in _Wood_ distinguished the Rodin decision, which was the main source of the Oudin decision, thus making both outdated law.");
+            
         }
 
         if(Objects.equals(doc.getFieldsMap().get("isUseNonInclusionOfBenefits"), "on")){
@@ -108,6 +109,23 @@ public class FightTerminationClauseSection extends LLSection {
                     "that termination will only be upon reasonable notice is not, in this case, rebutted.");
             insertText(llpf,doc,content,ParaCode.REG, "This principle has been affirmed by the Ontario Court " +
                     "of Appeal in Wood v. Fred Deeley Imports Ltd. 2017 ONCA 158 and Covenoho v Pendylum Ltd, 2017 ONCA 284. \n");
+            
+            insertText(llpf,doc,content,ParaCode.REG, "Therefore any breach, even a theoretical one, invalidates the contract and provides the employee with reasonable notice.");
+            
+            
+        }
+
+        //TODO: new section, add to jsp
+        if(Objects.equals(doc.getFieldsMap().get("isUseBreachInvalidatesContract"), "on")){
+            //heading:
+            insertText(llpf,doc,content, ParaCode.HEAD,"Breach Invalidates Contract");
+            //body:
+            insertText(llpf,doc,content,ParaCode.REG, "Since <employer_first_name> has breached the contract between the parties by failing to abide by the ESA in their interpretation of the contract, and therefore the contract, it cannot now rely on the terms of same to limit Mark’s notice entitlements. This position is supported in the recent decision _Holmes v. Hatch Ltd._, 2017 ONSC 379, at paragraph 24: ");
+            
+            insertText(llpf,doc,content,ParaCode.QUOTE, "Mr. Holmes relies on _Ebert_ to support his argument that Hatch cannot breach the contract “and then rely on the termination clause which it breached, to limit its liability.” I agree with these submissions. Mr. Holmes is therefore entitled to damages for failure to provide reasonable notice in accordance with the common law. [emphasis added] ");
+            
+            insertText(llpf,doc,content,ParaCode.REG, "Therefore based on the _Holmes_ and _Ebert_ cases the company, having breached the contract, is not able to rely on that contract to limit to the ESA minimums.");
+            
         }
 
         if(Objects.equals(doc.getFieldsMap().get("isUseEmployerCannotRelyOnBreachedTerminationClause"), "on")){

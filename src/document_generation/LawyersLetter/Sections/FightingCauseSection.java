@@ -21,7 +21,23 @@ public class FightingCauseSection extends LLSection{
 
         ArrayList<LLParagraph> content = new ArrayList<>();
         //heading:
-        insertText(llpf,doc,content,ParaCode.HEAD,"Fighting Cause");
+        insertText(llpf,doc,content,ParaCode.HEAD,"Test for Cause Not Met");
+        
+        insertText(llpf,doc,content,ParaCode.REG,"In this case, <employer_first_name> does not have sufficient cause to terminate <client_first_name>'s employment without providing <possessive_pronoun> with notice. <employer_first_name> does not meet the strict legal tests required to justify a termination for cause. As such, <client_first_name> is entitled to reasonable notice for the termination of <possessive_pronoun> employment.%%");
+
+        insertText(llpf,doc,content,ParaCode.REG,"The standard for just cause is very high. As per Regulation 288/01 section 2(1) (3) of the Employment Standards Act, 2000, only a finding of “wilful misconduct” will be sufficient to support a termination with just cause. The punishment must fit the offence and other alternatives, such as progressive discipline, must have been contemplated. For instance in Bravo v. Etobicoke Ironworks Ltd. [2005] O.J. No. 2070, an employee stole company property and was found to have sworn at his boss for no reason. These two incidents combined were not just cause. The termination was not proportionate to the offence and so the argument failed%%"); 
+
+        insertText(llpf,doc,content,ParaCode.REG,"As held in the case of Plester v. Polyone Canada Inc., 2011 ONSC 6068 (CanLII), in order to establish just cause on the basis of wilful misconduct: %%");
+
+        insertText(llpf,doc,content,ParaCode.QUOTE,"[I]n addition to providing that the misconduct is serious, the employer must demonstrate, and this is the aspect of the standard which distinguishes it from ‘just cause’, that the conduct complained of is ‘wilful’.  Careless, thoughtless, heedless, or inadvertent conduct, no matter how serious, does not meet the standard.  Rather, the employer must show that the misconduct was intentional or deliberate.  The employer must show that the employee purposefully engaged in conduct that he or she knew to be serious misconduct.  It is, to put it, colloquially, being bad on purpose.%%");
+
+
+        insertText(llpf,doc,content,ParaCode.REG,"Even in the case of Beard v. Suite Collections Canada Inc. [2006] O.J. No.5736, wherein the Plaintiff, a manager who had been absent from work and accused of sexual harassment of a subordinate, just cause was not established. The court, in their decision to award the Plaintiff notice, referenced the case of Kane v. University of British Columbia, [1980] 1 S.C.R. 1105, in which Dickson J. noted that a “high standard of justice is required when the right to continue in one’s profession or employment is at stake.” The court further went on to note that despite the Plaintiff’s inappropriate conduct, even in his position of seniority, that a clear warning that the behavior was unacceptable had not been provided.%%");
+
+		insertText(llpf,doc,content,ParaCode.REG,"Disciplinary action must be proportional to the alleged misconduct. In other words, the punishment must fit the offence and other alternatives, such as progressive discipline, must have been contemplated. As Justice Iacobucci held in McKinley v. BC Tel, [2001] 2 SCR 161, the proper approach in making this determination is a contextual one, regarding how the dishonesty or misconduct impacts the employment relationship. He described the proper framework as:%%");
+
+		insertText(llpf,doc,content,ParaCode.QUOTE,"An analytical framework that examines each case on its own particular facts and circumstances, and considers the nature and seriousness of the dishonesty in order to assess whether it is reconcilable with sustaining the employment relationship.%%");
+
 
 
         if(Objects.equals(doc.getFieldsMap().get("fighting_cause"), "on")){
@@ -91,6 +107,36 @@ public class FightingCauseSection extends LLSection{
                     "[2005] O.J. No. 2070, an employee stole company property and was found to have sworn at his boss " +
                     "for no reason. These two incidents combined were not just cause. The termination was not " +
                     "proportionate to the offence and so the argument failed. \n");
+            
+            insertText(llpf,doc,content,ParaCode.REG, "As I am sure you are aware, the standard for just cause is very high. For instance in Bravo v. Etobicoke Ironworks Ltd. [2005] O.J. No. 2070, an employee stole company property and was found to have sworn at his boss for no reason. These two incidents combined were not just cause. The termination was not proportionate to the offence and so the argument failed. ");
+            
+            insertText(llpf,doc,content,ParaCode.REG, "Even in the case of Beard v. Suite Collections Canada Inc. [2006] O.J. No.5736, wherein the Plaintiff, a manager who had been absent from work and accused of sexual harassment of a subordinate, just cause was not established. The court, in their decision to award the Plaintiff notice, referenced the case of Kane v. University of British Columbia, [1980] 1 S.C.R. 1105, in which Dickson J. noted that a “high standard of justice is required when the right to continue in one’s profession or employment is at stake.” The court further went on to note that despite the Plaintiff’s inappropriate conduct, even in his position of seniority, that a clear warning that the behavior was unacceptable had not been provided.");
+        
+            insertText(llpf,doc,content,ParaCode.REG, "As I’m sure you are aware, the standard for just cause is very high. The court in Boulet v. Federated Co-operatives Ltd. [2001] M.J. No.306 outlined the following criteria to be met in order for an employer to rely on performance issues as the reason for termination at paragraph 5 of their decision:");
+            
+            insertText(llpf,doc,content,ParaCode.QUOTE, "(a) the level of the job performance required, (b) that the standard was communicated to the employee, (c) that suitable instruction and/or supervision was given to enable the employee to meet the standard, (d) the employee was incapable of meeting the standard, and (e) the employee was warned that failure to meet the standard would result in dismissal.");
+            
+            insertText(llpf,doc,content,ParaCode.REG, "In Henson v. Champion Feed Services Ltd., [2005] A.J. No. 323, and reiterated in Gillespie v. 1200333 Alberta Ltd., 2001 ABPC (CanLii), the Courts have discussed the requirement for progressive disciple in cases of cumulative cause for termination. Particularly, at paragraph 21 Gillespie states:");
+            
+            insertText(llpf,doc,content,ParaCode.QUOTE, "[W]here cumulative cause for dismissal for incompetence is alleged, the employer must prove:1. The employee was given express and clear warnings about his performance;2. The employee was given a reasonable opportunity to improve his performance after the warning was issued;3. Notwithstanding the foregoing, the employee failed to improve his performance;4. The cumulative failings “would prejudice the proper conduct of the employer’s business.");
+            
+            insertText(llpf,doc,content,ParaCode.REG, "As held in the case of Plester v. Polyone Canada Inc., 2011 ONSC 6068 (CanLII), in order to establish just cause on the basis of misconduct:");
+            
+            insertText(llpf,doc,content,ParaCode.REG, "[I]n addition to providing that the misconduct is serious, the employer must demonstrate, and this is the aspect of the standard which distinguishes it from ‘just cause’, that the conduct complained of is ‘wilful’.  Careless, thoughtless, heedless, or inadvertent conduct, no matter how serious, does not meet the standard.  Rather, the employer must show that the misconduct was intentional or deliberate.  The employer must show that the employee purposefully engaged in conduct that he or she knew to be serious misconduct.  It is, to put it, colloquially, being bad on purpose.");
+            
+            insertText(llpf,doc,content,ParaCode.REG, "At common law, proportionality must be applied to terminations. In other words, the punishment must fit the offence and other alternatives, such as progressive discipline, must have been contemplated. As Justice Iacobucci held in McKinley v. BC Tel, [2001] 2 SCR 161, the proper approach in making this determination is a contextual one, regarding how the dishonesty or misconduct impacts the employment relationship. He described the proper framework as: ");
+            
+            insertText(llpf,doc,content,ParaCode.QUOTE, "An analytical framework that examines each case on its own particular facts and circumstances, and considers the nature and seriousness of the dishonesty in order to assess whether it is reconcilable with sustaining the employment relationship.");
+            
+            insertText(llpf,doc,content,ParaCode.QUOTE, "For instance, in Bravo v. Etobicoke Ironworks Ltd. [2005] O.J. No. 2070, an employee stole company property and was found to have sworn at his boss for no reason. These two incidents combined were not just cause. The termination was not proportionate to the offence and so the argument failed.");
+            
+            insertText(llpf,doc,content,ParaCode.HEAD, "Alternative: Not Wilful Misconduct");
+            
+            insertText(llpf,doc,content,ParaCode.REG, "Even in the alternative that it is found to be cause it is the position of the Plaintiff that the actions alleged would not be found to be sufficient to displace the ESA notice period.");
+            
+            insertText(llpf,doc,content,ParaCode.REG, "As per Regulation 288/01 section 2(1) (3) of the Employment Standards Act, 2000, only a finding of “wilful misconduct” will be sufficient to support a termination with just cause. The punishment must fit the offence and other alternatives, such as progressive discipline, must have been contemplated.");
+            
+            
         }
 
         if(Objects.equals(doc.getFieldsMap().get("isUseGrossIncompetence"), "on")){
@@ -98,7 +144,7 @@ public class FightingCauseSection extends LLSection{
             insertText(llpf,doc,content, ParaCode.HEAD,"Performance Issues - Gross Incompetence");
             //body:
             insertText(llpf,doc,content,ParaCode.REG, "The standard for cause terminations based on performance is "
-            		+ "higher still, the standard is gross incompetence. For example, as cited in Brien v. Niagara "
+            		+ "higher than normal just cause, the standard is gross incompetence. For example, as cited in Brien v. Niagara "
             		+ "Motors Ltd. [2008] O.J. No. 3246 at para. 226:");
             insertText(llpf,doc,content,ParaCode.QUOTE, "…The level of incompetence to justify summary " +
                     "dismissal is that of “gross incompetence”. If incompetence is not gross, then notice must be " +

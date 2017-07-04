@@ -30,9 +30,11 @@ public class InducementSection extends LLSection{
                 "entitled to an elongated notice period, taking into account the seniority she accrued from her " +
                 "previous employment, as the plaintiff relied on the defendant’s promises of a substantial increase " +
                 "in salary, a secure position, and “tremendous opportunities” in a company that planned on entering " +
-                "new global markets. Magdy’s situation is similar, as he was promised a role with increased earnings, " +
+                "new global markets. <client_first_name>’s situation is similar, as he was promised a role with increased earnings, " +
                 "an opportunity to move up through the company, and job security in an organization that supposedly " +
                 "had a great future. \n");
+        insertText(llpf,doc,content,ParaCode.REG, "It is the position of <client_first_name> that his previous seniority should be combined with his present seniority for the purpose of calculating the _Bardal_ Factors.");
+
 
         this.setContents(content);
     }

@@ -22,18 +22,24 @@ public class HarassmentSection extends LLSection {
         ArrayList<LLParagraph> content = new ArrayList<>();
         //heading:
         insertText(llpf, doc, content, ParaCode.HEAD, "Harassment");
+        
+        insertText(llpf, doc, content, ParaCode.REG, "While employed with <employer_first_name>, <client_first_name> was subjected repeated and ongoing harassment. <employer_first_name> was aware of the harassment, or at the very least ought to have been aware of the harassment but did not take action to prevent it. This behaviour was effectively condoned by <employer_first_name>.%%");
+
+        insertText(llpf, doc, content, ParaCode.REG, "Workplace harassment is contrary to the Occupational Health and Safety Act (OHSA) and “Bill 168”. On or about [time of sample event] <client_first_name> was subjected to [description of harassment]. Similar occurrences often took place, <client_first_name> described this behaviour as indicative of the managerial style of <employer_first_name>. This harassment was present throughout the tenure of <client_first_name>. It is my position that <employer_first_name> had failed to prevent harassment in the workplace, to prepare and maintain a workplace harassment policy and to enforce that policy effectively.%%");
+
 
         //TODO keep flag in doc to track which paragraph is needed
         if (Objects.equals(doc.getFieldsMap().get("isUseOhsaBill168"), "on")) {
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Harassment - OHSA / Bill 168");
             //body:
-            insertText(llpf,doc,content,ParaCode.REG, "<client_first_name> informs me that subjective_pronoun also experienced " +
+            //TODO: something about this ordering is wrong
+            insertText(llpf,doc,content,ParaCode.REG, "The Plaintiff also experienced " +
                     "harassment in the workplace while at <employer_first_name>, contrary to the Occupational Health and Safety " +
                     "Act (OHSA) and “Bill 168”. On or about [time of sample event] <client_first_name> was subjected to " +
                     "[description of harassment]. Similar occurrences often took place, <client_first_name> described this " +
                     "behaviour as indicative of the managerial style of <employer_first_name>. This harassment was present " +
-                    "throughout <client_first_name>]’s tenure. It is my position that <employer_first_name> had failed to prevent harassment " +
+                    "throughout <client_first_name>’s tenure. It is my position that <employer_first_name> had failed to prevent harassment " +
                     "in the workplace, to prepare and maintain a workplace harassment policy and to enforce that " +
                     "policy effectively. \n");
         }
@@ -42,7 +48,7 @@ public class HarassmentSection extends LLSection {
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Punitive Damages - Harassment");
             //body:
-            insertText(llpf,doc,content,ParaCode.REG, "\n" +
+            insertText(llpf,doc,content,ParaCode.REG, 
                     "Furthermore, the harassment <client_first_name> endured while at <employer_first_name> is in violation of the " +
                     "Occupational Health and Safety Act, R.S.O. 1990 c.O.1, as well as “Bill 168”, for which " +
                     "punitive, aggravated and/or moral damages are rightfully awarded." +

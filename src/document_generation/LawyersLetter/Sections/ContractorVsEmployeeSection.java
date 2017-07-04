@@ -28,12 +28,13 @@ public class ContractorVsEmployeeSection extends LLSection{
 //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Independent Contractor vs Employee");
             //body:
-            insertText(llpf,doc,content,ParaCode.REG, "Despite the fact that <employer_first_name> labelled <client_first_name> an " +
+            insertText(llpf,doc,content,ParaCode.REG, "Despite the fact that <employer_first_name> called <client_first_name> an " +
                     "independent contractor, based upon the relationship carried on between the parties, <client_first_name> was " +
-                    "actually an employee.%%" +
-                    "Jurisprudence is clear that it is the substance of the relationship that determines the employment " +
+                    "actually an employee.");
+                    
+			insertText(llpf,doc,content,ParaCode.REG,"Jurisprudence is clear that it is the substance of the relationship that determines the employment " +
                     "status of the worker. In _Mckee v. Reid’s Heritage Homes Ltd._, 2009 ONCA 916, the court outlined the " +
-                    "following five principles for determining whether a worker is an employee or a contractor:",true);
+                    "following five principles for determining whether a worker is an employee or a contractor:");
 
             insertText(llpf,doc,content,ParaCode.QUOTE, "1. Whether or not the agent was limited exclusively " +
                     "to the service of the principal;%%" +
@@ -49,6 +50,9 @@ public class ContractorVsEmployeeSection extends LLSection{
 
                     "5. Whether or not the activity of the agent is part of the business organization of the principal " +
                     "for which he works. In other words, whose business is it?");
+            insertText(llpf,doc,content,ParaCode.REG, "In _McKee_ the Plaintiff was incorporated, hired their own sub-contractors, and that the Defendant “pretty well left me on my own to do what I was supposed to do.” Nevertheless they were found to be an employee.");
+            		
+			insertText(llpf,doc,content,ParaCode.REG,"In the class action certification decision of _Sondhi v. Deloitte_, 2017 ONSC 2122 stands for the proposition that the Plaintiff is able to propose the test that is most suitable for them, with the underlying question being “whose business is it” at Paragraph 26. In this case it is clear that the ‘business’ in question was that of the Defendant and not the Plaintiff.");
 
         }
         if(Objects.equals(doc.getFieldsMap().get("contractor_vs_emp"), "on")){
@@ -63,6 +67,8 @@ public class ContractorVsEmployeeSection extends LLSection{
             insertText(llpf,doc,content,ParaCode.QUOTE, "The next step, required only if the first step results " +
                     "in a contractor conclusion, determines \twhether the contractor is independent or dependent, for " +
                     "which a worker’s exclusivity is \tdeterminative, as it demonstrates economic dependence.");
+            insertText(llpf,doc,content,ParaCode.REG, "The case of _Keenan v. Canac Kitchens Ltd._, 2016 ONCA 79 stands for the proposition that dependent contractors are owed the same amount of notice as employees.");
+
             insertText(llpf,doc,content,ParaCode.REG, "Based on these facts and the above jurisprudence, " +
                     "a court may deem <client_first_name> to be an employee or a the very least a dependent contractor, which " +
                     "would still entitle her to payment up to the end of her term. Furthermore, should the court find " +

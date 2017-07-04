@@ -42,22 +42,13 @@ public class AppropriateNoticePeriodSection extends LLSection {
         if(Integer.parseInt(doc.getFieldsMap().get("age"))>45){
 
             //heading:
-            insertText(llpf,doc,content, ParaCode.HEAD,"Age");
+            insertText(llpf,doc,content, ParaCode.HEAD,"Age as Elongating Factor");
 
             //body:
-            insertText(llpf,doc,content,ParaCode.REG, "Furthermore, <client_first_name>’s age is an important factor. " +
-                    "In Law v. Canada (Minister of Employment and Immigration) (1999) 170 D.L.R. (4th) 1 (S.C.C.) it " +
-                    "was stated by the Supreme Court at par 101 that:");
-            insertText(llpf,doc,content,ParaCode.QUOTE, "...the increasing difficulty with which one can find " +
-                    "and maintain employment as one grows older is a matter of which a court may appropriately take " +
-                    "judicial notice. Indeed, this Court has often recognized age as a factor in the context of " +
-                    "labour force attachment and detachment. For example, writing for the majority in McKinney, supra, " +
-                    "La   Forest J. stated as follows, at p. 299:" +
-                    "%%" +
-                    "Barring specific skills, it is generally known that persons over 45 have more difficulty " +
-                    "finding work than others. They do not have the flexibility of the young, a disadvantage " +
-                    "often accentuated by the fact that the latter are frequently more recently trained in the " +
-                    "more modern skills.");
+            insertText(llpf,doc,content,ParaCode.REG, "<client_first_name>’s age is an important factor. " +
+                    "_In Paquette v. TeraGo Networks Inc._, 2015 ONSC 4189 (varied to provide the employee bonus on appeal but not challenged on this point) justice Perell stated:");
+            insertText(llpf,doc,content,ParaCode.QUOTE, "[31]           Generally speaking, a longer notice period will be justified for older long-term employees, who may be at a competitive disadvantage in securing new employment because of their age. In _McKinney v. University of Guelph_, 1990 CanLII 60 (SCC), [1990] 3 S.C.R. 229 at para. 92, Justice La Forest stated: %%"
+            		+"Barring specific skills, it is generally known that persons over 45 have more difficulty finding work than others. They do not have the flexibility of the young, a disadvantage often accentuated by the fact that the latter are frequently more recently trained in the more modern skills. Their difficulty is also influenced by the fact that many in that age range are paid more and will generally serve a shorter period of employment than the young, a factor that is affected not only by the desire of many older people to retire but by retirement policies both in the private and public sectors.");
             insertText(llpf,doc,content,ParaCode.REG, "At the time in <possessive_pronoun> life when most Canadians would be " +
                     "contemplating retirement, <client_first_name> has found <object_pronoun>self dismissed without an adequate " +
                     "severance package after <seniority_in_years> years of productive service with <employer_first_name>, and having to seek " +
@@ -67,11 +58,11 @@ public class AppropriateNoticePeriodSection extends LLSection {
         if(Objects.equals(doc.getFieldsMap().get("isUseNonSkilledPositions"), "on")){
 
             //heading:
-            insertText(llpf,doc,content, ParaCode.HEAD,"\'Non-skilled positions\'");
+            insertText(llpf,doc,content, ParaCode.HEAD,"Position of Employee");
 
             //body:
-            insertText(llpf,doc,content,ParaCode.REG, "Courts have also opened the possibility for employees " +
-                    "in administrative positions to be provided with a longer reasonable notice period.  In Di Tomaso " +
+            insertText(llpf,doc,content,ParaCode.REG, "The case-law is clear that while employees in higher levels get a ‘bump up’ that those in lower levels are not given a ‘cap’ or a decrease in notice.%%"
+					+"For instance inn Di Tomaso " +
                     "v. Crown Metal Packaging Canada LP, 2011 ONCA 469, the Court of Appeal for Ontario held that " +
                     "employees in non-skilled or clerical positions could be awarded with an elongated notice period " +
                     "despite an employer’s attempt to use character of employment to minimize the reasonable notice " +
@@ -90,7 +81,10 @@ public class AppropriateNoticePeriodSection extends LLSection {
             insertText(llpf,doc,content,ParaCode.QUOTE, "The proposition that junior employees have an easier " +
                     "time finding suitable alternate employment is no longer, if it ever was, a matter of common " +
                     "knowledge. Indeed, it is an empirically challenged proposition that cannot be confirmed by " +
-                    "resort to sources of indisputable accuracy.\n");
+                    "resort to sources of indisputable accuracy.");
+            
+            insertText(llpf,doc,content,ParaCode.REG, "For instance in _Drysdale v. Panasonic Canada Inc._, 2015 ONSC 6878 a 23 year labourer was given 22 months notice by Justice Lederman. ");
+
         }
 
         if(Objects.equals(doc.getFieldsMap().get("isUseEconomicDownturn"), "on")){
@@ -99,8 +93,8 @@ public class AppropriateNoticePeriodSection extends LLSection {
             insertText(llpf,doc,content, ParaCode.HEAD,"Economic Downturn");
 
             //body:
-            insertText(llpf,doc,content,ParaCode.REG, "Warren faces the challenge of searching for new " +
-                    "employment in a poor economic climate in Ontario. In Paquette v. TeraGo Networks Inc., 2015 " +
+            insertText(llpf,doc,content,ParaCode.REG, "<client_first_name> faces the challenge of searching for new " +
+                    "employment in a poor economic climate in Ontario. In _Paquette v. TeraGo Networks Inc._, 2015 " +
                     "ONSC 4189 (CanLII), the Court recognized that a poor economic climate may elongate an employee’s " +
                     "notice period. South-western Ontario and the GTA, in particular, have experienced a regional " +
                     "economic downturn, which was judicially recognized in Zoldowski v. Strongco Corporation, 2015 " +

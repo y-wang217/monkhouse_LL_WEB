@@ -20,19 +20,19 @@ public class PensionsSection extends LLSection {
 
         ArrayList<LLParagraph> content = new ArrayList<>();
         //heading:
-        insertText(llpf,doc,content, ParaCode.HEAD,"Pensions");
+        insertText(llpf,doc,content, ParaCode.HEAD,"Defined Benefit Pension Grow-In");
 
         //body:
-        //TODO: The Great-West Life Assurance Companyinsurance company
-        insertText(llpf,doc,content,ParaCode.REG, "<client_first_name> was enrolled in <employer_first_name>’s Defined Benefit " +
-                "Pension Plan under The Great-West Life Assurance Company (\"Great West Life\"). As per section " +
+        insertText(llpf,doc,content,ParaCode.REG, "<client_first_name> was enrolled in the Defined Benefit Pension Plan of <employer_first_name>" +
+                "As per section " +
                 "74 of the Pension Benefits Act, R.S.O. 1990, Chapter P.8, he is entitled to <possessive_pronoun> pension grow-in " +
-                "benefits given that the sum of <possessive_pronoun> age (39 years old) and number of years to the date the Plan is " +
-                "wound up (16) equal 55 points.  %%" +
+                "benefits given that the sum of <possessive_pronoun> age (<age> years old) and <seniority_in_years> years of service equal 55 points.  %%" +
                 "%%" +
                 "Therefore, as a result of being terminated without sufficient cause, <client_first_name> would be entitled " +
-                "to a lump sum amount of the pension grow-in benefits he would have received till the retirement age " +
-                "of sixty-five (65).\n");
+                "to a pension grow-in such that he would be eligible for his unreduced pension at the regular time.");
+
+        insertText(llpf,doc,content,ParaCode.REG, "Please confirm if you agree that John is eligible for unreduced grow-in pension.");
+
 
         this.setContents(content);
     }

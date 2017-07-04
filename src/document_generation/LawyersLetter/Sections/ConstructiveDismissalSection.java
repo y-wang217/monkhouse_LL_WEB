@@ -22,6 +22,9 @@ public class ConstructiveDismissalSection extends LLSection{
         ArrayList<LLParagraph> content = new ArrayList<>();
         //heading:
         insertText(llpf,doc,content, ParaCode.HEAD,"Constructive Dismissal");
+        
+        insertText(llpf,doc,content, ParaCode.REG,"It is my position that <client_first_name> has been constructively dismissed as a result of <employer_first_name>'s breach of the employment agreement. Through its actions, <employer_first_name> has demonstrated an intention not to be bound by the terms of the agreement. For <possessive_pronoun> constructively dismissal, <client_first_name> is entitled to reasonable notice for the termination of <possessive_pronoun> employment.%%");
+
 
         //TODO keep flag in doc to track which paragraph is needed
         if(Objects.equals(doc.getFieldsMap().get("isUseWageDeduction"), "on")){
@@ -40,7 +43,7 @@ public class ConstructiveDismissalSection extends LLSection{
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Constructive Dismissal - Location");
             //body
-            insertText(llpf,doc,content,ParaCode.REG, "The majority held in Reynolds v. Innopac Inc., 1998 CanLII 3558 (ON CA) that a change in location of work that required a substantially greater travel time would have substantially changed the way in which the employee carried out <possessive_pronoun> job and duties. In Weselan v. Totten Sims Hubicki Associates Ltd. (1997) Ltd. (2001), 16 CCEL (3d) 184 (Ont CA) it was found that a required travel time of an hour and a half and the annual cost associated with such travel would constitute a significant change in the travel time and therefore constituted constructive dismissal. \n");
+            insertText(llpf,doc,content,ParaCode.REG, "The majority held in Reynolds v. Innopac Inc., 1998 CanLII 3558 (ON CA) that a change in location of work that required a substantially greater travel time would have substantially changed the way in which the employee carried out <possessive_pronoun> job and duties. In Weselan v. Totten Sims Hubicki Associates Ltd. (1997) Ltd. (2001), 16 CCEL (3d) 184 (Ont CA) it was found that increased travel time of an hour and a half and the annual cost associated with such travel would constitute a significant change in the travel time and therefore constituted constructive dismissal. \n");
 
         }
         if(Objects.equals(doc.getFieldsMap().get("isUseBreachOfFundamentalImpliedTerm"), "on")){
@@ -53,7 +56,7 @@ public class ConstructiveDismissalSection extends LLSection{
         }
         if(Objects.equals(doc.getFieldsMap().get("isUseIntolerable"), "on")){
             //heading:
-            insertText(llpf,doc,content, ParaCode.HEAD,"Constructive Dismissal - Intolerable");
+            insertText(llpf,doc,content, ParaCode.HEAD,"Constructive Dismissal - Intolerable Workplace");
             //body:
             insertText(llpf,doc,content,ParaCode.REG, "The courts may find that an employee has been " +
                     "constructively dismissed where the employer has made continued employment intolerable. In " +
@@ -116,7 +119,7 @@ public class ConstructiveDismissalSection extends LLSection{
                     "treat the employment contract as at an end, and to recover at least damages in lieu of reasonable " +
                     "notice.\n");
             insertText(llpf,doc,content,ParaCode.REG, "As such, it is my position that given a holistic " +
-                    "view of the circumstances at hand, Crystal has been constructively dismissed and is entitled to " +
+                    "view of the circumstances at hand, <client_first_name> has been constructively dismissed and is entitled to " +
                     "a reasonable notice period of her termination of employment.");
         }
         if(Objects.equals(doc.getFieldsMap().get("isUseRemovalFromManagementPosition"), "on")){

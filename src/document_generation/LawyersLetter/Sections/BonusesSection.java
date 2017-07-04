@@ -23,8 +23,8 @@ public class BonusesSection extends LLSection {
         insertText(llpf,doc,content, ParaCode.HEAD,"Bonuses");
 
         //body:
-        insertText(llpf,doc,content,ParaCode.REG, "It is my position that compensation for <client_first_name>'s " +
-                "bonus ought to be included in <possessive_pronoun> reasonable notice period from <employer_first_name>, regardless of whether " +
+        insertText(llpf,doc,content,ParaCode.REG, "It is my position that compensation for the bonus of <client_first_name> " +
+                "ought to be included in <possessive_pronoun> reasonable notice period from <employer_first_name>, regardless of whether " +
                 "he is considered to be actively employed at the time it is paid out. This position is supported " +
                 "in the case of _Schumacher v. Toronto Dominion Bank_, [1997] O.J. No. 2004, wherein the Court " +
                 "determined that the Plaintiff’s involuntariness to comply with the requirement to be actively " +
