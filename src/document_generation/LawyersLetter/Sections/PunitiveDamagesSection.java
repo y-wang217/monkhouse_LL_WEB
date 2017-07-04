@@ -22,6 +22,9 @@ public class PunitiveDamagesSection extends LLSection {
         ArrayList<LLParagraph> content = new ArrayList<>();
         //heading:
         insertText(llpf, doc, content, ParaCode.HEAD, "Punitive Damages");
+        
+        insertText(llpf, doc, content, ParaCode.REG, "For its actions, it is my position that <employer_first_name> would be liable for punitive, aggravated, Bhasin, and/or moral damages. In this case, <employer_first_name> has committed independent actionable wrongs for which the award of additional damages would be warranted.%%");
+
 
         //TODO keep flag in doc to track which paragraph is needed
         if (Objects.equals(doc.getFieldsMap().get("isUseBadFaith"), "on")) {
