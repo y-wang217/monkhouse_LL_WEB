@@ -173,7 +173,9 @@ public class LLDocument extends XWPFDocument {
 			if(defaultFieldsMap.get("seniority_in_years").equals("")){
 				defaultFieldsMap.put("seniority_in_years", "0");
 			}
+			
 			String yearlyWage = defaultFieldsMap.get("wage_in_dollars");
+			yearlyWage = yearlyWage.replaceAll(",", "");
 			wage = Integer.parseInt(yearlyWage);
 			monthsNoticeOwed = Integer.parseInt(defaultFieldsMap
 					.get("settlement"));
@@ -186,9 +188,33 @@ public class LLDocument extends XWPFDocument {
 			defaultFieldsMap.put("dollarsDamagesOwed",
 					Integer.toString((int) (dollarsNotceOwed * 0.25)));
 			
+			//overtime:
+			
 			//calculate overtime
-			int avgHoursOvertimePerWeek=0, yearsOvertimeWorked=0;
-			int overtimeOwed = (int) ((wage/52)/44 * 1.5 * ((avgHoursOvertimePerWeek-44)*52) * yearsOvertimeWorked);
+			if(defaultFieldsMap.get("hoursWorkedPerWeek").equals("")){
+				defaultFieldsMap.put("hoursWorkedPerWeek", "0");
+			}
+			if(defaultFieldsMap.get("hourlyWage").equals("")){
+				defaultFieldsMap.put("hourlyWage", "0");
+			}
+			
+			int yearsWorked=Integer.parseInt(defaultFieldsMap.get("seniority_in_years"));
+			int hoursWorkedPerWeek=Integer.parseInt(defaultFieldsMap.get("hoursWorkedPerWeek"));
+			double hourlyWage= Math.round((wage/52)/44*100.0)/100.0;
+			int hoursOvertimeOwed=(hoursWorkedPerWeek-40)*52*yearsWorked;
+			double overtimeHourlyWage=Math.round(hourlyWage*1.5*100.0)/100.0;
+			double overtimeOwed = (overtimeHourlyWage) * (hoursOvertimeOwed);
+			double alternativeOvertimeOwed = overtimeOwed*2/3;
+			overtimeOwed = Math.round(overtimeOwed*100.0)/100.0;;
+			alternativeOvertimeOwed= Math.round(alternativeOvertimeOwed*100.0)/100.0;;
+			defaultFieldsMap.put("overtimeOwed",
+					String.format("%,.2f", overtimeOwed));
+			defaultFieldsMap.put("hoursOvertimeOwed",
+					Integer.toString(hoursOvertimeOwed));
+			defaultFieldsMap.put("overtimeHourlyWage",
+					String.format("%,.2f", overtimeHourlyWage));
+			defaultFieldsMap.put("alternativeOvertimeOwed",
+					String.format("%,.2f", alternativeOvertimeOwed));
 		}
 	}
 
@@ -248,7 +274,6 @@ public class LLDocument extends XWPFDocument {
 
 	// WRITE SECTIONS TO DOCUMENT
 	public void writeToDoc(LLSection section) {
-
 		for (LLParagraph p : section.getContents()) {
 			if (p.getParaType().equals(ParaCode.EMPTY)) {
 				break;
@@ -273,8 +298,8 @@ public class LLDocument extends XWPFDocument {
 				// handle italics
 				if (s.indexOf('_') >= 0) {
 					XWPFParagraph xwpfParagraph = this.createParagraph();
-					handleItalics(xwpfParagraph, s, findItalics(s));
-					break;
+					//handleItalics(xwpfParagraph, s, findItalics(s));
+					//break;
 				}
 				if (p.getParaType().equals(TAB))
 					ManipDocument.tab(r);

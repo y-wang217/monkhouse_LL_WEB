@@ -24,5 +24,6 @@ $(document).ready(function(){
 			<p id="ltd">Moving Forward in the context of LTD: 		<input type="checkbox" name="isUseMovingForwardLtd"></p>
 		</div><br>
 	<input type="submit">
+	
 </body>
 </html>

@@ -32,7 +32,7 @@ public class OvertimeSection extends LLSection {
                     "title only. <client_first_name> informs me that <possessive_pronoun> position frequently involved sales oriented tasks. " +
                     "Such sales oriented tasks were of a non-managerial and non-supervisory nature and had been " +
                     "performed on a non-irregular and non-exceptional basis. <client_first_name> held a position that demanded " +
-                    "consistent performance and long hours. <client_first_name> worked approximately sixty (60) hours per " +
+                    "consistent performance and long hours. <client_first_name> worked approximately (<hoursWorkedPerWeek>) hours per " +
                     "week. <client_first_name> was not provided additional compensation for the time that he had worked in " +
                     "excess of forty (40) hours. As per section 169 (1) of the CLC (emphasis added):");
             insertText(llpf,doc,content,ParaCode.QUOTE, "Except as otherwise provided by or under this Division%%" +
@@ -49,13 +49,13 @@ public class OvertimeSection extends LLSection {
                     "made pursuant to section 175, be paid for the overtime at a rate of wages not less than one " +
                     "and one-half times his regular rate of wages.");
             insertText(llpf,doc,content,ParaCode.REG, "<client_first_name> informs me that he worked approximately " +
-                    "sixty (60) hours per week on average while employed by <employer_first_name>. This equates to approximately " +
-                    "6,240 overtime hours since <client_first_name> had been promoted to Technical Sales engineering Manager. " +
-                    "Accounting for <client_first_name>’s rate of overtime pay ($84.21 x 1.5 or $126.31/hour), this would equate " +
-                    "to a total amount owing of $788,174.40. %%" +
+                    "(<hoursWorkedPerWeek>) hours per week on average while employed by <employer_first_name>. This equates to approximately " +
+                    "<hoursOvertimeOwed> overtime hours since <client_first_name> had been promoted to Technical Sales engineering Manager. " +
+                    "Accounting for <client_first_name>’s rate of overtime pay ($<hourlyWage> x 1.5 or $<overtimeHourlyWage>/hour), this would equate " +
+                    "to a total amount owing of $<overtimeOwed>. %%" +
                     "In the alternative, <client_first_name> would, at the very least, be entitled to ‘straight time’ for " +
                     "these hours worked, in accordance with the principle of Quantum Meruit, which would equate " +
-                    "to $525,470.40 owing to <client_first_name>.");
+                    "to $<alternativeOvertimeOwed> owing to <client_first_name>.");
         }
 
         if (Objects.equals(doc.getFieldsMap().get("isUsePerformanceOntario"), "on")) {

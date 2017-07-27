@@ -113,11 +113,26 @@ $(document).ready(function() {
     $("#isOvertime").click(function(){
     	$("#ot_div").toggle(this.checked);
     });
+    $("#isBonus").click(function(){
+    	$("#bonus_div").toggle(this.checked);
+    });
+    //change value: on click, text dissappears
+    $("#employment_clause")
+    .focus(function() {
+          if (this.value === this.defaultValue) {
+              this.value = '';
+          }
+    })
+    .blur(function() {
+          if (this.value === '') {
+              this.value = this.defaultValue;
+          }
+  	});
 });
 </script>
 
 <style>
-#c_v_emp, #c_dis, #f_cause, #f_t_clause, #a_n_period, #hment, #h_r_dis, #p_dmgs, #ot{
+#c_v_emp, #c_dis, #f_cause, #f_t_clause, #a_n_period, #hment, #h_r_dis, #p_dmgs, #ot, #bonus_clause{
 	padding-left:5em
 }
 
@@ -178,8 +193,15 @@ p{
     	</select>
     	
     	<p>This letter is a: <select name="isDraft">
-		<option value="true" selected="selected">Draft LP</option>
-		<option value="false">Final LP</option>
+		<option value="true" >Draft LP</option>
+		<option value="false" selected="selected">Final LP</option>
+    	</select>
+    	
+    	<br>
+    	<br>
+    	<p>Jurisdiction: <select name="jurisdiction">
+    	<option>Federally regulated</option>
+    	<option>Provincially regulated</option>
     	</select>
 	</div>
 	
@@ -206,7 +228,11 @@ p{
 		
 		
 	<p style="font-size:20px"> Addressing the recipient, OC/HR department: </p>
-	<p class="spaced"> Recipient's first name: <input type="text" name="OC_HR_first_name"> Recipient's last name: <input type="text" name="OC_HR_last_name"> <br>
+	<p class="spaced"> OC vs HR: <select name="OCvsHR">
+		<option value="oc">OC (lawyer)</option>
+		<option value="hr">HR (employer>)</option>
+		</select><br>
+		Recipient's first name: <input type="text" name="OC_HR_first_name"> Recipient's last name: <input type="text" name="OC_HR_last_name"> <br>
 		Recipient's job title: <input type="text" name="OC_HR_job_title"> <br>
 		Company's Legal Name: <input type="text" name="OC_HR_company_name">
 		Employer Short Form Name: <input type="text" name="employer_first_name"> <br>
@@ -261,14 +287,23 @@ p{
 	
 	Fighting Termination Clause: <input type="checkbox" name="fight_termination_clause" id="isFight_termination_clause">
 		<div id="f_t_clause_div" style="display:none">
-			<p id="f_t_clause">Basic Start: 						<input type="checkbox" name="isUseBasicStart"></p>
+			<p id="f_t_clause">Basic Start: 						<input type="checkbox" name="isUseBasicStart" checked></p>
+			<p id="f_t_clause">Employment Clause Insert:			</p>
+			<p id="f_t_clause"><textarea id="employment_clause" rows="4" cols="50" name="contract_termination_clause_insert">
+Paste in employment clause here: 
+			</textarea></p>
 			<p id="f_t_clause">No contracting out of ESA: 			<input type="checkbox" name="isUseNoContractingOutOfESA"></p>
 			<p id="f_t_clause">Opting Out of Common Law Notice: 	<input type="checkbox" name="isUseOptingOutOfCommonLawNotice"></p>
 			<p id="f_t_clause">Non-Inclusion of Benefits: 			<input type="checkbox" name="isUseNonInclusionOfBenefits"></p>
 			<p id="f_t_clause">Potential Violations: 				<input type="checkbox" name="isUsePotentialViolations"></p>
 		</div><br>
 		
-	Bonuses: <input type="checkbox" name="bonus"> <br>
+	Bonuses: <input type="checkbox" name="bonus" id="isBonus"> <br>
+		<div id="bonus_div" style="display:none">
+			<p id="bonus_clause">Yearly Bonus Amt:							<input type="text" name="yearly_bonus"></p>
+			<p id="bonus_clause">No. of months worked without bonus paid:	<input type="text" name="months_bonus_owed"></p>
+		</div>
+			
 	Pension: <input type="checkbox" name="pension"> <br>
 		
 	Inducement: <input type="checkbox" name="inducement"> <br>
@@ -299,6 +334,7 @@ p{
 	Overtime: <input type="checkbox" name="overtime" id="isOvertime">
 		<div id="ot_div" style="display:none">
 			<p id="ot">CLC: 					<input type="checkbox" name="isUseClc"></p>
+			<p id="ot_calc">Hours worked per week: <input type="text" name="hoursWorkedPerWeek"></p>
 			<p id="ot">Performance Ontario: 	<input type="checkbox" name="isUsePerformanceOntario"></p>
 		</div><br>
 	
