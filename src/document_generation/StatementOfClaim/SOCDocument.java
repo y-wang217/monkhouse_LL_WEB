@@ -12,9 +12,13 @@ import org.apache.poi.xwpf.usermodel.XWPFRun;
 import document_generation.TextUI;
 import document_generation.LawyersLetter.LLDocument;
 import document_generation.LawyersLetter.LLParagraph;
+import document_generation.LawyersLetter.LLParagraphFactory;
 import document_generation.LawyersLetter.LLSection;
 import document_generation.LawyersLetter.LLSectionFactory;
 import document_generation.LawyersLetter.Codes.ParaCode;
+import document_generation.StatementOfClaim.Sections.BackgroundSection;
+import document_generation.StatementOfClaim.Sections.StatementOfClaimStartSection;
+import document_generation.StatementOfClaim.Sections.ThePartiesSection;
 import document_generation.util.ManipDocument;
 import document_generation.util.Numbering;
 import document_generation.util.message.ServletMessage;
@@ -74,6 +78,7 @@ public class SOCDocument extends LLDocument{
 	}
 	
 	public void writeDocFromFields() {
+		TextUI.init(this);
 		for (String key : fieldsMap.keySet()) {
 			TextUI.addSectionToDoc(this, key);
 		}

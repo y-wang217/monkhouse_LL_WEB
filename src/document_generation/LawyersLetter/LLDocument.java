@@ -385,7 +385,7 @@ public class LLDocument extends XWPFDocument {
 			String fieldName = m.group(1);
 			isDollar = fieldName.contains("dollars");
 			System.out.println("   " + fieldName);
-			String fieldValue = this.fieldsMap.getOrDefault(fieldName,
+			String fieldValue = this.getFieldsMap().getOrDefault(fieldName,
 					"###field not found error###");
 			fieldReplaced = fieldReplaced.replace("<" + fieldName + ">",isDollar?addThousandCommas(isDollar, fieldValue):fieldValue);
 			
