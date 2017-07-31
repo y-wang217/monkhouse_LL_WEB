@@ -4,7 +4,7 @@ import java.util.LinkedHashMap;
 
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 
-import document_generation.LawyersLetter.Codes.SectionCode;
+import document_generation.LawyersLetter.Codes.LLSectionCode;
 import document_generation.util.CloseDocument;
 import document_generation.util.ManipDocument;
 
@@ -34,7 +34,7 @@ public class LLTest {
         LinkedHashMap<String, String> testMap = doc.getFieldsMap();
         testMap.put("contractor_vs_emp", "on");
         doc.setFieldsMap(testMap);
-        LLSection s = llsf.getSection(doc, SectionCode.CONTRACTOR_VS_EMP);
+        LLSection s = llsf.getSection(doc, LLSectionCode.CONTRACTOR_VS_EMP);
         doc.writeToDoc(s);
         
         CloseDocument.closeSimple(doc, "LLTest.docx");

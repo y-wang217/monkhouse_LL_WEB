@@ -1,7 +1,7 @@
 package document_generation.LawyersLetter.Sections;
 
 import document_generation.LawyersLetter.Codes.ParaCode;
-import document_generation.LawyersLetter.Codes.SectionCode;
+import document_generation.LawyersLetter.Codes.LLSectionCode;
 import document_generation.LawyersLetter.LLDocument;
 import document_generation.LawyersLetter.LLParagraph;
 import document_generation.LawyersLetter.LLParagraphFactory;
@@ -16,7 +16,7 @@ public class PensionsSection extends LLSection {
 
     public PensionsSection(LLDocument doc, LLParagraphFactory llpf){
 
-        this.setSectionCode(SectionCode.PENSION);
+        this.setSectionCode(LLSectionCode.PENSION);
 
         ArrayList<LLParagraph> content = new ArrayList<>();
         //heading:

@@ -1,7 +1,7 @@
 package document_generation.LawyersLetter.Sections;
 
 import document_generation.LawyersLetter.Codes.ParaCode;
-import document_generation.LawyersLetter.Codes.SectionCode;
+import document_generation.LawyersLetter.Codes.LLSectionCode;
 import document_generation.LawyersLetter.LLDocument;
 import document_generation.LawyersLetter.LLParagraph;
 import document_generation.LawyersLetter.LLParagraphFactory;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class ReCaseSection extends LLSection{
     public ReCaseSection(LLDocument doc, LLParagraphFactory llpf) {
 
-        this.setSectionCode(SectionCode.RE);
+        this.setSectionCode(LLSectionCode.RE);
 
         ArrayList<LLParagraph> content = new ArrayList<>();
         //heading:

@@ -1,7 +1,7 @@
 package document_generation.LawyersLetter;
 
 import document_generation.LawyersLetter.Codes.ParaCode;
-import document_generation.LawyersLetter.Codes.SectionCode;
+import document_generation.LawyersLetter.Codes.LLSectionCode;
 import document_generation.LawyersLetter.Paragraphs.ImageParagraph;
 
 import java.util.ArrayList;
@@ -42,14 +42,14 @@ public class LLSection {
 	}
 
 	private ArrayList<LLParagraph> contents;
-	private SectionCode sectionCode;
+	private LLSectionCode sectionCode;
 
-	public SectionCode getSectionCode() {
+	public LLSectionCode getSectionCode() {
 
 		return sectionCode;
 	}
 
-	public void setSectionCode(SectionCode sectionCode) {
+	public void setSectionCode(LLSectionCode sectionCode) {
 
 		this.sectionCode = sectionCode;
 	}

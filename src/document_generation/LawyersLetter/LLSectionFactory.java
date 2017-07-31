@@ -1,6 +1,6 @@
 package document_generation.LawyersLetter;
 
-import document_generation.LawyersLetter.Codes.SectionCode;
+import document_generation.LawyersLetter.Codes.LLSectionCode;
 import document_generation.LawyersLetter.Sections.*;
 
 /**
@@ -12,7 +12,7 @@ public class LLSectionFactory {
 
     private static final LLParagraphFactory llpf = new LLParagraphFactory();
 
-    public LLSection getSection(LLDocument doc, SectionCode type){
+    public LLSection getSection(LLDocument doc, LLSectionCode type){
 
         switch(type){
             case IMG: return new HeaderImageSection(doc, llpf);

@@ -1,7 +1,7 @@
 package document_generation.LawyersLetter.Sections;
 
 import document_generation.LawyersLetter.Codes.ParaCode;
-import document_generation.LawyersLetter.Codes.SectionCode;
+import document_generation.LawyersLetter.Codes.LLSectionCode;
 import document_generation.LawyersLetter.LLDocument;
 import document_generation.LawyersLetter.LLParagraph;
 import document_generation.LawyersLetter.LLParagraphFactory;
@@ -17,7 +17,7 @@ public class PunitiveDamagesSection extends LLSection {
 
     public PunitiveDamagesSection(LLDocument doc, LLParagraphFactory llpf) {
 
-        this.setSectionCode(SectionCode.PUNITIVE_DMGS);
+        this.setSectionCode(LLSectionCode.PUNITIVE_DMGS);
 
         ArrayList<LLParagraph> content = new ArrayList<>();
         //heading:

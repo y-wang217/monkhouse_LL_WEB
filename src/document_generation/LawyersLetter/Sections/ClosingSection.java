@@ -1,7 +1,7 @@
 package document_generation.LawyersLetter.Sections;
 
 import document_generation.LawyersLetter.Codes.ParaCode;
-import document_generation.LawyersLetter.Codes.SectionCode;
+import document_generation.LawyersLetter.Codes.LLSectionCode;
 import document_generation.LawyersLetter.LLDocument;
 import document_generation.LawyersLetter.LLParagraph;
 import document_generation.LawyersLetter.LLParagraphFactory;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class ClosingSection extends LLSection{
 
     public ClosingSection(LLDocument doc, LLParagraphFactory llpf){
-        this.setSectionCode(SectionCode.CLOSE);
+        this.setSectionCode(LLSectionCode.CLOSE);
 
         ArrayList<LLParagraph> content = new ArrayList<>();
         //Date:

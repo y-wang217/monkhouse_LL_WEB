@@ -23,7 +23,7 @@ import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTSectPr;
 
 import document_generation.TextUI;
 import document_generation.LawyersLetter.Codes.ParaCode;
-import document_generation.LawyersLetter.Codes.SectionCode;
+import document_generation.LawyersLetter.Codes.LLSectionCode;
 import document_generation.util.CloseDocument;
 import document_generation.util.ManipDocument;
 import document_generation.util.Numbering;
@@ -194,9 +194,6 @@ public class LLDocument extends XWPFDocument {
 			if(defaultFieldsMap.get("hoursWorkedPerWeek").equals("")){
 				defaultFieldsMap.put("hoursWorkedPerWeek", "0");
 			}
-			if(defaultFieldsMap.get("hourlyWage").equals("")){
-				defaultFieldsMap.put("hourlyWage", "0");
-			}
 			
 			int yearsWorked=Integer.parseInt(defaultFieldsMap.get("seniority_in_years"));
 			int hoursWorkedPerWeek=Integer.parseInt(defaultFieldsMap.get("hoursWorkedPerWeek"));
@@ -268,7 +265,7 @@ public class LLDocument extends XWPFDocument {
 	}
 
 	// PRIVATE FIELDS
-	private static LinkedHashMap<String, String> fieldsMap;
+	private LinkedHashMap<String, String> fieldsMap;
 	private LLSectionFactory llsf;
 	private ServletMessage message;
 
@@ -367,7 +364,7 @@ public class LLDocument extends XWPFDocument {
 	}
 
 	// METHOD FOR ADDING FORMATTING TO RUNS
-	private void alterRun(XWPFRun r, LLParagraph llParagraph) {
+	protected void alterRun(XWPFRun r, LLParagraph llParagraph) {
 
 		r.setBold(llParagraph.isBold());
 		// r.setItalic(llParagraph.hasItalics());
@@ -379,7 +376,7 @@ public class LLDocument extends XWPFDocument {
 	// SEARCH REGEX FOR FIELDS IN "<" AND ">", REPLACE WITH FIELDS FROM MAP
 	private static Pattern PATTERN_FOR_FIELDS = Pattern.compile("<(.*?)>");
 
-	public static String processFields(String s) {
+	public String processFields(String s) {
 
 		boolean isDollar = false;;
 		String fieldReplaced = s;
@@ -388,7 +385,7 @@ public class LLDocument extends XWPFDocument {
 			String fieldName = m.group(1);
 			isDollar = fieldName.contains("dollars");
 			System.out.println("   " + fieldName);
-			String fieldValue = fieldsMap.getOrDefault(fieldName,
+			String fieldValue = this.fieldsMap.getOrDefault(fieldName,
 					"###field not found error###");
 			fieldReplaced = fieldReplaced.replace("<" + fieldName + ">",isDollar?addThousandCommas(isDollar, fieldValue):fieldValue);
 			

@@ -15,7 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import document_generation.util.message.ActionMessage;
 import document_generation.util.message.MessageType;
-import web.action.DocumentAction;
+import web.action.LLDocumentAction;
+import web.action.SOCDocumentAction;
 
 public class GenerateLawyersLetterServlet extends HttpServlet{
 
@@ -44,15 +45,22 @@ public class GenerateLawyersLetterServlet extends HttpServlet{
     	PrintWriter writer = resp.getWriter();
         writer.print(sb.toString());
 
-        String filePath = "/Users/monkhousemacbook6/Documents/EclipseCreatedFiles/WebCreatedFiles/WebTestDoc.docx";
-        ActionMessage docMsg = DocumentAction.createDocument(paramMap,filePath);
+        String filePath = "/Users/monkhousemacbook6/Documents/EclipseCreatedFiles/WebCreatedFiles/WebTestLL.docx";
+        ActionMessage docMsg = LLDocumentAction.createDocument(paramMap,filePath);
+        String filePath2 = "/Users/monkhousemacbook6/Documents/EclipseCreatedFiles/WebCreatedFiles/WebTestSOC.docx";
+        ActionMessage docMsg2 = SOCDocumentAction.createDocument(paramMap,filePath2);
         
         if(docMsg.read().toLowerCase().contains("error")){
             req.getSession().setAttribute("document_creation_fail_msg", docMsg.read());
         }
+        if(docMsg2.read().toLowerCase().contains("error")){
+            req.getSession().setAttribute("document_creation_fail_msg", docMsg2.read());
+        }
 
         String uploadURL = "http://localhost:8080/Monkhouse_Letter_Web/UploadDownloadFileServlet";
         File uploadFile1 = new File(filePath);
+        File uploadFile2 = new File(filePath2);
+        
         String charset = "UTF-8";
         
         try {
@@ -64,6 +72,7 @@ public class GenerateLawyersLetterServlet extends HttpServlet{
             multipart.addFormField("description", "Automatically Generated Document");
              
             multipart.addFilePart("fileUpload", uploadFile1);
+            multipart.addFilePart("fileUpload", uploadFile2);
  
             List<String> response = multipart.finish();
              
