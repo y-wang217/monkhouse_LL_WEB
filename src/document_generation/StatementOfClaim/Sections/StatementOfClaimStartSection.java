@@ -30,11 +30,11 @@ public class StatementOfClaimStartSection extends SOCSection{
 
         ArrayList<LLParagraph> content = new ArrayList<>();
 
-        LLParagraph header = llpf.getParagraph(doc, ParaCode.HEAD);
-        header.setText("Statement of Claim Header");
-        content.add(header);
+//        LLParagraph header = llpf.getParagraph(doc, ParaCode.HEAD);
+//        header.setText("Statement of Claim Header");
+//        content.add(header);
         
-        LLParagraph courtFileNum = llpf.getParagraph(doc, ParaCode.REG);
+        LLParagraph courtFileNum = llpf.getParagraph(doc, ParaCode.RIGHT);
         courtFileNum.getXwpfParagraph().setAlignment(ParagraphAlignment.RIGHT);
         courtFileNum.setText("Court File No.:	");
         content.add(courtFileNum);
@@ -115,45 +115,21 @@ public class StatementOfClaimStartSection extends SOCSection{
         LLParagraph addressOfTheCourt = llpf.getParagraph(doc, ParaCode.REG);
         addressOfTheCourt.getXwpfParagraph().setAlignment(ParagraphAlignment.RIGHT);
         addressOfTheCourt.setText("Address of court office:"
-        			+"%%<court_street_address>"
-        			+"%%<court_city>, <court_province> <court_postal_code>");
+        			+"%%393 University Ave, 10th Floor"
+        			+"%%Toronto, Ontario M5G 1E6");
         content.add(addressOfTheCourt);
         
         LLParagraph defendantMail = llpf.getParagraph(doc, ParaCode.REG);
         defendantMail.setText("TO: <defendant_legal_name>"
-        		+ "%%<defendant_mail_address>");
+        		+ "%%<OC_HR_company_address>"
+        		+ "%%<OC_HR_company_city> <OC_HR_company_province>"
+        		+ "%%<OC_HR_company_postcode>");
         content.add(defendantMail);
         
-        LLParagraph simpleProcedureHeader = llpf.getParagraph(doc, ParaCode.HEAD);
-        simpleProcedureHeader.setText("Simplified Procedure Header");
-        content.add(simpleProcedureHeader);
+//        LLParagraph simpleProcedureHeader = llpf.getParagraph(doc, ParaCode.HEAD);
+//        simpleProcedureHeader.setText("Simplified Procedure Header");
+//        content.add(simpleProcedureHeader);
         
-        LLParagraph thisAction = llpf.getParagraph(doc, ParaCode.HEAD);
-        thisAction.getXwpfParagraph().setAlignment(ParagraphAlignment.CENTER);
-        thisAction.setText("THIS ACTION IS BROUGHT AGAINST YOU UNDER THE SIMPLIFIED PROCEDURE PROVIDED IN RULE 76 OF THE RULES OF CIVIL PROCEDURE");
-        content.add(thisAction);
-        
-        LLParagraph claimHeader = llpf.getParagraph(doc, ParaCode.HEAD);
-        claimHeader.setText("Plaintiff’s Claim");
-        content.add(claimHeader);
-        
-        LLParagraph paragraph1 = llpf.getParagraph(doc, ParaCode.REG);
-        paragraph1.setText("THE PLAINTIFF CLAIMS:"
-        		+ "%%a.	Damages for wrongful dismissal and breach of an employment contract in the sum of $[NOTICE CLAIM], representing [MONTHS OF NOTICE] months’ pay in lieu of notice; "
-        		+ "%%b.	Damages equal to the value of all employment related benefits over the [NOTICE PERIOD] period including, without limitation, bonuses, vacation pay, medical benefits, and any insurance coverage; "
-+ "%%c.	The sum of [BONUS IF APPLICABLE] as compensation for lost entitlement to bonus; "
-+ "%%d.	The sum of [MONETARY VALUE OF BENEFITS] as compensation for lost entitlement to [OTHER BENEFITS IF APPLICABLE]. "
-+ "%%e.	[if applicable] A continuation of the Plaintiff’s accrual of pensionable service under the terms of his Pension Plan for the duration of the notice period; "
-+ "%%f.	Damages in the amount of [DOLLAR AMOUNT] for violations of the [APPROPRIATE HUMAN RIGHTS LEGISLATION]. "
-+ "%%g.	An Order than the Plaintiff receive back pay with the option of reinstatement by the Court; "
-+ "%%h.	Punitive, aggravated, Bhasin, and/or Moral Damages in the amount of [DOLLAR AMOUNT]. "
-+ "%%i.	Special damages for costs incurred by the Plaintiff in his efforts to seek comparable employment, the exact amount to be established at trial; "
-+ "%%j.	Prejudgment interest and postjudgment interest pursuant to the provisions of the Courts of Justice Act, RSO 1990, c C.43, as amended;"
-+ "%%k.	Any goods and services tax or harmonized sales tax payable on any amoutns pursuant to the Excise Tax Act, RSC 1985, c E-15, as amended or any other legislation enacted by the Government of Canada or the Government of Ontario;"
-+ "%%l.	[HIS/HER] costs and disbursements of this action on a substantial indemnity basis; "
-+ "%%and "
-+ "%%m.	Such further and other relief as this Honourable Court may deem just. ");
-        content.add(paragraph1);
         
         this.setContents(content);
 

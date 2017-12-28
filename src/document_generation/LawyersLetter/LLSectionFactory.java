@@ -37,6 +37,10 @@ public class LLSectionFactory {
             case MOVING_FWD: return new MovingForwardSection(doc, llpf);
             case LTD_JURISPRUDENCE: return new LTDJurisprudenceSection(doc, llpf);
             case CLOSE: return new ClosingSection(doc, llpf);
+            
+            //testing
+            case NUM_TEST: return new NumberingTestSection(doc, llpf);
+            
             default: return new LLSection();
         }
     }

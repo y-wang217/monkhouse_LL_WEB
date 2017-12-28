@@ -3,7 +3,6 @@ package web.servlet;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import document_generation.util.message.ActionMessage;
-import document_generation.util.message.MessageType;
 import web.action.LLDocumentAction;
 import web.action.SOCDocumentAction;
 
@@ -45,9 +43,13 @@ public class GenerateLawyersLetterServlet extends HttpServlet{
     	PrintWriter writer = resp.getWriter();
         writer.print(sb.toString());
 
-        String filePath = "/Users/monkhousemacbook6/Documents/EclipseCreatedFiles/WebCreatedFiles/WebTestLL.docx";
+        //String filePath = "/Users/monkhousemacbook6/Documents/EclipseCreatedFiles/WebCreatedFiles/WebTestLL.docx";
+        String filePath = "/tmp/WebTestLL.docx";
+
         ActionMessage docMsg = LLDocumentAction.createDocument(paramMap,filePath);
-        String filePath2 = "/Users/monkhousemacbook6/Documents/EclipseCreatedFiles/WebCreatedFiles/WebTestSOC.docx";
+        //String filePath2 = "/Users/monkhousemacbook6/Documents/EclipseCreatedFiles/WebCreatedFiles/WebTestSOC.docx";
+        String filePath2 = "/tmp/WebTestSOC.docx";
+
         ActionMessage docMsg2 = SOCDocumentAction.createDocument(paramMap,filePath2);
         
         if(docMsg.read().toLowerCase().contains("error")){
@@ -58,6 +60,9 @@ public class GenerateLawyersLetterServlet extends HttpServlet{
         }
 
         String uploadURL = "http://localhost:8080/Monkhouse_Letter_Web/UploadDownloadFileServlet";
+        String awsUploadURL = "http://localhost:8080/UploadDownloadFileServlet";
+        //uploadURL = awsUploadURL;
+        
         File uploadFile1 = new File(filePath);
         File uploadFile2 = new File(filePath2);
         

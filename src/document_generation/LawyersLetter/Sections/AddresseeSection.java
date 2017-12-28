@@ -8,6 +8,7 @@ import document_generation.LawyersLetter.LLParagraphFactory;
 import document_generation.LawyersLetter.LLSection;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by Yale Wang
@@ -21,11 +22,11 @@ public class AddresseeSection extends LLSection {
 
         LLParagraph addressee = llpf.getParagraph(doc, ParaCode.REG);
         //the first line  is supposed to be bold, but the rest should be not-bold
-        addressee.setText("<OC_HR_first_name> <OC_HR_last_name>%%" +
-                "<OC_HR_job_title>%%" +
-                "<OC_HR_company_name>%%" +
-                "<OC_HR_company_address>%%" +
-                "<OC_HR_company_postcode>");
+        
+        this.setSql(this.getSectionCode().toString());
+        HashMap<String, String>contents = dao.executeSelect(this.getSelectSql());
+        
+        addressee.setText(contents.get("1"));
         content.add(addressee);
 
         this.setContents(content);

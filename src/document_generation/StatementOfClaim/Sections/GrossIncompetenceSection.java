@@ -1,6 +1,7 @@
 package document_generation.StatementOfClaim.Sections;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import document_generation.LawyersLetter.LLDocument;
 import document_generation.LawyersLetter.LLParagraph;
@@ -14,14 +15,25 @@ public class GrossIncompetenceSection extends SOCSection{
 		this.setSectionCode(SOCSectionCode.GROSS);
 
 		ArrayList<LLParagraph> content = new ArrayList<>();
-
+		
+		setSqlSOC(this.getSectionCodeSOC().toString());
+		HashMap<String, String> resultSet= dao.executeSelect(this.getSelectSql());
+		
 		LLParagraph header = llpf.getParagraph(doc, ParaCode.HEAD);
-		header.setText("Gross Incompetence");
+		header.setText(resultSet.get("1"));
 		content.add(header);
 
 		LLParagraph text = llpf.getParagraph(doc, ParaCode.REG);
-		text.setText("[PLAINTIFF] pleads that [HE/SHE] performed well in [HIS/HER] position and was not aware that [HIS/HER] performance was a significant issue while employed with [EMPLOYER]. The Plaintiff pleads that if [HIS/HER] performance was an issue, [EMPLOYER] ought to have provided [HIM/HER] with additional training and/or coaching prior to terminating [HIM/HER] for cause. ");
+		text.setText(resultSet.get("2"));
 		content.add(text);
+
+//		LLParagraph header = llpf.getParagraph(doc, ParaCode.HEAD);
+//		header.setText("Gross Incompetence");
+//		content.add(header);
+//
+//		LLParagraph text = llpf.getParagraph(doc, ParaCode.REG);
+//		text.setText("<client_first_name> pleads that <subjective_pronoun> performed well in <possessive_pronoun> position and was not aware that <possessive_pronoun> performance was a significant issue while employed with <employer_first_name>. The Plaintiff pleads that if <possessive_pronoun> performance was an issue, <subjective_pronoun> ought to have provided <object_pronoun> with additional training and/or coaching prior to terminating <object_pronoun> for cause. ");
+//		content.add(text);
 
         this.setContents(content);
 	}

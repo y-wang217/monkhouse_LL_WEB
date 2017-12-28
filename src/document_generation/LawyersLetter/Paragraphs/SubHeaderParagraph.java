@@ -12,7 +12,6 @@ public class SubHeaderParagraph extends LLParagraph {
     public SubHeaderParagraph(XWPFDocument doc){
         super(doc);
         this.setParaType(ParaCode.SUBHEAD);
-        this.setItalics(true);
 
     }
 

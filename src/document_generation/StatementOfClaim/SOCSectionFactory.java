@@ -35,6 +35,7 @@ import document_generation.StatementOfClaim.Sections.PunitiveAggravateMoralDamag
 import document_generation.StatementOfClaim.Sections.PunitiveDamagesHarassmentSection;
 import document_generation.StatementOfClaim.Sections.RemovalFromManagementSection;
 import document_generation.StatementOfClaim.Sections.StatementOfClaimStartSection;
+import document_generation.StatementOfClaim.Sections.StatementOfClaimStartSection_copy;
 import document_generation.StatementOfClaim.Sections.TerminationSection;
 import document_generation.StatementOfClaim.Sections.ThePartiesSection;
 import document_generation.StatementOfClaim.Sections.WageDeductionSection;
@@ -50,6 +51,7 @@ public class SOCSectionFactory {
         switch(type){
         	case CUSTOM: return new StatementOfClaimStartSection();
             case START: return new StatementOfClaimStartSection(doc, llpf);
+            case START2: return new StatementOfClaimStartSection(doc, llpf);
             case PARTIES: return new ThePartiesSection(doc, llpf);
             case BACKGROUND: return new BackgroundSection(doc, llpf);
             case INDEPENDENT: return new IndependentContractorVsEmployeeSection(doc, llpf);
@@ -88,6 +90,9 @@ public class SOCSectionFactory {
             case ABANDONMENT: return new JobAbandonmentSection(doc, llpf);
             case END_LOCATION: return new LocationEndSection(doc, llpf);
             case END: return new EndSection(doc, llpf);
+            
+            
+            case START_TEST:return new StatementOfClaimStartSection_copy(doc,llpf);
             default: return new SOCSection();
         }
     }

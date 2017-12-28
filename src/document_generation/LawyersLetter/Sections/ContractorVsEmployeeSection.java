@@ -24,7 +24,7 @@ public class ContractorVsEmployeeSection extends LLSection{
         insertText(llpf,doc,content, ParaCode.HEAD,"Contractor vs Employee");
 
         //TODO keep flag in doc to track which paragraph is needed
-        if(Objects.equals(doc.getFieldsMap().get("contractor_vs_emp"), "on")){
+        if(Objects.equals(doc.getFieldsMap().get("contractor_vs_emp"), "on") || doc.getFieldsMap().get("setAllParagraphs").equals("true")){
 //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Independent Contractor vs Employee");
             //body:
@@ -55,7 +55,7 @@ public class ContractorVsEmployeeSection extends LLSection{
 			insertText(llpf,doc,content,ParaCode.REG,"In the class action certification decision of _Sondhi v. Deloitte_, 2017 ONSC 2122 stands for the proposition that the Plaintiff is able to propose the test that is most suitable for them, with the underlying question being “whose business is it” at Paragraph 26. In this case it is clear that the ‘business’ in question was that of the Defendant and not the Plaintiff.");
 
         }
-        if(Objects.equals(doc.getFieldsMap().get("contractor_vs_emp"), "on")){
+        if(Objects.equals(doc.getFieldsMap().get("contractor_vs_emp"), "on") || doc.getFieldsMap().get("setAllParagraphs").equals("true")){
 
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Dependent Contractor");

@@ -35,8 +35,8 @@ public class BonusesSection extends LLSection {
                 "TeraGo Networks Inc_. 2016 ONCA 618 (CanLII): ");
         insertText(llpf,doc,content,ParaCode.QUOTE, "In the present case, as in Taggart, Schumacher " +
                 "and Bernier, the requirement for active employment does not prevent the appellant from receiving " +
-                "as part of <possessive_pronoun> wrongful dismissal damages, compensation for the bonuses he would have received " +
-                "had <possessive_pronoun> employment continued during the period of reasonable notice. ");
+                "as part of his wrongful dismissal damages, compensation for the bonuses he would have received " +
+                "had his employment continued during the period of reasonable notice. ");
 
         this.setContents(content);
     }

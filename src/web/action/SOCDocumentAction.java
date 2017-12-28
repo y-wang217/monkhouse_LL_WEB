@@ -34,6 +34,7 @@ public class SOCDocumentAction {
 		SOCDocument doc = new SOCDocument();
 
 		doc.setFieldsMap(params);
+		doc.initSOCFields();
 		doc.setClientGender(params.get("client_gender").equals("male") ? gender.m
 				: gender.f);
 		// TextUI.init(doc);

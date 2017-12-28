@@ -30,7 +30,7 @@ public class MovingForwardSection extends LLSection {
 				content,
 				ParaCode.REG,
 				"Based on the above, I have advised <client_first_name> that "
-						+ "<subjective_pronoun> has a significant claim for wrongful dismissal damages.  %%"
+						+ "<subjective_pronoun> has a significant claim for wrongful dismissal damages."
 						+ "%%"
 						+ "Notwithstanding the attached Statement of Claim, and in an effort to resolve the matter in good "
 						+ "faith, <client_first_name> has advised me that <subjective_pronoun> would be willing to settle this matter on the following "

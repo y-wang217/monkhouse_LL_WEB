@@ -6,12 +6,26 @@ import document_generation.LawyersLetter.Paragraphs.ImageParagraph;
 
 import java.util.ArrayList;
 
+import web.DAO.UserDao;
+
 /**
  * Created by Yale Wang
  *
  * note: contents stores paragraphs in an Arraylist
  */
 public class LLSection {
+	
+	public static UserDao dao = new UserDao();
+	private String selectSql = "";
+	public void setSql(String sectionCode){
+		setSelectSql("select section_text,paragraph_num from llsection where section_name = '" + sectionCode + "';");
+	}
+	public void setSelectSql(String selectSql){
+		this.selectSql = selectSql;
+	}
+	public String getSelectSql(){
+		return selectSql;
+	}
 
 	public void insertText(LLParagraphFactory llpf, LLDocument doc,
 			ArrayList<LLParagraph> content, ParaCode type, String textInPara) {
@@ -34,7 +48,6 @@ public class LLSection {
 			return;
 		}
 		LLParagraph llParagraph = llpf.getParagraph(doc, type);
-		llParagraph.setItalics(italics);
 		llParagraph.setText(textInPara);
 		content.add(llParagraph);
 		return;

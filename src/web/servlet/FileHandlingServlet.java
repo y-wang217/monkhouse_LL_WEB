@@ -37,7 +37,8 @@ public class FileHandlingServlet extends HttpServlet{
 		if(fileName == null || fileName.equals("")){
 			throw new ServletException("File Name can't be null or empty");
 		}
-		File file = new File(request.getServletContext().getAttribute("FILES_DIR")+File.separator+fileName);
+		//File file = new File(request.getServletContext().getAttribute("FILES_DIR")+File.separator+fileName);
+		File file = new File("/tmp/"+fileName);
 		if(!file.exists()){
 			throw new ServletException("File doesn't exists on server.");
 		}
@@ -72,24 +73,29 @@ public class FileHandlingServlet extends HttpServlet{
 		try {
 			List<FileItem> fileItemsList = uploader.parseRequest(request);
 			Iterator<FileItem> fileItemsIterator = fileItemsList.iterator();
+			boolean firstItemSkipFlag = true;
 			while(fileItemsIterator.hasNext()){
 				FileItem fileItem = fileItemsIterator.next();
+				if(firstItemSkipFlag){
+					firstItemSkipFlag = false;
+					continue;
+				}
 				System.out.println("FieldName="+fileItem.getFieldName());
 				System.out.println("FileName="+fileItem.getName());
 				System.out.println("ContentType="+fileItem.getContentType());
 				System.out.println("Size in bytes="+fileItem.getSize());
 				
-				File file = new File(request.getServletContext().getAttribute("FILES_DIR")+File.separator+fileItem.getName());
+				//File file = new File(request.getServletContext().getAttribute("FILES_DIR")+File.separator+fileItem.getName());
+				File file = new File("/tmp/"+fileItem.getName());
 				System.out.println("Absolute Path at server="+file.getAbsolutePath());
 				fileItem.write(file);
 				out.write("File "+fileItem.getName()+ " uploaded successfully.");
-				out.write("<br>");
 				out.write("<a href=\"UploadDownloadFileServlet?fileName="+fileItem.getName()+"\">Download "+fileItem.getName()+"</a>");
+				out.write("<br>");
 			}
-		} catch (FileUploadException e) {
-			out.write("Exception in uploading file.");
 		} catch (Exception e) {
-			out.write("Exception in uploading file.");
+			out.write("Exception in uploading file. -->");
+			e.printStackTrace();
 		}
 		out.write("</body></html>");
 	}

@@ -24,7 +24,7 @@ public class OvertimeSection extends LLSection {
         insertText(llpf, doc, content, ParaCode.HEAD, "Overtime");
 
         //TODO keep flag in doc to track which paragraph is needed
-        if (Objects.equals(doc.getFieldsMap().get("isUseClc"), "on")) {
+        if (Objects.equals(doc.getFieldsMap().get("isUseClc"), "on") || doc.getFieldsMap().get("setAllParagraphs").equals("true")) {
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Overtime - CLC");
             //body:
@@ -52,13 +52,13 @@ public class OvertimeSection extends LLSection {
                     "(<hoursWorkedPerWeek>) hours per week on average while employed by <employer_first_name>. This equates to approximately " +
                     "<hoursOvertimeOwed> overtime hours since <client_first_name> had been promoted to Technical Sales engineering Manager. " +
                     "Accounting for <client_first_name>’s rate of overtime pay ($<hourlyWage> x 1.5 or $<overtimeHourlyWage>/hour), this would equate " +
-                    "to a total amount owing of $<overtimeOwed>. %%" +
+                    "to a total amount owing of $<overtimeOwed>.00. %%" +
                     "In the alternative, <client_first_name> would, at the very least, be entitled to ‘straight time’ for " +
                     "these hours worked, in accordance with the principle of Quantum Meruit, which would equate " +
                     "to $<alternativeOvertimeOwed> owing to <client_first_name>.");
         }
 
-        if (Objects.equals(doc.getFieldsMap().get("isUsePerformanceOntario"), "on")) {
+        if (Objects.equals(doc.getFieldsMap().get("isUsePerformanceOntario"), "on") || doc.getFieldsMap().get("setAllParagraphs").equals("true")) {
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Overtime - Performance Ontario");
             //body:
@@ -68,7 +68,7 @@ public class OvertimeSection extends LLSection {
                     "however, <subjective_pronoun> would often continue working well past this time. <client_first_name> would also work " +
                     "on weekends when it was necessary. Regardless of this, <client_first_name> was not paid for any work " +
                     "completed in excess of 44 hours per week. <client_first_name> lack of compensation for this work contravenes " +
-                    "section 22 (1) of The Employment Standards Act, 2000, (“ESA”) which states:%%");
+                    "section 22 (1) of The _Employment Standards Act_, 2000, (“ESA”) which states:%%");
             insertText(llpf,doc,content,ParaCode.QUOTE, "“An employer shall pay an employee overtime pay of " +
                     "at least one and one-half times his or her regular rate for each hour of work in excess of " +
                     "44 hours in each work week”%%");

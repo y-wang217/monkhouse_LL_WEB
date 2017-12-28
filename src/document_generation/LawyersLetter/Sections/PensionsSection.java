@@ -25,7 +25,7 @@ public class PensionsSection extends LLSection {
         //body:
         insertText(llpf,doc,content,ParaCode.REG, "<client_first_name> was enrolled in the Defined Benefit Pension Plan of <employer_first_name>" +
                 "As per section " +
-                "74 of the Pension Benefits Act, R.S.O. 1990, Chapter P.8, he is entitled to <possessive_pronoun> pension grow-in " +
+                "74 of the _Pension Benefits Act_, R.S.O. 1990, Chapter P.8, he is entitled to <possessive_pronoun> pension grow-in " +
                 "benefits given that the sum of <possessive_pronoun> age (<age> years old) and <seniority_in_years> years of service equal 55 points.  %%" +
                 "%%" +
                 "Therefore, as a result of being terminated without sufficient cause, <client_first_name> would be entitled " +

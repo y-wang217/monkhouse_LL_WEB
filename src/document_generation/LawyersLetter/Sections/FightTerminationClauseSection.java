@@ -24,7 +24,7 @@ public class FightTerminationClauseSection extends LLSection {
         insertText(llpf,doc,content, ParaCode.HEAD,"Fighting Termination Clause");
 
         //TODO keep flag in doc to track which paragraph is needed
-        if(Objects.equals(doc.getFieldsMap().get("isUseBasicStart"), "on")){
+        if(Objects.equals(doc.getFieldsMap().get("isUseBasicStart"), "on") || doc.getFieldsMap().get("setAllParagraphs").equals("true")){
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Clause does not Limit to the Minimums");
             //body:
@@ -34,8 +34,8 @@ public class FightTerminationClauseSection extends LLSection {
             
             insertText(llpf,doc,content,ParaCode.REG, "The termination clause in the employment of <client_first_name>'s contract does not sufficiently limit to the ESA minimums.");
             
-            insertText(llpf,doc,content,ParaCode.REG, "In the decision of Roy Singh v. Qualified " +
-                    "Metal Fabricators Ltd., a two-part test was set out to determine the enforceability of a " +
+            insertText(llpf,doc,content,ParaCode.REG, "In the decision of _Roy Singh v. Qualified " +
+                    "Metal Fabricators Ltd_., a two-part test was set out to determine the enforceability of a " +
                     "termination clause by Justice Stinson:%%");
             insertText(llpf,doc,content,ParaCode.QUOTE, "1. Whether the termination clause rebuts the " +
                     "presumption that the common law notice period continues to apply (i.e., does it replace the ESA), and" +
@@ -53,17 +53,17 @@ public class FightTerminationClauseSection extends LLSection {
             
             insertText(llpf,doc,content,ParaCode.REG, "As per _Wood v. Fred Deeley Imports Ltd._, 2017 ONCA 158 (CanLII), standard to ‘opt’-out of the common law is a high one requiring precise language. The onus is further on the Employer to show that the common law is displaced.");
             
-            insertText(llpf,doc,content,ParaCode.REG, "The decision in _Wood_ distinguished the Rodin decision, which was the main source of the Oudin decision, thus making both outdated law.");
+            insertText(llpf,doc,content,ParaCode.REG, "The decision in _Wood_ distinguished the _Rodin_ decision, which was the main source of the _Oudin_ decision, thus making both outdated law.");
             
         }
 
-        if(Objects.equals(doc.getFieldsMap().get("isUseNonInclusionOfBenefits"), "on")){
+        if(Objects.equals(doc.getFieldsMap().get("isUseNonInclusionOfBenefits"), "on") || doc.getFieldsMap().get("setAllParagraphs").equals("true")){
 
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Non-inclusion of Benefits (or contracting out of ESA)");
             //body
             insertText(llpf,doc,content,ParaCode.REG, "The foregoing is in accordance with the Court’s " +
-                    "ruling in Stevens v. Sifton Properties Ltd. 2012 ONSC 5508 (CanLII), wherein the clause in " +
+                    "ruling in _Stevens v. Sifton Properties Ltd_. 2012 ONSC 5508 (CanLII), wherein the clause in " +
                     "the Plaintiff’s employment contract was found invalid on the basis of an employer’s failure " +
                     "to continue benefits throughout the notice period. In its reasons for decision at paragraph 64, " +
                     "the court stated that:");
@@ -75,14 +75,14 @@ public class FightTerminationClauseSection extends LLSection {
                     "\"termination provision package\" of paragraph 13 to be regarded as null and void, in " +
                     "accordance with the policy considerations and directive outlined by the Supreme Court of " +
                     "Canada in Machtinger.");
-            insertText(llpf,doc,content,ParaCode.REG, "Similarly, in the case of Miller v. A.B.M. " +
-                    "Canada Inc., 2014 ONSC 4062, a termination clause within an employee’s employment agreement " +
+            insertText(llpf,doc,content,ParaCode.REG, "Similarly, in the case of _Miller v. A.B.M. " +
+                    "Canada Inc_., 2014 ONSC 4062, a termination clause within an employee’s employment agreement " +
                     "failed to provide for the continuation or provision of benefits at the time of termination, " +
                     "and as such the court held that the termination clause contravened the provisions of the ESA and " +
                     "found to be invalid.%%" +
                     "%%" +
-                    "This position is further affirmed by the Court of Appeal decision in Wood v. Fred Deeley " +
-                    "Imports Ltd. 2017 ONCA 158 (CanLII) wherein an attempt to contract out of an ESA minimum " +
+                    "This position is further affirmed by the Court of Appeal decision in _Wood v. Fred Deeley " +
+                    "Imports Ltd_. 2017 ONCA 158 (CanLII) wherein an attempt to contract out of an ESA minimum " +
                     "standard rendered the termination clause unenforceable. At para. 21, the Court stated: ");
             insertText(llpf,doc,content,ParaCode.QUOTE, "Deeley was precluded from contracting out of any " +
                     "of these employment standards, unless it substituted a greater benefit for Wood. Contracting out " +
@@ -91,7 +91,7 @@ public class FightTerminationClauseSection extends LLSection {
                     "reasonable notice of termination of her employment at common law.");
 
         }
-        if(Objects.equals(doc.getFieldsMap().get("isUsePotentialViolations"), "on")){
+        if(Objects.equals(doc.getFieldsMap().get("isUsePotentialViolations"), "on") || doc.getFieldsMap().get("setAllParagraphs").equals("true")){
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Potential Violations");
             //body:
@@ -108,7 +108,7 @@ public class FightTerminationClauseSection extends LLSection {
                     "In my view, the termination provision in the employment agreement is void and the presumption " +
                     "that termination will only be upon reasonable notice is not, in this case, rebutted.");
             insertText(llpf,doc,content,ParaCode.REG, "This principle has been affirmed by the Ontario Court " +
-                    "of Appeal in Wood v. Fred Deeley Imports Ltd. 2017 ONCA 158 and Covenoho v Pendylum Ltd, 2017 ONCA 284. \n");
+                    "of Appeal in Wood v. Fred Deeley Imports Ltd. 2017 ONCA 158 and _Covenoho v Pendylum Ltd_, 2017 ONCA 284. \n");
             
             insertText(llpf,doc,content,ParaCode.REG, "Therefore any breach, even a theoretical one, invalidates the contract and provides the employee with reasonable notice.");
             
@@ -116,7 +116,7 @@ public class FightTerminationClauseSection extends LLSection {
         }
 
         //TODO: new section, add to jsp
-        if(Objects.equals(doc.getFieldsMap().get("isUseBreachInvalidatesContract"), "on")){
+        if(Objects.equals(doc.getFieldsMap().get("isUseBreachInvalidatesContract"), "on") || doc.getFieldsMap().get("setAllParagraphs").equals("true")){
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Breach Invalidates Contract");
             //body:
@@ -128,7 +128,7 @@ public class FightTerminationClauseSection extends LLSection {
             
         }
 
-        if(Objects.equals(doc.getFieldsMap().get("isUseEmployerCannotRelyOnBreachedTerminationClause"), "on")){
+        if(Objects.equals(doc.getFieldsMap().get("isUseEmployerCannotRelyOnBreachedTerminationClause"), "on") || doc.getFieldsMap().get("setAllParagraphs").equals("true")){
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Employer Cannot Rely on Breached Termination Clause");
             //body:

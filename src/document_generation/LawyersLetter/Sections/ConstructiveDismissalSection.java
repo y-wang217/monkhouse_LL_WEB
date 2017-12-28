@@ -27,26 +27,27 @@ public class ConstructiveDismissalSection extends LLSection{
 
 
         //TODO keep flag in doc to track which paragraph is needed
-        if(Objects.equals(doc.getFieldsMap().get("isUseWageDeduction"), "on")){
+        if(Objects.equals(doc.getFieldsMap().get("isUseWageDeduction"), "on") || doc.getFieldsMap().get("setAllParagraphs").equals("true")){
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Constructive Dismissal - Wage Deduction");
             //body:
-            insertText(llpf,doc,content,ParaCode.REG, "As found in cases such as Farquhar v. Butler " +
-                    "Brothers Supplies Ltd, 1988 CanLII 185 (BCCA), a constructive dismissal occurs when the " +
+            insertText(llpf,doc,content,ParaCode.REG, "As found in cases such as _Farquhar v. Butler " +
+                    "Brothers Supplies Ltd_, 1988 CanLII 185 (BCCA), a constructive dismissal occurs when the " +
                     "employer commits either a present breach or an anticipatory breach of a fundamental term " +
                     "of a contract of employment. In Farquhar, Justice Carrothers found that a 30% deduction " +
-                    "of the employees pay constitutes as constructive dismissal.");
+                    "of the employees pay constitutes as constructive dismissal."
+                    + "%%");
 
         }
-        if(Objects.equals(doc.getFieldsMap().get("isUseLocation"), "on")){
+        if(Objects.equals(doc.getFieldsMap().get("isUseLocation"), "on") || doc.getFieldsMap().get("setAllParagraphs").equals("true")){
 
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Constructive Dismissal - Location");
             //body
-            insertText(llpf,doc,content,ParaCode.REG, "The majority held in Reynolds v. Innopac Inc., 1998 CanLII 3558 (ON CA) that a change in location of work that required a substantially greater travel time would have substantially changed the way in which the employee carried out <possessive_pronoun> job and duties. In Weselan v. Totten Sims Hubicki Associates Ltd. (1997) Ltd. (2001), 16 CCEL (3d) 184 (Ont CA) it was found that increased travel time of an hour and a half and the annual cost associated with such travel would constitute a significant change in the travel time and therefore constituted constructive dismissal. \n");
+            insertText(llpf,doc,content,ParaCode.REG, "The majority held in _Reynolds v. Innopac Inc., 1998_ CanLII 3558 (ON CA) that a change in location of work that required a substantially greater travel time would have substantially changed the way in which the employee carried out <possessive_pronoun> job and duties. In _Weselan v. Totten Sims Hubicki Associates Ltd._ (1997) Ltd. (2001), 16 CCEL (3d) 184 (Ont CA) it was found that increased travel time of an hour and a half and the annual cost associated with such travel would constitute a significant change in the travel time and therefore constituted constructive dismissal. \n");
 
         }
-        if(Objects.equals(doc.getFieldsMap().get("isUseBreachOfFundamentalImpliedTerm"), "on")){
+        if(Objects.equals(doc.getFieldsMap().get("isUseBreachOfFundamentalImpliedTerm"), "on") || doc.getFieldsMap().get("setAllParagraphs").equals("true")){
 
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Constructive Dismissal - Breach of Fundamental Implied Term");
@@ -54,26 +55,26 @@ public class ConstructiveDismissalSection extends LLSection{
             insertText(llpf,doc,content,ParaCode.REG, "A breach of a fundamental term of the employment contract constitutes constructive dismissal. The courts have found that constructive dismissal can exist where the employer breaches an implied term of the employment contract. In Lloyd v. Imperial Parking Ltd., 1996 CanLII 10543 (AB QB), the court stated, at p. 41, that “a fundamental implied term of any employment relationship is that the employer will treat the employee with civility, decency, respect, and dignity.” In Lloyd the employer was found to have breached this implied term of the employment contract for having repeatedly yelled and screamed at the employee. \n");
 
         }
-        if(Objects.equals(doc.getFieldsMap().get("isUseIntolerable"), "on")){
+        if(Objects.equals(doc.getFieldsMap().get("isUseIntolerable"), "on") || doc.getFieldsMap().get("setAllParagraphs").equals("true")){
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Constructive Dismissal - Intolerable Workplace");
             //body:
             insertText(llpf,doc,content,ParaCode.REG, "The courts may find that an employee has been " +
                     "constructively dismissed where the employer has made continued employment intolerable. In " +
-                    "Shah v. Xerox Canada Ltd, 2000 CanLII 2317 (ON CA) the courts found that it was not necessary " +
+                    "_Shah v. Xerox Canada Ltd_, 2000 CanLII 2317 (ON CA) the courts found that it was not necessary " +
                     "for the employer to change the contract for there to be constructive dismissal. There the court " +
                     "decided at p. 6");
             insertText(llpf,doc,content,ParaCode.QUOTE, "The court may find an employee has been " +
                     "constructively dismissed, without identifying a specific fundamental term that has been " +
                     "breached, where the employer’s treatment of the employee makes continued employment intolerable.\n");
-            insertText(llpf,doc,content,ParaCode.REG, "Further, in Morland v. Kenmara Inc., 2006 CanLII 4902 " +
+            insertText(llpf,doc,content,ParaCode.REG, "Further, in _Morland v. Kenmara Inc._, 2006 CanLII 4902 " +
                     "(ON SC) the court, echoing Shah, found that the conduct of the employer, continually using foul " +
                     "language and abusive conduct toward the employee was found to have constituted constructive " +
                     "dismissal. There the court stated, at p. 30, that “If an employer wishes to have a successful " +
                     "business, it is incumbent upon the employer to foster congeniality amongst the employees by " +
                     "providing a good working environment which will result in good employee productivity.”");
         }
-        if(Objects.equals(doc.getFieldsMap().get("isUseWorkplaceHarassmentPoisonedWorkEnvironment"), "on")){
+        if(Objects.equals(doc.getFieldsMap().get("isUseWorkplaceHarassmentPoisonedWorkEnvironment"), "on") || doc.getFieldsMap().get("setAllParagraphs").equals("true")){
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Constructive Dismissal - Workplace Harassment");
             //body:
@@ -82,7 +83,7 @@ public class ConstructiveDismissalSection extends LLSection{
                     "Safety Act and those as amended in “Bill 168”.%%" +
                     "%%" +
                     "The law is clear that if someone is harassed in their workplace they are in fact constructively " +
-                    "dismissed. In Stamos v. Annuity Research & Marketing Service Ltd [2002] O.J. No. 1865, para 60-62 states:");
+                    "dismissed. In _Stamos v. Annuity Research & Marketing Service Ltd_ [2002] O.J. No. 1865, para 60-62 states:");
             insertText(llpf,doc,content,ParaCode.QUOTE, "“An employer owes a duty to its employees to treat " +
                     "them fairly, with civility, decency, respect and dignity.  An employer who subjects employees to " +
                     "treatment that renders competent performance of their work impossible or continued employment " +
@@ -96,12 +97,12 @@ public class ConstructiveDismissalSection extends LLSection{
                     "damages for the mental anguish suffered as a result of the assault that <subjective_pronoun> experienced " +
                     "at work.");
         }
-        if(Objects.equals(doc.getFieldsMap().get("isUseWorkplaceHarassmentPoisonedWorkEnvironment"), "on")){
+        if(Objects.equals(doc.getFieldsMap().get("isUseWorkplaceHarassmentPoisonedWorkEnvironment"), "on") || doc.getFieldsMap().get("setAllParagraphs").equals("true")){
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Constructive Dismissal - Poisoned Work Environment");
             //body:
-            insertText(llpf,doc,content,ParaCode.REG, "In the case of Stamos v Annuity Research & Marketing " +
-                    "Service Ltd., 2002 49618 (ONSC), the trial judge upheld a claim for constructive dismissal after " +
+            insertText(llpf,doc,content,ParaCode.REG, "In the case of _Stamos v Annuity Research & Marketing " +
+                    "Service Ltd._, 2002 49618 (ONSC), the trial judge upheld a claim for constructive dismissal after " +
                     "finding the Plaintiff’s work environment had been poisoned by an employee who subjected the " +
                     "Plaintiff to verbal harassment, threatening and intimidating tactics, and more.%%" +
                     "%%" +
@@ -122,7 +123,7 @@ public class ConstructiveDismissalSection extends LLSection{
                     "view of the circumstances at hand, <client_first_name> has been constructively dismissed and is entitled to " +
                     "a reasonable notice period of her termination of employment.");
         }
-        if(Objects.equals(doc.getFieldsMap().get("isUseRemovalFromManagementPosition"), "on")){
+        if(Objects.equals(doc.getFieldsMap().get("isUseRemovalFromManagementPosition"), "on") || doc.getFieldsMap().get("setAllParagraphs").equals("true")){
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Constructive Dismissal - Removal from Management Position");
             //body:

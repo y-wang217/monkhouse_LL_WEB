@@ -31,6 +31,14 @@ public class ManipDocument {
         run.setFontFamily("Times New Roman");
         return run;
     }
+    
+    public static XWPFRun createRun(XWPFParagraph paragraph, String font) {
+
+        XWPFRun run = paragraph.createRun();
+        run.setFontSize(12);
+        run.setFontFamily(font);
+        return run;
+    }
 
     public static void tab(XWPFRun r) {
 

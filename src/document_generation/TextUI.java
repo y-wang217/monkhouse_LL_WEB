@@ -1,11 +1,13 @@
 package document_generation;
 
 import document_generation.StatementOfClaim.Sections.BackgroundSection;
+import document_generation.StatementOfClaim.Sections.StatementOfClaimStart2Section;
 import document_generation.StatementOfClaim.Sections.StatementOfClaimStartSection;
 import document_generation.StatementOfClaim.Sections.ThePartiesSection;
 import document_generation.StatementOfClaim.Sections.Codes.SOCSectionCode;
 import document_generation.LawyersLetter.Codes.LLSectionCode;
 import document_generation.LawyersLetter.LLDocument;
+import document_generation.LawyersLetter.LLDocument_copy;
 import document_generation.LawyersLetter.LLParagraphFactory;
 import document_generation.LawyersLetter.LLSection;
 import document_generation.LawyersLetter.LLSectionFactory;
@@ -59,7 +61,7 @@ public class TextUI {
 
         //default section is custom - an empty section
         section = socsf.getSection(doc, document_generation.StatementOfClaim.Sections.Codes.SOCSectionCode.CUSTOM);
-        switch(input.toLowerCase()){
+        switch(input){
             case "termination":
                 section = socsf.getSection(doc, SOCSectionCode.TERMINATION);
                 break;
@@ -75,9 +77,6 @@ public class TextUI {
             case "fight_termination_clause":
                 section = socsf.getSection(doc, SOCSectionCode.FIGHTING_TERM);
                 break;
-            case "contractor_vs_emp":
-                section = socsf.getSection(doc, SOCSectionCode.INDEPENDENT);
-                break;
             case "inducement":
                 section = socsf.getSection(doc, SOCSectionCode.INDUCEMENT);
                 break;
@@ -87,11 +86,90 @@ public class TextUI {
             case "human_rights_dis":
                 section = socsf.getSection(doc, SOCSectionCode.HUMAN_RIGHTS);
                 break;
-            case "punitive_dmgs":
+            case "isUsePunitiveDamagesHarassmsnt":
                 section = socsf.getSection(doc, SOCSectionCode.PUNITIVE_HARASSMENT);
                 break;
             case "overtime":
                 section = socsf.getSection(doc, SOCSectionCode.ONT_OVERTIME);
+                break;
+                
+                //these will change with updates and fixes
+            case "appropriate_notice_period":
+                section = socsf.getSection(doc, SOCSectionCode.ALLEGATIONS);
+                break;
+            case "isUseBadFaith":
+                section = socsf.getSection(doc, SOCSectionCode.BAD_FAITH);
+                break;
+            case "isUseLocation":
+                section = socsf.getSection(doc, SOCSectionCode.LOCATION);
+                break;
+            case "isUseClc":
+                section = socsf.getSection(doc, SOCSectionCode.CLC);
+                break;
+            case "isUseAllegationsOfCause":
+                section = socsf.getSection(doc, SOCSectionCode.DAMAGE_AWARD);
+                break;
+            case "isUseOptingOutOfCommonLawNotice":
+                section = socsf.getSection(doc, SOCSectionCode.NOT_EXCLUDE);
+                break;
+            case "isUseGrossIncompetence":
+                section = socsf.getSection(doc, SOCSectionCode.GROSS);
+                break;
+            case "isUseHighStandard":
+                section = socsf.getSection(doc, SOCSectionCode.HIGH_STANDARD);
+                break;
+            case "isUseIndependentContractorVsEmployee":
+                section = socsf.getSection(doc, SOCSectionCode.INDEPENDENT);
+                break;
+            case "isUseIntolerable":
+                section = socsf.getSection(doc, SOCSectionCode.INTOLERABLE);
+                break;
+            case "isUseJobAbandonmentDamageAwarded":
+                section = socsf.getSection(doc, SOCSectionCode.ABANDONMENT);
+                break;
+            case "isUseNoContractingOutOfESA":
+                section = socsf.getSection(doc, SOCSectionCode.NO_CONTRACTING);
+                break;
+            case "isUseNonInclusionOfBenefits":
+                section = socsf.getSection(doc, SOCSectionCode.NON_BENEFITS);
+                break;
+            case "isUseOhsaBill168":
+                section = socsf.getSection(doc, SOCSectionCode.OHSA);
+                break;
+            case "isUsePerformanceOntario":
+                section = socsf.getSection(doc, SOCSectionCode.ONT_OVERTIME);
+                break;
+            case "isUseOpenAndHonestManner":
+                section = socsf.getSection(doc, SOCSectionCode.OPEN_HONEST);
+                break;
+            case "isUseWorkplaceHarassmentPoisonedWorkEnvironment":
+                section = socsf.getSection(doc, SOCSectionCode.POISONED);
+                break;
+            case "isUsePotentialViolations":
+                section = socsf.getSection(doc, SOCSectionCode.POT_VIOLATIONS);
+                break;
+            case "punitive_dmgs":
+                section = socsf.getSection(doc, SOCSectionCode.PUN_AGG_MOR_DMGS);
+                break;
+            case "isUseRemovalFromManagementPosition":
+                section = socsf.getSection(doc, SOCSectionCode.REMOVAL_MANAGEMENT);
+                break;
+            case "isUseWageDeduction":
+                section = socsf.getSection(doc, SOCSectionCode.WAGE);
+                break;
+//            case "":
+//                section = socsf.getSection(doc, SOCSectionCode.NO_CONTRACTING);
+//                break;
+                
+                
+                
+                
+            //these are ending sections and are manually added
+            case "manual_end":
+                section = socsf.getSection(doc, SOCSectionCode.END);
+                break;
+            case "manual_location_end":
+                section = socsf.getSection(doc, SOCSectionCode.END_LOCATION);
                 break;
             default:
                 if(section.getSectionCodeSOC() == SOCSectionCode.CUSTOM){
@@ -234,6 +312,7 @@ public class TextUI {
     }
     public static void init(SOCDocument doc){
     	doc.writeToDoc(new StatementOfClaimStartSection(doc, new LLParagraphFactory()));
+    	doc.writeToDoc(new StatementOfClaimStart2Section(doc, new LLParagraphFactory()));
     	doc.writeToDoc(new ThePartiesSection(doc, new LLParagraphFactory()));
     	doc.writeToDoc(new BackgroundSection(doc, new LLParagraphFactory()));
     }

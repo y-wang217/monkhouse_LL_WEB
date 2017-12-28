@@ -1,6 +1,7 @@
 package document_generation.StatementOfClaim.Sections;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import document_generation.LawyersLetter.LLDocument;
 import document_generation.LawyersLetter.LLParagraph;
@@ -15,17 +16,26 @@ public class BackgroundSection extends SOCSection{
 
 		ArrayList<LLParagraph> content = new ArrayList<>();
 
+		setSqlSOC(this.getSectionCodeSOC().toString());
+		HashMap<String, String> resultSet= dao.executeSelect(this.getSelectSql());
+		
 		LLParagraph header = llpf.getParagraph(doc, ParaCode.HEAD);
-		header.setText("Background");
+		header.setText(resultSet.get("1"));
 		content.add(header);
 
 		LLParagraph text = llpf.getParagraph(doc, ParaCode.REG);
-		text.setText("[THE PLAINTIFF] began [HIS/HER] employment with [EMPLOYER] on [START DATE] pursuant to a [WRITTEN OR VERBAL AGREEMENT] and held the position of [POSITION]. [background information if required on position, promotions, etc]. "
-				+ "%%"
-				+ "%%In [HIS/HER] position, [PLAINTIFF] received a salary of approximately [COMPENSATION] per year [and if applicable, benefits, bonuses, etc]. "
-				+ "%%"
-				+ "%%Throughout [HIS/HER] employment, [PLAINTIFF] was a hard-working and dedicated employee. ");
+		text.setText(resultSet.get("2"));
 		content.add(text);
+//		
+//		LLParagraph header = llpf.getParagraph(doc, ParaCode.HEAD);
+//		header.setText("Background");
+//		content.add(header);
+//
+//		LLParagraph text = llpf.getParagraph(doc, ParaCode.REG);
+//		text.setText("<client_first_name> began <possessive_pronoun> employment with <employer_first_name> on <start_date> pursuant to a <verbal_or_written> and held the position of <position>. <additional_background_info> "
+//				+ "%%"
+//				+ "%%In <possessive_pronoun> position, <client_first_name> received a salary of approximately $<wage_in_dollars>.00 per year base plus health and other benefits. ");
+//		content.add(text);
 
         this.setContents(content);
 	}

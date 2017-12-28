@@ -24,5 +24,8 @@
     <input type="submit" value="Click to view previous letters" />
 </form>
 
+<form action="section_editor_select.jsp">
+    <input type="submit" value="Click to edit section content" />
+</form>
 </body>
 </html>

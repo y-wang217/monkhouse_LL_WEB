@@ -13,13 +13,24 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.poi.xwpf.model.XWPFHeaderFooterPolicy;
 import org.apache.poi.xwpf.usermodel.UnderlinePatterns;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFNumbering;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
+import org.apache.xmlbeans.impl.xb.xmlschema.SpaceAttribute.Space;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTFldChar;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTJc;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTP;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTPPr;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTPageMar;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTR;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTSectPr;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTString;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTText;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.STFldCharType;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.STJc;
 
 import document_generation.TextUI;
 import document_generation.LawyersLetter.Codes.ParaCode;
@@ -79,6 +90,8 @@ public class LLDocument extends XWPFDocument {
 		initSettlementCalculations();
 
 		LinkedHashMap<String, String> defaultFieldsMap = this.getFieldsMap();
+		
+		this.getFieldsMap().put("setAllParagraphs","false");
 
 		gender g = this.getClientGender();
 
@@ -110,37 +123,47 @@ public class LLDocument extends XWPFDocument {
 						"andrew@monkhouselaw.com");
 				defaultFieldsMap.put("monkhouse_lawyer_position",
 						"Senior Lawyer & Founder");
+						defaultFieldsMap.put("monkhouse_lawyer_code",
+								"64529L");
 			}
 			if (this.getFieldsMap().get("monkhouse_lawyer").equals("SDL")) {
 				defaultFieldsMap.put("monkhouse_lawyer_name",
 						"Samantha Lucifora");
 				defaultFieldsMap.put("monkhouse_lawyer_email",
-						"email@monkhouselaw.com");
+						"samantha.lucifora@monkhouselaw.com");
 				defaultFieldsMap.put("monkhouse_lawyer_position",
 						"Associate Lawyer");
+				defaultFieldsMap.put("monkhouse_lawyer_code",
+						"68813J");
 			}
 			if (this.getFieldsMap().get("monkhouse_lawyer").equals("BAF")) {
 				defaultFieldsMap.put("monkhouse_lawyer_name", "Busayo Ayodele");
 				defaultFieldsMap.put("monkhouse_lawyer_email",
-						"email@monkhouselaw.com");
+						"busayo.faderin@monkhouselaw.com");
 				defaultFieldsMap.put("monkhouse_lawyer_position",
 						"Associate Lawyer");
+				defaultFieldsMap.put("monkhouse_lawyer_code",
+						"70207B");
 			}
 			if (this.getFieldsMap().get("monkhouse_lawyer").equals("SJL")) {
 				defaultFieldsMap.put("monkhouse_lawyer_name",
 						"Stephen LeMesurier");
 				defaultFieldsMap.put("monkhouse_lawyer_email",
-						"email@monkhouselaw.com");
+						"stephen.lemesurier@monkhouselaw.com");
 				defaultFieldsMap.put("monkhouse_lawyer_position",
 						"Associate Lawyer");
+				defaultFieldsMap.put("monkhouse_lawyer_code",
+						"70362V");
 			}
 			if (this.getFieldsMap().get("monkhouse_lawyer").equals("MDM")) {
 				defaultFieldsMap.put("monkhouse_lawyer_name",
 						"Miguel Mangalindan");
 				defaultFieldsMap.put("monkhouse_lawyer_email",
-						"email@monkhouselaw.com");
+						"miguel.mangalindan@monkhouselaw.com");
 				defaultFieldsMap.put("monkhouse_lawyer_position",
 						"Associate Lawyer");
+				defaultFieldsMap.put("monkhouse_lawyer_code",
+						"68824W");
 			}
 		}
 
@@ -164,14 +187,17 @@ public class LLDocument extends XWPFDocument {
 			if(defaultFieldsMap.get("age").equals("")){
 				defaultFieldsMap.put("age", "0");
 			}
-			if(defaultFieldsMap.get("seniority_in_years").equals("")){
-				defaultFieldsMap.put("seniority_in_years", "0");
+			if(defaultFieldsMap.getOrDefault("dollarsTotalOwed","").equals("")){
+				defaultFieldsMap.put("dollarsTotalOwed", "0");
 			}
 			if(defaultFieldsMap.get("seniority_in_years").equals("")){
 				defaultFieldsMap.put("seniority_in_years", "0");
 			}
 			if(defaultFieldsMap.get("seniority_in_years").equals("")){
 				defaultFieldsMap.put("seniority_in_years", "0");
+			}
+			if(defaultFieldsMap.get("hoursWorkedPerWeek").equals("")){
+				defaultFieldsMap.put("hoursWorkedPerWeek", "0");
 			}
 			
 			String yearlyWage = defaultFieldsMap.get("wage_in_dollars");
@@ -203,15 +229,31 @@ public class LLDocument extends XWPFDocument {
 			double overtimeOwed = (overtimeHourlyWage) * (hoursOvertimeOwed);
 			double alternativeOvertimeOwed = overtimeOwed*2/3;
 			overtimeOwed = Math.round(overtimeOwed*100.0)/100.0;;
-			alternativeOvertimeOwed= Math.round(alternativeOvertimeOwed*100.0)/100.0;;
+			alternativeOvertimeOwed= Math.round(alternativeOvertimeOwed*100.0)/100.0;
 			defaultFieldsMap.put("overtimeOwed",
 					String.format("%,.2f", overtimeOwed));
 			defaultFieldsMap.put("hoursOvertimeOwed",
 					Integer.toString(hoursOvertimeOwed));
+			defaultFieldsMap.put("hourlyWage",
+					String.format("%,.2f", hourlyWage));
 			defaultFieldsMap.put("overtimeHourlyWage",
 					String.format("%,.2f", overtimeHourlyWage));
 			defaultFieldsMap.put("alternativeOvertimeOwed",
 					String.format("%,.2f", alternativeOvertimeOwed));
+			
+			
+			
+			//calculate total monetary offer
+			int sumNotice=Integer.parseInt(defaultFieldsMap.get("dollarsNoticeOwed"));
+			int sumBenefits=Integer.parseInt(defaultFieldsMap.get("dollarsBenefitsOwed"));
+			int sumDamages=Integer.parseInt(defaultFieldsMap.get("dollarsDamagesOwed"));
+			int sumCareerCounseling = 500;
+			int sumLegalFees=3000;
+			int sumTotal = sumNotice+sumBenefits+sumDamages+sumCareerCounseling+sumLegalFees;
+
+			defaultFieldsMap.put("dollarsTotalOwed",Integer.toString(sumTotal));
+			defaultFieldsMap.put("damages_soc_ask",Integer.toString(sumNotice/2));
+			
 		}
 	}
 
@@ -286,17 +328,24 @@ public class LLDocument extends XWPFDocument {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				break;
+				continue;
 			}
 			for (String s : p.getText().split("%%")) {
 				s = processFields(s);
 				System.out.println(p.getParaType() + " : " + s);
-				XWPFRun r = ManipDocument.createRun(p.getXwpfParagraph());
+				//exception to handle moving forward:
+				XWPFRun r;
+				if(section.getSectionCode().equals(LLSectionCode.MOVING_FWD)){
+					r = ManipDocument.createRun(this.createParagraph());
+					
+				}else{
+					r = ManipDocument.createRun(p.getXwpfParagraph());
+					
+				}
 				// handle italics
 				if (s.indexOf('_') >= 0) {
-					XWPFParagraph xwpfParagraph = this.createParagraph();
-					//handleItalics(xwpfParagraph, s, findItalics(s));
-					//break;
+					handleItalics(p.getXwpfParagraph(), s, findItalics(s));
+					break;
 				}
 				if (p.getParaType().equals(TAB))
 					ManipDocument.tab(r);
@@ -310,7 +359,7 @@ public class LLDocument extends XWPFDocument {
 		}
 	}
 
-	private ArrayList<Integer> findItalics(String s) {
+	protected ArrayList<Integer> findItalics(String s) {
 		String italicsSymbol = "_";
 		int lastIndex = 0;
 		int count = 0;
@@ -329,7 +378,7 @@ public class LLDocument extends XWPFDocument {
 		return underscoreIndex;
 	}
 
-	private void handleItalics(XWPFParagraph p, String s,
+	protected void handleItalics(XWPFParagraph p, String s,
 			ArrayList<Integer> underscoreIndex) {
 		XWPFRun r;
 		int beginNonItalic = 0;
@@ -361,14 +410,14 @@ public class LLDocument extends XWPFDocument {
 			r = ManipDocument.createRun(p);
 			r.setText(s.substring(underscoreIndex.get(underscoreIndex.size() - 1) + 1));
 		}
+		r = ManipDocument.createRun(p);
+		r.addCarriageReturn();
 	}
 
 	// METHOD FOR ADDING FORMATTING TO RUNS
 	protected void alterRun(XWPFRun r, LLParagraph llParagraph) {
 
 		r.setBold(llParagraph.isBold());
-		// r.setItalic(llParagraph.hasItalics());
-		// handle italics through searching for underscores
 		if (llParagraph.isUnderline())
 			r.setUnderline(UnderlinePatterns.SINGLE);
 	}
@@ -405,12 +454,12 @@ public class LLDocument extends XWPFDocument {
 		return s;
 	}
 
-	public XWPFNumbering resetNumbering() {
-		XWPFDocument doc = new XWPFDocument();
-		XWPFNumbering numbering = doc.createNumbering();
-
-		return numbering;
-	}
+//	public XWPFNumbering resetNumbering() {
+//		XWPFDocument doc = new XWPFDocument();
+//		XWPFNumbering numbering = doc.createNumbering();
+//
+//		return numbering;
+//	}
 
 	// SETTERS AND GETTERS
 	public LLSectionFactory getLlsf() {
@@ -453,8 +502,56 @@ public class LLDocument extends XWPFDocument {
 		for (String key : fieldsMap.keySet()) {
 			TextUI.addSectionToDoc(this, key);
 		}
+		addPageFooters(this);
 	}
+	
+	public void addPageFooters(XWPFDocument doc){
+		// create footer
+		XWPFHeaderFooterPolicy policy = doc.getHeaderFooterPolicy();
+		if(policy == null){
+			policy = new XWPFHeaderFooterPolicy(doc);
+		}
+		CTP ctpFooter = CTP.Factory.newInstance();
 
+		XWPFParagraph[] parsFooter;
+
+		// add style (s.th.)
+		CTPPr ctppr = ctpFooter.addNewPPr();
+		CTString pst = ctppr.addNewPStyle();
+		pst.setVal("style21");
+		CTJc ctjc = ctppr.addNewJc();
+		ctjc.setVal(STJc.RIGHT);
+		ctppr.addNewRPr();
+
+		// Add in word "Page "   
+		CTR ctr = ctpFooter.addNewR();
+		CTText t = ctr.addNewT();
+		t.setStringValue("Page ");
+		t.setSpace(Space.PRESERVE);
+
+		// add everything from the footerXXX.xml you need
+		ctr = ctpFooter.addNewR();
+		ctr.addNewRPr();
+		CTFldChar fch = ctr.addNewFldChar();
+		fch.setFldCharType(STFldCharType.BEGIN);
+
+		ctr = ctpFooter.addNewR();
+		ctr.addNewInstrText().setStringValue(" PAGE ");
+
+		ctpFooter.addNewR().addNewFldChar().setFldCharType(STFldCharType.SEPARATE);
+
+		ctpFooter.addNewR().addNewT().setStringValue("1");
+
+		ctpFooter.addNewR().addNewFldChar().setFldCharType(STFldCharType.END);
+
+		XWPFParagraph footerParagraph = new XWPFParagraph(ctpFooter, doc);
+
+		parsFooter = new XWPFParagraph[1];
+
+		parsFooter[0] = footerParagraph;
+
+		policy.createFooter(XWPFHeaderFooterPolicy.DEFAULT, parsFooter);
+	}
 	public static void main(String[] args) {
 
 //		LLDocument test = new LLDocument();

@@ -1,6 +1,7 @@
 package document_generation.StatementOfClaim.Sections;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import document_generation.LawyersLetter.LLDocument;
 import document_generation.LawyersLetter.LLParagraph;
@@ -15,13 +16,24 @@ public class PunitiveAggravateMoralDamagesSection extends SOCSection{
 
 		ArrayList<LLParagraph> content = new ArrayList<>();
 
+		setSqlSOC(this.getSectionCodeSOC().toString());
+		HashMap<String, String> resultSet= dao.executeSelect(this.getSelectSql());
+		
 		LLParagraph header = llpf.getParagraph(doc, ParaCode.HEAD);
-		header.setText("Punitive, Aggravated, and/or Moral Damages");
+		header.setText(resultSet.get("1"));
 		content.add(header);
 
 		LLParagraph text = llpf.getParagraph(doc, ParaCode.REG);
-		text.setText("[PLAINTIFF] pleads that [EMPLOYER] is liable for punitive, aggravated, Bhasin, and/or moral damages for their conduct. ");
+		text.setText(resultSet.get("2"));
 		content.add(text);
+//		
+//		LLParagraph header = llpf.getParagraph(doc, ParaCode.HEAD);
+//		header.setText("Punitive, Aggravated, and/or Moral Damages");
+//		content.add(header);
+//
+//		LLParagraph text = llpf.getParagraph(doc, ParaCode.REG);
+//		text.setText("<client_first_name> pleads that <employer_first_name> is liable for punitive, aggravated, Bhasin, and/or moral damages for their conduct. ");
+//		content.add(text);
 
         this.setContents(content);
 	}

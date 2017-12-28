@@ -29,6 +29,25 @@ public class LLParagraphFactory {
                 return new TabInFrontParagraph(doc);
             case QATMP:
                 return new QATempMsgParagraph(doc);
+
+            case TAB_B:
+            	return new TabBoldParagraph(doc);
+            case HEAD_B:
+            	return new HeaderBoldParagraph(doc);
+            case QUOTE_B:
+            	return new QuoteBoldParagraph(doc);
+            case RIGHT:
+            	return new RightAlignParagraph(doc);
+            case CENTER:
+            	return new CenterAlignParagraph(doc);
+            case SOC:
+            	return new SOCParagraph(doc);
+            case RIGHT_B:
+            	return new RightAlignBoldParagraph(doc);
+            case CENTER_B:
+            	return new CenterAlignBoldParagraph(doc);
+            case SOC_B:
+            	return new SOCBoldParagraph(doc);
             default:
                 System.err.println("No code given for paragraph creation.");
                 return new LLParagraph(doc);

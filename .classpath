@@ -17,5 +17,8 @@
 	<classpathentry exported="true" kind="lib" path="/Users/monkhousemacbook6/Documents/Java/Jars/ooxml-schemas-1.0.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="lib" path="/Users/monkhousemacbook6/Documents/Java/Jars/commons-lang3-3.6.jar"/>
+	<classpathentry kind="lib" path="/Users/monkhousemacbook6/Documents/Java/Jars/mysql-connector-java-5.1.42-bin.jar"/>
+	<classpathentry kind="lib" path="/Users/monkhousemacbook6/Documents/Java/Jars/commons-codec-1.10.jar"/>
+	<classpathentry kind="lib" path="/Users/monkhousemacbook6/Documents/Java/Jars/gson-2.8.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

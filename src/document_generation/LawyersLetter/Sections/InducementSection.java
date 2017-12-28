@@ -25,7 +25,7 @@ public class InducementSection extends LLSection{
         //body:
         insertText(llpf,doc,content,ParaCode.REG, "Inducement is an aggravating factor that elongates " +
                 "a notice period as the previous employment ought to be included in the calculation for tenure. " +
-                "In Egan v. Alcatel Canada Inc., [2006] O.J. No. 34, the plaintiff left a position after twenty " +
+                "In _Egan v. Alcatel Canada Inc_., [2006] O.J. No. 34, the plaintiff left a position after twenty " +
                 "years to commence employment with the defendant. The Court of Appeal held that the plaintiff was " +
                 "entitled to an elongated notice period, taking into account the seniority she accrued from her " +
                 "previous employment, as the plaintiff relied on the defendant’s promises of a substantial increase " +

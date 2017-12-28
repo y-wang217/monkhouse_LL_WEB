@@ -15,7 +15,7 @@ public class LLTest {
 
     public static void main(String[] args){
         LLSectionFactory llsf = new LLSectionFactory();
-        LLDocument doc = new LLDocument();
+        LLDocument_copy doc = new LLDocument_copy();
 //        LLSection open = llsf.getSection(doc, SectionCode.OPENING);
 //
 //        if(open.equals(null) || open.getContents().isEmpty()){
@@ -32,9 +32,12 @@ public class LLTest {
 //        }
 //        
         LinkedHashMap<String, String> testMap = doc.getFieldsMap();
-        testMap.put("contractor_vs_emp", "on");
+        testMap.put("dollarsNoticeOwed", "10000");
+        testMap.put("dollarsBenefitsOwed", "10000");
+        testMap.put("dollarsDamagesOwed", "10000");
+        testMap.put("dollarsTotalOwed", "100000");
         doc.setFieldsMap(testMap);
-        LLSection s = llsf.getSection(doc, LLSectionCode.CONTRACTOR_VS_EMP);
+        LLSection s = llsf.getSection(doc, LLSectionCode.NUM_TEST);
         doc.writeToDoc(s);
         
         CloseDocument.closeSimple(doc, "LLTest.docx");

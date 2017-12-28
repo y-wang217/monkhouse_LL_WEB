@@ -29,7 +29,6 @@ public class LLParagraph {
     public LLParagraph() {
         this.setText("");
         this.setParaType(ParaCode.REG);
-        this.setItalics(false);
         this.setBold(false);
     }
     
@@ -37,14 +36,13 @@ public class LLParagraph {
 
         this.setText("");
         this.setParaType(type);
-        this.setItalics(false);
         this.setBold(false);
     }
 
     private String text;
     private ParaCode paraType;
     private XWPFParagraph xwpfParagraph;
-    private boolean italics;
+    private boolean blank;
     private boolean bold;
     private boolean underline;
 
@@ -58,9 +56,9 @@ public class LLParagraph {
         this.underline = underline;
     }
 
-    public boolean hasItalics() {
+    public boolean isBlank() {
 
-        return italics;
+        return blank;
     }
 
     public boolean isBold() {
@@ -68,9 +66,9 @@ public class LLParagraph {
         return bold;
     }
 
-    public void setItalics(boolean italics) {
+    public void setBlank(boolean italics) {
 
-        this.italics = italics;
+        this.blank = italics;
     }
 
     public void setBold(boolean bold) {
