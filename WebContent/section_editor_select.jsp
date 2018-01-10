@@ -13,6 +13,7 @@
 			function() {
 				var docSelected;
 				var secSelected;
+				var oldContentObj = [];
 				$("#document_select").change(function() {
 					var selected_doc = $(this).val();
 					if (selected_doc == "ll") {
@@ -29,13 +30,15 @@
 				})
 
 				$(".section_sel").change(function() {
-					$('#submit_edit_button').show();
+					$('#select_edit_button').show();
 					secSelected = $(this).val();
+					clearElements();
 				})
 
-				$('#submit_edit_button').on(
+				$('#select_edit_button').on(
 						'click',
 						function() {
+							$('#submit_edit_button').show();
 							$("textarea").remove();
 							var Status = $(".section_sel").val();
 							if (Status == "") {
@@ -61,40 +64,45 @@
 								}
 							});
 						});
+
+				$('#submit_edit_button').on(
+						'click',
+						function() {
+							
+							$('#confirm_edit_area').show();
+						});
+				var processSectionContent = function(contentArray){
+					var index = 0;
+					contentArray.forEach( function (arrayItem)
+							{
+								
+							    //alert(arrayItem);
+								editArea = document.createElement("textarea");
+								editArea.value = arrayItem;
+								editArea.setAttribute("id", "contentText"+index++);
+								$("#edit_area").append('<br><br>');
+								$("#edit_area").append(editArea);
+								
+							});
+					$("#edit_area").children('textarea').each(
+							function(){
+								id = this.getAttribute("id");
+								item = {};
+								item [id] = this.value;
+								
+								oldContentObj.push(item);
+							})
+				}
 			});
-			var processSectionContent = function(contentArray){
-				contentArray.forEach( function (arrayItem)
-						{
-						    //alert(arrayItem);
-							editArea = document.createElement("textarea");
-							editArea.value = arrayItem;
-							$("#edit_area").append('<br><br>');
-							$("#edit_area").append(editArea);
-						});
-			}
-			$('#submit_edit_button').on(
-					'click',
-					function() {
-						$.ajax({
-							url : 'section_confirm',
-							type : 'GET',
-							data : {
-								prev : docSelected,
-								section : secSelected
-							},
-							dataType : 'json',
-
-							success : function(data) {
-								processSectionContent(data);
-							},
-
-							error : function(data, status, er) {
-								alert("error: " + data + " status: "
-										+ status + " er:" + er);
-							}
-						});
-						
-					});
+	var clearElements = function(){
+		$("#edit_area").children('textarea').remove();
+		$("#edit_area").children('br').remove();
+		$("#confirm_edit_form_old").children('textarea').remove();
+		$("#confirm_edit_form_old").children('br').remove();
+		$("#confirm_edit_form_new").children('textarea').remove();
+		$("#confirm_edit_form_new").children('br').remove();
+	}
+			
 </script>
 </head>
 <body>
@@ -172,11 +180,19 @@
 	<br>
 
 
-	<input type='button' value='EDIT SECTION' id="submit_edit_button">
+	<input type='button' value='EDIT SECTION' id="select_edit_button" style="display:none;">
 	
 	<div id="edit_area">
+	</div>
+	<input type='button' value='SUBMIT EDIT' id="submit_edit_button" style="display:none;">
 	
-	<input type='button' value='CONFIRM EDIT' id="confirm_submit_button">
+	
+	
+	<div id='confirm_edit_area' style="display:none;">
+	New:
+	<form id='confirm_edit_form_new' action="confirm_edit">
+	<!--  <input type='button' value='CONFIRM EDIT' id="submit_edit_button">  -->
+	</form>
 	</div>
 </body>
 </html>

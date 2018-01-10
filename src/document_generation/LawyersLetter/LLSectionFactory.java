@@ -22,13 +22,13 @@ public class LLSectionFactory {
             case EMP_DESC: return new EmploymentDescriptionSection(doc, llpf);
             case TERMINATION: return new TerminationSection(doc, llpf);
             case CUSTOM: return new CustomSection(doc, llpf);
-            case CONSTRUCTIVE_DISMISSAL: return new ConstructiveDismissalSection(doc, llpf);
-            case BONUS: return new BonusesSection(doc, llpf);
+            case CONSTRUCTIVE_DISMISSAL: return new ConstructiveDismissalSectionCopy(doc, llpf);
+            case BONUS: return new BonusesSectionCopy(doc, llpf);
             case FIGHT_TERMINATION_CLAUSE: return new FightTerminationClauseSection(doc, llpf);
             case FIGHTING_CAUSE: return new FightingCauseSection(doc, llpf);
             case CONTRACTOR_VS_EMP: return new ContractorVsEmployeeSection(doc, llpf);
             case PENSION: return new PensionsSection(doc, llpf);
-            case APPROPRIATE_NOTICE_PERIOD: return new AppropriateNoticePeriodSection(doc, llpf);
+            case APPROPRIATE_NOTICE_PERIOD: return new AppropriateNoticePeriodSectionCopy(doc, llpf);
             case INDUCEMENT: return new InducementSection(doc, llpf);
             case HARASSMENT: return new HarassmentSection(doc, llpf);
             case HUMAN_RIGHTS_DIS: return new HumanRightsDiscriminationSection(doc, llpf);

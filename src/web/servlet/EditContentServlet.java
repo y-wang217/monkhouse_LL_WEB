@@ -2,16 +2,19 @@ package web.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import document_generation.LawyersLetter.LLDocument;
 import document_generation.LawyersLetter.LLParagraph;
@@ -29,19 +32,20 @@ public class EditContentServlet extends HttpServlet{
 	static SOCSectionFactory socsf = new SOCSectionFactory();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    	HashMap<String, ArrayList<String>> databaseContent = new HashMap<String, ArrayList<String>>();
     	ArrayList<String> sectionContent = new ArrayList<>();
-    	Enumeration<String> params = req.getParameterNames();
-    	while(params.hasMoreElements()){
-    		System.out.println(params.nextElement());
-    	}
-    	System.out.println(params);
+    	
+    	//System.out.println(params);
     	String selectedDoc = req.getParameter("doc");
     	String selectedSection = req.getParameter("section");
     	
     	
     	if(selectedDoc.equals("ll")){
+    		LLDocument doc = new LLDocument();
+    		doc.getFieldsMap().put("setAllParagraphs", "true");
+    		
     		LLSectionCode code = LLSectionCode.valueOf(selectedSection);
-    		LLSection sec = llsf.getSection(new LLDocument(), code);
+    		LLSection sec = llsf.getSection(doc, code);
     		
     		for(LLParagraph p : sec.getContents()){
         		sectionContent.add(p.getText());
@@ -66,8 +70,6 @@ public class EditContentServlet extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    	ArrayList<String> sectionContentInput = new ArrayList<String>();
-    	
-        super.doPost(req, resp);
+    	doGet(req,resp);
     }
 }

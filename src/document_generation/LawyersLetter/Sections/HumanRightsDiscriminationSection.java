@@ -94,7 +94,7 @@ public class HumanRightsDiscriminationSection extends LLSection{
                     "sufficient that the discrimination be but one basis for the employer’s actions or decisions.");
         }
 
-        if (Integer.parseInt(doc.getFieldsMap().get("age"))>45 || doc.getFieldsMap().get("setAllParagraphs").equals("true")) {
+        if (doc.getFieldsMap().get("setAllParagraphs").equals("true") || Integer.parseInt(doc.getFieldsMap().get("age"))>45) {
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Human Rights Discrimination - Age Damages");
             //body:
@@ -113,7 +113,7 @@ public class HumanRightsDiscriminationSection extends LLSection{
         }
 
         //TODO Charts functionality, new type of paragraph
-        if (Objects.equals(doc.getFieldsMap().get("isUseHumanRightsDamagesChart"), "on") || doc.getFieldsMap().get("setAllParagraphs").equals("true")) {
+        if (doc.getFieldsMap().get("setAllParagraphs").equals("true") || Objects.equals(doc.getFieldsMap().get("isUseHumanRightsDamagesChart"), "on")) {
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Human Rights Damages Chart");
           //create table

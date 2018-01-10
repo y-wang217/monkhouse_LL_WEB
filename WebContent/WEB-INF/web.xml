@@ -44,4 +44,12 @@
     <servlet-name>EditContent</servlet-name>
     <url-pattern>/section_editor</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>ConfirmEdit</servlet-name>
+    <servlet-class>web.servlet.ConfirmEditServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConfirmEdit</servlet-name>
+    <url-pattern>/confirm_edit</url-pattern>
+  </servlet-mapping>
 </web-app>

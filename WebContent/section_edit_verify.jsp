@@ -11,8 +11,12 @@
 </head>
 <body>
 <div id="prev_content">
+	<p>Previous</p>
 </div>
 <div id="edited_content">
+	<p>new:
+	<br>
+	${sessionScope.content}</p>
 </div>
 </body>
 </html>

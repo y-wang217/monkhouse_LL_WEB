@@ -27,7 +27,7 @@ public class ConstructiveDismissalSection extends LLSection{
 
 
         //TODO keep flag in doc to track which paragraph is needed
-        if(Objects.equals(doc.getFieldsMap().get("isUseWageDeduction"), "on") || doc.getFieldsMap().get("setAllParagraphs").equals("true")){
+        if(doc.getFieldsMap().get("setAllParagraphs").equals("true") || Objects.equals( doc.getFieldsMap().get("isUseWageDeduction"), "on")){
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Constructive Dismissal - Wage Deduction");
             //body:
@@ -39,7 +39,7 @@ public class ConstructiveDismissalSection extends LLSection{
                     + "%%");
 
         }
-        if(Objects.equals(doc.getFieldsMap().get("isUseLocation"), "on") || doc.getFieldsMap().get("setAllParagraphs").equals("true")){
+        if(doc.getFieldsMap().get("setAllParagraphs").equals("true") || Objects.equals(doc.getFieldsMap().get("isUseLocation"), "on")){
 
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Constructive Dismissal - Location");
@@ -47,7 +47,7 @@ public class ConstructiveDismissalSection extends LLSection{
             insertText(llpf,doc,content,ParaCode.REG, "The majority held in _Reynolds v. Innopac Inc., 1998_ CanLII 3558 (ON CA) that a change in location of work that required a substantially greater travel time would have substantially changed the way in which the employee carried out <possessive_pronoun> job and duties. In _Weselan v. Totten Sims Hubicki Associates Ltd._ (1997) Ltd. (2001), 16 CCEL (3d) 184 (Ont CA) it was found that increased travel time of an hour and a half and the annual cost associated with such travel would constitute a significant change in the travel time and therefore constituted constructive dismissal. \n");
 
         }
-        if(Objects.equals(doc.getFieldsMap().get("isUseBreachOfFundamentalImpliedTerm"), "on") || doc.getFieldsMap().get("setAllParagraphs").equals("true")){
+        if(doc.getFieldsMap().get("setAllParagraphs").equals("true") || Objects.equals(doc.getFieldsMap().get("isUseBreachOfFundamentalImpliedTerm"), "on")){
 
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Constructive Dismissal - Breach of Fundamental Implied Term");
@@ -55,7 +55,7 @@ public class ConstructiveDismissalSection extends LLSection{
             insertText(llpf,doc,content,ParaCode.REG, "A breach of a fundamental term of the employment contract constitutes constructive dismissal. The courts have found that constructive dismissal can exist where the employer breaches an implied term of the employment contract. In Lloyd v. Imperial Parking Ltd., 1996 CanLII 10543 (AB QB), the court stated, at p. 41, that “a fundamental implied term of any employment relationship is that the employer will treat the employee with civility, decency, respect, and dignity.” In Lloyd the employer was found to have breached this implied term of the employment contract for having repeatedly yelled and screamed at the employee. \n");
 
         }
-        if(Objects.equals(doc.getFieldsMap().get("isUseIntolerable"), "on") || doc.getFieldsMap().get("setAllParagraphs").equals("true")){
+        if(doc.getFieldsMap().get("setAllParagraphs").equals("true") || Objects.equals(doc.getFieldsMap().get("isUseIntolerable"), "on") || doc.getFieldsMap().get("setAllParagraphs").equals("true")){
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Constructive Dismissal - Intolerable Workplace");
             //body:
@@ -74,7 +74,7 @@ public class ConstructiveDismissalSection extends LLSection{
                     "business, it is incumbent upon the employer to foster congeniality amongst the employees by " +
                     "providing a good working environment which will result in good employee productivity.”");
         }
-        if(Objects.equals(doc.getFieldsMap().get("isUseWorkplaceHarassmentPoisonedWorkEnvironment"), "on") || doc.getFieldsMap().get("setAllParagraphs").equals("true")){
+        if(doc.getFieldsMap().get("setAllParagraphs").equals("true") || Objects.equals(doc.getFieldsMap().get("isUseWorkplaceHarassmentPoisonedWorkEnvironment"), "on")){
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Constructive Dismissal - Workplace Harassment");
             //body:
@@ -97,7 +97,7 @@ public class ConstructiveDismissalSection extends LLSection{
                     "damages for the mental anguish suffered as a result of the assault that <subjective_pronoun> experienced " +
                     "at work.");
         }
-        if(Objects.equals(doc.getFieldsMap().get("isUseWorkplaceHarassmentPoisonedWorkEnvironment"), "on") || doc.getFieldsMap().get("setAllParagraphs").equals("true")){
+        if(doc.getFieldsMap().get("setAllParagraphs").equals("true") || Objects.equals(doc.getFieldsMap().get("isUseWorkplaceHarassmentPoisonedWorkEnvironment"), "on")){
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Constructive Dismissal - Poisoned Work Environment");
             //body:
@@ -123,7 +123,7 @@ public class ConstructiveDismissalSection extends LLSection{
                     "view of the circumstances at hand, <client_first_name> has been constructively dismissed and is entitled to " +
                     "a reasonable notice period of her termination of employment.");
         }
-        if(Objects.equals(doc.getFieldsMap().get("isUseRemovalFromManagementPosition"), "on") || doc.getFieldsMap().get("setAllParagraphs").equals("true")){
+        if(doc.getFieldsMap().get("setAllParagraphs").equals("true") || Objects.equals(doc.getFieldsMap().get("isUseRemovalFromManagementPosition"), "on")){
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Constructive Dismissal - Removal from Management Position");
             //body:

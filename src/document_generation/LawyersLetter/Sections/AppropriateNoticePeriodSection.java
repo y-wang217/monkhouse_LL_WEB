@@ -40,7 +40,7 @@ public class AppropriateNoticePeriodSection extends LLSection {
         if(!doc.getFieldsMap().containsKey("age")){
         	doc.getFieldsMap().put("age", "40");
         }
-        if(Integer.parseInt(doc.getFieldsMap().get("age"))>45){
+        if(doc.getFieldsMap().get("setAllParagraphs").equals("true") || Integer.parseInt(doc.getFieldsMap().get("age"))>45){
 
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Age as Elongating Factor");
@@ -58,7 +58,7 @@ public class AppropriateNoticePeriodSection extends LLSection {
                     "alternative employment at an older age.");
         }
 
-        if(Objects.equals(doc.getFieldsMap().get("isUseNonSkilledPositions"), "on")){
+        if(doc.getFieldsMap().get("setAllParagraphs").equals("true") || Objects.equals(doc.getFieldsMap().get("isUseNonSkilledPositions"), "on")){
 
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Position of Employee");
@@ -90,7 +90,7 @@ public class AppropriateNoticePeriodSection extends LLSection {
 
         }
 
-        if(Objects.equals(doc.getFieldsMap().get("isUseEconomicDownturn"), "on")){
+        if(doc.getFieldsMap().get("setAllParagraphs").equals("true") || Objects.equals(doc.getFieldsMap().get("isUseEconomicDownturn"), "on")){
 
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Economic Downturn");
@@ -104,7 +104,7 @@ public class AppropriateNoticePeriodSection extends LLSection {
                     "ONSC 5485.");
         }
 
-        if(Objects.equals(doc.getFieldsMap().get("isFighting_cause"), "on")){
+        if(doc.getFieldsMap().get("setAllParagraphs").equals("true") || Objects.equals(doc.getFieldsMap().get("isFighting_cause"), "on")){
 
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Allegations of Cause");
@@ -124,7 +124,7 @@ public class AppropriateNoticePeriodSection extends LLSection {
         if(!doc.getFieldsMap().containsKey("seniority_in_years")){
         	doc.getFieldsMap().put("seniority_in_years", "1");
         }
-        if(Integer.parseInt(doc.getFieldsMap().get("seniority_in_years"))<5 && !isExec){
+        if(doc.getFieldsMap().get("setAllParagraphs").equals("true") || Integer.parseInt(doc.getFieldsMap().get("seniority_in_years"))<5 && !isExec){
 
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Short Term Employees");
@@ -137,7 +137,7 @@ public class AppropriateNoticePeriodSection extends LLSection {
                     "was awarded 12 months' notice.\n");
         }
 //Use Short term Employees - Executives
-        if(Integer.parseInt(doc.getFieldsMap().get("seniority_in_years"))<5 && isExec){
+        if(doc.getFieldsMap().get("setAllParagraphs").equals("true") || Integer.parseInt(doc.getFieldsMap().get("seniority_in_years"))<5 && isExec){
 
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Short Term Employees - Executives");
@@ -152,7 +152,7 @@ public class AppropriateNoticePeriodSection extends LLSection {
                     "it is highly likely that a court would award Muhammad a similar notice period to that in Felice. ");
         }
 
-        if(Objects.equals(doc.getFieldsMap().get("isUseAppropriateNoticeConclusion"), "on")){
+        if(doc.getFieldsMap().get("setAllParagraphs").equals("true") || Objects.equals(doc.getFieldsMap().get("isUseAppropriateNoticeConclusion"), "on")){
 
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Appropriate Notice Conclusion");
@@ -163,7 +163,7 @@ public class AppropriateNoticePeriodSection extends LLSection {
                     "is my position that <subjective_pronoun> would be entitled to at least XX months’ notice.");
         }//TODO: change xx to an equation
 
-        if(Objects.equals(doc.getFieldsMap().get("isUseAppropriateNoticeAlternative"), "on")){
+        if(doc.getFieldsMap().get("setAllParagraphs").equals("true") || Objects.equals(doc.getFieldsMap().get("isUseAppropriateNoticeAlternative"), "on")){
 
             //heading:
             insertText(llpf,doc,content, ParaCode.HEAD,"Appropriate Notice Alternative - If Just Cause is Alleged" +
