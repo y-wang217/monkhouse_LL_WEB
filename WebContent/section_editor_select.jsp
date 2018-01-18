@@ -13,7 +13,6 @@
 			function() {
 				var docSelected;
 				var secSelected;
-				var oldContentObj = [];
 				$("#document_select").change(function() {
 					var selected_doc = $(this).val();
 					if (selected_doc == "ll") {
@@ -65,36 +64,63 @@
 							});
 						});
 
-				$('#submit_edit_button').on(
-						'click',
-						function() {
-							
-							$('#confirm_edit_area').show();
-						});
-				var processSectionContent = function(contentArray){
+				$('#submit_edit_button').on('click', function() {
+
+					submitContentText();
+				});
+				var processSectionContent = function(contentArray) {
 					var index = 0;
-					contentArray.forEach( function (arrayItem)
-							{
-								
-							    //alert(arrayItem);
-								editArea = document.createElement("textarea");
-								editArea.value = arrayItem;
-								editArea.setAttribute("id", "contentText"+index++);
-								$("#edit_area").append('<br><br>');
-								$("#edit_area").append(editArea);
-								
-							});
-					$("#edit_area").children('textarea').each(
-							function(){
-								id = this.getAttribute("id");
-								item = {};
-								item [id] = this.value;
-								
-								oldContentObj.push(item);
-							})
+					contentArray.forEach(function(arrayItem) {
+
+						//alert(arrayItem);
+						editArea = document.createElement("textarea");
+						editArea.value = arrayItem;
+						editArea.setAttribute("id", "contentText" + index);
+						editCheckBox = document.createElement("input");
+						editCheckBox.setAttribute("type", "checkbox");
+						editCheckBox
+								.setAttribute("id", "contentBox_" + index++);
+						$("#edit_area").append('<br><br>');
+						$("#edit_area").append(editArea);
+						$("#edit_area").append(editCheckBox);
+
+					});
+				}
+				newTextMap = [];
+				var submitContentText = function(){
+					$('input[type=checkbox]').each(function(){
+						if(this.checked){
+							paragraph_number = this.id.substring(11);
+							paragraph_change = {paragraph_number:$('#contentText'+paragraph_number).val()}
+							console.log($('#contentText'+paragraph_number).val());
+							console.log(JSON.stringify(paragraph_change));
+							newTextMap.push(paragraph_change);
+						}
+					})
+					console.log(JSON.stringify(newTextMap));
+					$.ajax({
+						url : 'editor_submit',
+						type : 'POST',
+						data : {
+							doc : docSelected,
+							section : secSelected,
+							changes : newTextMap
+						},
+						dataType : 'json',
+
+						success : function(data) {
+							alert("success");
+							//reportSuccessSubmit(data);
+						},
+
+						error : function(data, status, er) {
+							alert("error: " + JSON.stringify(data) + " status: "
+									+ status + " er:" + er);
+						}
+					});
 				}
 			});
-	var clearElements = function(){
+	var clearElements = function() {
 		$("#edit_area").children('textarea').remove();
 		$("#edit_area").children('br').remove();
 		$("#confirm_edit_form_old").children('textarea').remove();
@@ -102,7 +128,6 @@
 		$("#confirm_edit_form_new").children('textarea').remove();
 		$("#confirm_edit_form_new").children('br').remove();
 	}
-			
 </script>
 </head>
 <body>
@@ -180,19 +205,20 @@
 	<br>
 
 
-	<input type='button' value='EDIT SECTION' id="select_edit_button" style="display:none;">
-	
-	<div id="edit_area">
-	</div>
-	<input type='button' value='SUBMIT EDIT' id="submit_edit_button" style="display:none;">
-	
-	
-	
-	<div id='confirm_edit_area' style="display:none;">
-	New:
-	<form id='confirm_edit_form_new' action="confirm_edit">
-	<!--  <input type='button' value='CONFIRM EDIT' id="submit_edit_button">  -->
-	</form>
+	<input type='button' value='EDIT SECTION' id="select_edit_button"
+		style="display: none;">
+
+	<div id="edit_area"></div>
+	<input type='button' value='SUBMIT EDIT' id="submit_edit_button"
+		style="display: none;">
+
+
+
+	<div id='confirm_edit_area' style="display: none;">
+		New:
+		<form id='confirm_edit_form_new' action="confirm_edit">
+			<!--  <input type='button' value='CONFIRM EDIT' id="submit_edit_button">  -->
+		</form>
 	</div>
 </body>
 </html>

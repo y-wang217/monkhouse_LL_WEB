@@ -30,6 +30,8 @@ public class EditContentServlet extends HttpServlet{
 
 	static LLSectionFactory llsf = new LLSectionFactory();
 	static SOCSectionFactory socsf = new SOCSectionFactory();
+	
+	private String headingsSql = "";
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	HashMap<String, ArrayList<String>> databaseContent = new HashMap<String, ArrayList<String>>();

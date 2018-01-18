@@ -107,9 +107,7 @@ public class FightingCauseSection extends LLSection{
                     "[2005] O.J. No. 2070, an employee stole company property and was found to have sworn at his boss " +
                     "for no reason. These two incidents combined were not just cause. The termination was not " +
                     "proportionate to the offence and so the argument failed. \n");
-            
-            insertText(llpf,doc,content,ParaCode.REG, "For instance in _Bravo v. Etobicoke Ironworks Ltd_. [2005] O.J. No. 2070, an employee stole company property and was found to have sworn at his boss for no reason. These two incidents combined were not just cause. The termination was not proportionate to the offence and so the argument failed. ");
-            
+                        
                     
             insertText(llpf,doc,content,ParaCode.REG, "In _Henson v. Champion Feed Services Ltd_., [2005] A.J. No. 323, and reiterated in _Gillespie v. 1200333 Alberta Ltd_., 2001 ABPC (CanLii), the Courts have discussed the requirement for progressive disciple in cases of cumulative cause for termination. Particularly, at paragraph 21 Gillespie states:");
             

@@ -23,7 +23,7 @@ public class BonusesSectionCopy extends LLSection {
 
         //SQL RETRIEVAL
         this.setSql(this.getSectionCode().toString());
-        HashMap<String, String>contents = dao.executeSelect(this.getSelectSql());
+        HashMap<String, String>contents = dao.executeSelectParagraphText(this.getSelectSql());
         
         //heading:
         insertText(llpf,doc,content, ParaCode.HEAD,contents.get("1"));

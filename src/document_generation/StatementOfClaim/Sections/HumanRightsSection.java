@@ -17,7 +17,7 @@ public class HumanRightsSection extends SOCSection{
 		ArrayList<LLParagraph> content = new ArrayList<>();
 
 		setSqlSOC(this.getSectionCodeSOC().toString());
-		HashMap<String, String> resultSet= dao.executeSelect(this.getSelectSql());
+		HashMap<String, String> resultSet= dao.executeSelectParagraphText(this.getSelectSql());
 		
 //		LLParagraph header = llpf.getParagraph(doc, ParaCode.HEAD);
 //		header.setText(resultSet.get("1"));

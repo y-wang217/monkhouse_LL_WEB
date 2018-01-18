@@ -17,7 +17,7 @@ public class EndSection extends SOCSection {
 		ArrayList<LLParagraph> content = new ArrayList<>();
 
 		setSqlSOC(this.getSectionCodeSOC().toString());
-		HashMap<String, String> resultSet= dao.executeSelect(this.getSelectSql());
+		HashMap<String, String> resultSet= dao.executeSelectParagraphText(this.getSelectSql());
 		
 		LLParagraph text = llpf.getParagraph(doc, ParaCode.HEAD);
 		text.setText(resultSet.get("1"));

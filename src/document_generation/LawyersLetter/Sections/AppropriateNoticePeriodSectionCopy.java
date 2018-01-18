@@ -24,7 +24,7 @@ public class AppropriateNoticePeriodSectionCopy extends LLSection {
 
         //SQL RETRIEVAL
         this.setSql(this.getSectionCode().toString());
-        HashMap<String, String>contents = dao.executeSelect(this.getSelectSql());
+        HashMap<String, String>contents = dao.executeSelectParagraphText(this.getSelectSql());
         
         //heading:
         insertText(llpf,doc,content, ParaCode.HEAD,contents.get("1"));
@@ -57,8 +57,6 @@ public class AppropriateNoticePeriodSectionCopy extends LLSection {
             insertText(llpf,doc,content, ParaCode.QUOTE,contents.get("10"));
             insertText(llpf,doc,content, ParaCode.QUOTE,contents.get("11"));
             
-            insertText(llpf,doc,content,ParaCode.REG, "For instance in _Drysdale v. Panasonic Canada Inc._, 2015 ONSC 6878 a 23 year labourer was given 22 months notice by Justice Lederman. ");
-
         }
 
         if(Objects.equals(doc.getFieldsMap().get("isUseEconomicDownturn"), "on") || doc.getFieldsMap().get("setAllParagraphs").equals("true")){

@@ -50,6 +50,6 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ConfirmEdit</servlet-name>
-    <url-pattern>/confirm_edit</url-pattern>
+    <url-pattern>/editor_submit</url-pattern>
   </servlet-mapping>
 </web-app>

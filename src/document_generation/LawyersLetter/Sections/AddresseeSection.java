@@ -24,7 +24,7 @@ public class AddresseeSection extends LLSection {
         //the first line  is supposed to be bold, but the rest should be not-bold
         
         this.setSql(this.getSectionCode().toString());
-        HashMap<String, String>contents = dao.executeSelect(this.getSelectSql());
+        HashMap<String, String>contents = dao.executeSelectParagraphText(this.getSelectSql());
         
         addressee.setText(contents.get("1"));
         content.add(addressee);

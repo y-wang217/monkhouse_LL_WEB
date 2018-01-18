@@ -57,7 +57,7 @@ public class UserDao {
 		return resultMap;
 	}
 
-	public HashMap<String, String> executeSelect(String sql) {
+	public HashMap<String, String> executeSelectParagraphText(String sql) {
 		HashMap<String, String> resultMap = new HashMap<>();
 		Connection conn = null;
 
@@ -90,10 +90,53 @@ public class UserDao {
 				}
 			}
 		}
+		
+		
 
 		return resultMap;
 	}
 
+
+	public static HashMap<String, String> executeSelect(String sql) {
+		HashMap<String, String> resultMap = new HashMap<>();
+		Connection conn = null;
+
+		// int custId = 1;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager
+					.getConnection("jdbc:mysql://localhost:3306/monkhouse?user=root&password=pass");
+			PreparedStatement ps = conn.prepareStatement(sql);
+			System.out.println("               SQL query is: " + sql);
+
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				resultMap.put(rs.getString(1),
+						rs.getString(2));
+			}
+			rs.close();
+
+			ps.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+		
+		
+
+		return resultMap;
+	}
+
+	
 	public void executeUpdate(String sql) {
 		Connection conn = null;
 
