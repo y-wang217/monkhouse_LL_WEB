@@ -59,9 +59,14 @@ public class GenerateLawyersLetterServlet extends HttpServlet{
             req.getSession().setAttribute("document_creation_fail_msg", docMsg2.read());
         }
 
+        //TODO:UPLOAD URL HAS TO BE CHANGED
         String uploadURL = "http://localhost:8080/Monkhouse_Letter_Web/UploadDownloadFileServlet";
         String awsUploadURL = "http://localhost:8080/UploadDownloadFileServlet";
-        //uploadURL = awsUploadURL;
+        
+        /***/
+        //Flip this line on/off when using local or remote
+        uploadURL = awsUploadURL;
+        /***/
         
         File uploadFile1 = new File(filePath);
         File uploadFile2 = new File(filePath2);

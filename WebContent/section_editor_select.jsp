@@ -69,13 +69,14 @@
 					submitContentText();
 				});
 				var processSectionContent = function(contentArray) {
-					var index = 0;
+					var index = 0;//use 0-index because database offset is addition
 					contentArray.forEach(function(arrayItem) {
 
 						//alert(arrayItem);
 						editArea = document.createElement("textarea");
 						editArea.value = arrayItem;
 						editArea.setAttribute("id", "contentText" + index);
+						editArea.readOnly = true;
 						editCheckBox = document.createElement("input");
 						editCheckBox.setAttribute("type", "checkbox");
 						editCheckBox
@@ -86,15 +87,21 @@
 
 					});
 				}
-				newTextMap = [];
+				$(document).on("change", "input[type=checkbox]", function () {
+			        if(this.checked) {
+			        	var id = this.id.substring(11);
+			        	$("#contentText"+id).prop('readOnly', false);
+			        }
+			    });
+				newTextMap = {};
 				var submitContentText = function(){
 					$('input[type=checkbox]').each(function(){
 						if(this.checked){
-							paragraph_number = this.id.substring(11);
-							paragraph_change = {paragraph_number:$('#contentText'+paragraph_number).val()}
-							console.log($('#contentText'+paragraph_number).val());
-							console.log(JSON.stringify(paragraph_change));
-							newTextMap.push(paragraph_change);
+							var paragraph_trans = [];
+							var paragraph_number = this.id.substring(11);
+							newTextMap[$('#contentText'+paragraph_number).val()] = paragraph_number;
+							//newTextMap[paragraph_number] = $('#contentText'+paragraph_number).val();
+							//newTextMap.push(paragraph_trans);
 						}
 					})
 					console.log(JSON.stringify(newTextMap));
@@ -104,12 +111,12 @@
 						data : {
 							doc : docSelected,
 							section : secSelected,
-							changes : newTextMap
+							changes : JSON.stringify(newTextMap)
 						},
 						dataType : 'json',
 
 						success : function(data) {
-							alert("success");
+							alert("success: " + data);
 							//reportSuccessSubmit(data);
 						},
 
@@ -127,6 +134,7 @@
 		$("#confirm_edit_form_old").children('br').remove();
 		$("#confirm_edit_form_new").children('textarea').remove();
 		$("#confirm_edit_form_new").children('br').remove();
+		$("input[type=checkbox]").remove();
 	}
 </script>
 </head>

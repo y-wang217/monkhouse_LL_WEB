@@ -23,7 +23,7 @@ public class PunitiveAggravateMoralDamagesSection extends SOCSection{
 		header.setText(resultSet.get("1"));
 		content.add(header);
 
-		LLParagraph text = llpf.getParagraph(doc, ParaCode.REG);
+		LLParagraph text = llpf.getParagraph(doc, ParaCode.LIST);
 		text.setText(resultSet.get("2"));
 		content.add(text);
 //		

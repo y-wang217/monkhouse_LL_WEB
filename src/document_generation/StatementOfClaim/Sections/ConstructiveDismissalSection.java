@@ -35,11 +35,11 @@ public class ConstructiveDismissalSection extends SOCSection{
 		header.setText("Constructive Dismissal");
 		content.add(header);
 
-		LLParagraph text = llpf.getParagraph(doc, ParaCode.REG);
+		LLParagraph text = llpf.getParagraph(doc, ParaCode.LIST);
 		text.setText("<client_first_name> pleads that for the actions of <employer_first_name>, <subjective_pronoun> has been constructively dismissed. The actions of <employer_first_name> have demonstrated an intention not to abide by the original terms of the employment agreement between the parties. ");
 		content.add(text);
 		
-		LLParagraph text2 = llpf.getParagraph(doc, ParaCode.REG);
+		LLParagraph text2 = llpf.getParagraph(doc, ParaCode.LIST);
 		text2.setText("[contextual assessment of the facts that may establish constructive dismissal: wage deductions, location changes, intolerable workplace, workplace harassment, poisoned worked environment, demotion, etc] ");
 		content.add(text2);
 

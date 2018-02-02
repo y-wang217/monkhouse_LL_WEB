@@ -1,47 +1,73 @@
 package document_generation.StatementOfClaim;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-
-import document_generation.StatementOfClaim.Sections.Codes.SOCSectionCode;
-import document_generation.util.CloseDocument;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.math.BigInteger;
+import org.apache.poi.xwpf.usermodel.TextAlignment;
+import org.apache.poi.xwpf.usermodel.XWPFAbstractNum;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFNumbering;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTAbstractNum;
 
 public class SOCTest {
-	public static void main(String[] args){
-        SOCSectionFactory llsf = new SOCSectionFactory();
-        SOCDocument_copy doc = new SOCDocument_copy();
-        
-        
-        //
-        //
-        //
-        
-        
-        LinkedHashMap<String, String> testMap = doc.getFieldsMap();
-        testMap.put("dollarsNoticeOwed", "10000");
-        testMap.put("dollarsBenefitsOwed", "10000");
-        testMap.put("dollarsDamagesOwed", "10000");
-        testMap.put("dollarsTotalOwed", "100000");
-        testMap.put("wage_in_dollars", "100000");
-        doc.setFieldsMap(testMap);
-        ArrayList<SOCSection> s_arr = new ArrayList<>();
-        SOCSection s1 = llsf.getSection(doc, SOCSectionCode.START_TEST);
-        s_arr.add(s1);
-        SOCSection s2 = llsf.getSection(doc, SOCSectionCode.PARTIES);
-        s_arr.add(s2);
-        SOCSection s3 = llsf.getSection(doc, SOCSectionCode.BACKGROUND);
-        s_arr.add(s3);
-        SOCSection s4 = llsf.getSection(doc, SOCSectionCode.CONSTRUCTIVE);
-        s_arr.add(s4);
-        SOCSection s5 = llsf.getSection(doc, SOCSectionCode.TERMINATION);
-        s_arr.add(s5);
-        SOCSection s6 = llsf.getSection(doc, SOCSectionCode.FIGHTING_TERM);
-        s_arr.add(s6);
-        
-        for(SOCSection s : s_arr){
-            doc.writeToDoc(s);
-        }
-        
-        CloseDocument.closeSimple(doc, "SOCTest.docx");
-    }
+	SOCSectionFactory llsf = new SOCSectionFactory();
+	SOCDocument_copy doc = new SOCDocument_copy();
+
+	String fileName = "";
+	InputStream in = null;
+	CTAbstractNum abstractNum = null;
+
+	public String createDocument(String fileName, String content) {
+		this.fileName = fileName;
+		XWPFDocument doc = new XWPFDocument();
+
+		doc.createNumbering();
+		XWPFNumbering numbering = null;
+		numbering = doc.createNumbering();
+		for (String value : content.split("@")) {
+			XWPFParagraph para = doc.createParagraph();
+			para.setVerticalAlignment(TextAlignment.CENTER);
+			para.setNumID(addListStyle(abstractNum, doc, numbering));
+			XWPFRun run = para.createRun();
+			run.setText(value);
+		}
+		try {
+			FileOutputStream out = new FileOutputStream(fileName);
+			doc.write(out);
+			out.close();
+			in.close();
+		} catch (Exception e) {
+		}
+		return null;
+	}
+
+	private BigInteger addListStyle(CTAbstractNum abstractNum,
+			XWPFDocument doc, XWPFNumbering numbering) {
+		try {
+
+			XWPFAbstractNum abs = new XWPFAbstractNum(abstractNum, numbering);
+			BigInteger id = BigInteger.valueOf(0);
+			boolean found = false;
+			while (!found) {
+				Object o = numbering.getAbstractNum(id);
+				found = (o == null);
+				if (!found)
+					id = id.add(BigInteger.ONE);
+			}
+			abs.getAbstractNum().setAbstractNumId(id);
+			id = numbering.addAbstractNum(abs);
+			return doc.getNumbering().addNum(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public static void main(String[] args) throws Exception {
+		String fileName = "Test.docx";
+		new SOCTest().createDocument(fileName,
+				"First Level@@Second Level@@Second Level@@First Level");
+	}
 }

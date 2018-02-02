@@ -35,7 +35,7 @@ public class HumanRightsSection extends SOCSection{
 		header.setText("Human Rights");
 		content.add(header);
 
-		LLParagraph text = llpf.getParagraph(doc, ParaCode.REG);
+		LLParagraph text = llpf.getParagraph(doc, ParaCode.LIST);
 		text.setText("In the absence of any legitimate reason for the termination of his employment, <client_first_name> pleads that <possessive_pronoun> [GROUND FOR DISCRIMINATION] played a significant factor in <employer_first_name>'s decision to terminate <object_pronoun>. Discrimination on the basis of <grounds_for_discrimination> is contrary to the provisions of the <human_rights_legislation> for which an award of damages for injury to dignity, feelings and self respect are rightfully owed."
 				+ "%%"
 				+ "%%<client_first_name> suggests that an appropriate amount should be allocated in respect to a claim for human rights violations. ");

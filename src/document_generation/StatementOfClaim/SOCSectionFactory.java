@@ -2,6 +2,7 @@ package document_generation.StatementOfClaim;
 
 import document_generation.LawyersLetter.LLParagraphFactory;
 import document_generation.LawyersLetter.LLSection;
+import document_generation.LawyersLetter.Sections.NumberingTestSection;
 import document_generation.StatementOfClaim.Sections.AllegationsOfCauseSection;
 import document_generation.StatementOfClaim.Sections.BackgroundSection;
 import document_generation.StatementOfClaim.Sections.BadFaithDutyOfHonestySection;

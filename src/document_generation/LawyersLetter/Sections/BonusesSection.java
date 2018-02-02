@@ -40,5 +40,12 @@ public class BonusesSection extends LLSection {
 
         this.setContents(content);
     }
+    
+    public static void main(String[] args){
+    	System.out.println("In the present case, as in Taggart, Schumacher " +
+                "and Bernier, the requirement for active employment does not prevent the appellant from receiving " +
+                "as part of his wrongful dismissal damages, compensation for the bonuses he would have received " +
+                "had his employment continued during the period of reasonable notice. ");
+    }
 
 }

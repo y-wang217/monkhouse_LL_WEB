@@ -18,9 +18,10 @@ import document_generation.StatementOfClaim.SOCSectionFactory;
 import document_generation.StatementOfClaim.Sections.Codes.SOCSectionCode;
 
 public class UserDao {
-
-	public HashMap<String, String> execute(String sql) {
-		HashMap<String, String> resultMap = new HashMap<>();
+	private static String MySQLHostname = "monkhouse-test.crzdgvf9qkzn.us-east-2.rds.amazonaws.com";
+	private static String MySQLUsername = "monkhouse";
+	private static String MySQLPassword = "december2";
+	public static boolean execute(String sql) {
 
 		// String sql2 =
 		// "insert into llsection (section_name, section_text, paragraph_num) values ('"+
@@ -32,7 +33,7 @@ public class UserDao {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/monkhouse?user=root&password=pass");
+					.getConnection("jdbc:mysql://"+MySQLHostname+":3306/monkhouse?user="+MySQLUsername+"&password="+MySQLPassword);
 			PreparedStatement ps = conn.prepareStatement(sql);
 			System.out.println("               SQL query is: " + sql);
 			boolean rs = ps.execute();
@@ -41,10 +42,11 @@ public class UserDao {
 			}
 			ps.close();
 		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			return false;
 		} finally {
 			if (conn != null) {
 				try {
@@ -53,8 +55,7 @@ public class UserDao {
 				}
 			}
 		}
-
-		return resultMap;
+		return true;
 	}
 
 	public HashMap<String, String> executeSelectParagraphText(String sql) {
@@ -65,7 +66,7 @@ public class UserDao {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/monkhouse?user=root&password=pass");
+					.getConnection("jdbc:mysql://"+MySQLHostname+":3306/monkhouse?user="+MySQLUsername+"&password="+MySQLPassword);
 			PreparedStatement ps = conn.prepareStatement(sql);
 			System.out.println("               SQL query is: " + sql);
 
@@ -90,12 +91,9 @@ public class UserDao {
 				}
 			}
 		}
-		
-		
 
 		return resultMap;
 	}
-
 
 	public static HashMap<String, String> executeSelect(String sql) {
 		HashMap<String, String> resultMap = new HashMap<>();
@@ -105,14 +103,19 @@ public class UserDao {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/monkhouse?user=root&password=pass");
+					.getConnection("jdbc:mysql://"+MySQLHostname+":3306/monkhouse?user="+MySQLUsername+"&password="+MySQLPassword);
 			PreparedStatement ps = conn.prepareStatement(sql);
 			System.out.println("               SQL query is: " + sql);
 
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				resultMap.put(rs.getString(1),
-						rs.getString(2));
+				int colCount = rs.getMetaData().getColumnCount();
+				if (colCount == 1) {
+					resultMap.put("result",rs.getString(1));
+				}
+				if (colCount == 2) {
+					resultMap.put(rs.getString(1), rs.getString(2));
+				}
 			}
 			rs.close();
 
@@ -130,13 +133,10 @@ public class UserDao {
 				}
 			}
 		}
-		
-		
 
 		return resultMap;
 	}
 
-	
 	public void executeUpdate(String sql) {
 		Connection conn = null;
 
@@ -144,7 +144,7 @@ public class UserDao {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/monkhouse?user=root&password=pass");
+					.getConnection("jdbc:mysql://"+MySQLHostname+":3306/monkhouse?user="+MySQLUsername+"&password="+MySQLPassword);
 			PreparedStatement ps = conn.prepareStatement(sql);
 			System.out.println("               SQL query is: " + sql);
 			int resp = ps.executeUpdate();
@@ -183,7 +183,7 @@ public class UserDao {
 			for (LLParagraph line : llsection.getContents()) {
 				System.out.println("    " + paraNum + ": " + line.getText());
 
-				String sql = "insert into llsection (section_name, section_text, paragraph_num) values (\""
+				String sql = "insert into _ (section_name, section_text, paragraph_num) values (\""
 						+ type
 						+ "\", \""
 						+ line.getText().replaceAll("\"", "\\\\\"")
@@ -194,27 +194,28 @@ public class UserDao {
 			}
 		}
 
-//		SOCSectionFactory socsf = new SOCSectionFactory();
-//		SOCDocument doc2 = new SOCDocument();
-//
-//		for (SOCSectionCode type : SOCSectionCode.values()) {
-//			SOCSection socSection = socsf.getSection(doc2, type);
-//
-//			System.out
-//					.println("Section Name: " + type + " .\\. Section Text: ");
-//			int paraNum = 1;
-//			for (LLParagraph line : socSection.getContents()) {
-//				System.out.println("    " + paraNum + ": " + line.getText());
-//
-//				String sql = "insert into socsection (section_name, section_text, paragraph_num) values (\""
-//						+ type
-//						+ "\", \""
-//						+ line.getText().replace("\"", "\\\"")
-//						+ "\", \""
-//						+ paraNum + "\");";
-//				test.execute(sql);
-//				paraNum++;
-//			}
-//		}
+		// SOCSectionFactory socsf = new SOCSectionFactory();
+		// SOCDocument doc2 = new SOCDocument();
+		//
+		// for (SOCSectionCode type : SOCSectionCode.values()) {
+		// SOCSection socSection = socsf.getSection(doc2, type);
+		//
+		// System.out
+		// .println("Section Name: " + type + " .\\. Section Text: ");
+		// int paraNum = 1;
+		// for (LLParagraph line : socSection.getContents()) {
+		// System.out.println("    " + paraNum + ": " + line.getText());
+		//
+		// String sql =
+		// "insert into socsection (section_name, section_text, paragraph_num) values (\""
+		// + type
+		// + "\", \""
+		// + line.getText().replace("\"", "\\\"")
+		// + "\", \""
+		// + paraNum + "\");";
+		// test.execute(sql);
+		// paraNum++;
+		// }
+		// }
 	}
 }

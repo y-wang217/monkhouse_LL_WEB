@@ -2,6 +2,8 @@ package document_generation.LawyersLetter;
 
 import document_generation.LawyersLetter.Codes.ParaCode;
 import document_generation.LawyersLetter.Paragraphs.*;
+import document_generation.LawyersLetter.Sections.NumberingTestSection;
+
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 
 /**
@@ -48,6 +50,7 @@ public class LLParagraphFactory {
             	return new CenterAlignBoldParagraph(doc);
             case SOC_B:
             	return new SOCBoldParagraph(doc);
+
             default:
                 System.err.println("No code given for paragraph creation.");
                 return new LLParagraph(doc);
